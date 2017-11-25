@@ -1,0 +1,156 @@
+hr {
+  border : 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+body{
+  background-color: #fcfcfc;
+  padding-top: 65px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+.image-container{
+  width:inherit;
+  display: flex;
+  justify-content: center;
+}
+#educationIndexPanel{
+  margin-top: 15px;
+  margin:10px;
+  background: radial-gradient(white 50%, #f4f6f7 )
+}
+#exampleNav{
+  background-color: #00A1AE;
+  color: white;
+}
+#exampleNav:focus{
+  background-color: white;
+  color: #00A1AE;
+}
+#exampleNav:hover{
+  background-color: #00becc;
+  color: white;
+}
+.jumbotron{
+  background-color: #ffffff;
+  height:150px;
+
+}
+#bannerDepartments{
+  background-color: #ffffff;
+  opacity: 0.8;
+  margin-bottom: 0px;
+  background-image: url("/storage/dots.png");
+}
+.jumbotron h1{
+  margin-top: -20px;
+  color: black;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;
+
+}
+.jumbotron p{
+  color: black;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;
+
+}
+#bannerEducation{
+  opacity: 0.8;
+  margin-bottom: 0px;
+  background-image: url("/storage/blob.png");
+}
+#bannerlearning{
+  opacity: 0.8;
+  margin-bottom: 0px;
+  background-image: url("/storage/background.png");
+}
+#linksHeadings {
+  color:white;
+}
+#linksHeadings:hover {
+  color:black;
+}
+#page{
+  padding:1%;
+  width:80%;
+  height: inherit;
+  margin-left: 10%;
+  background-color: white;
+}
+#indexBanner{
+   background-image: url("/storage/background1.jpg");
+   margin-bottom: 5px;
+   height: 700px;
+
+}
+#indexBannerText  h3{
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  text-shadow: 1px 1px 2px white, 0 0 25px grey, 0 0 5px darkblue;
+}
+#indexBannerText  h1{
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 80px;
+  text-shadow: 1px 1px 2px white, 0 0 25px grey, 0 0 5px darkblue;
+}
+#indexBannerText {
+  margin-top: 100px;
+
+}
+
+#indexImageLink{
+  padding:2px;
+
+
+}
+#indexImageLink:hover{
+  padding:2px;
+  border-style: solid;
+  border-color: black;
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.layer:hover {
+    background-color: rgba(248, 247, 216, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#panelHover:hover{
+  background-color: rgba(248, 247, 216, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#wrapper {
+    width:100%;;
+    height:300px;
+    display: inline-block;
+    position: relative;
+}
+#hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 188, 212, 0);
+    transition: background-color 0.5s;
+}
+
+#hover:hover {
+    background-color: rgba(0, 63, 168, 0.1);
+    // You can tweak with other background properties too (ie: background-image)...
+}

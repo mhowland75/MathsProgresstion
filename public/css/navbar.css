@@ -1,0 +1,45 @@
+.navbar-header{
+  
+  height: 50px;
+}
+
+#navbar{
+
+  margin-top:15px;
+  background-color: #FFFFFF;
+}
+#navbar li {
+
+  background-color: #FFFFFF;
+}
+#navbar li :hover{
+  background-color: #00A1AE;
+  color: #FFFFFF;
+}
+#navbar li :focus{
+  background-color: #00A1AE;
+  color:white;
+}
+#navbar li a{
+  color: #00A1AE;
+}
+#navbar li a :hover{
+  color: #FFFFFF;
+}
+#dropdown ul{
+  background-color: #00A1AE;
+}
+#dropdown ul li{
+  background-color: #00A1AE;
+}
+#dropdown ul li :hover{
+  background-color: #007780;
+  color: #FFFFFF;
+}
+
+#dropdown ul li a{
+  color: #FFFFFF;
+}
+#dropdown ul li a :hover{
+  color: #00A1AE;
+}
