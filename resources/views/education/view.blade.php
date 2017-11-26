@@ -27,7 +27,7 @@
 <br />
 <hr />
 <br />
-<div style=" background: linear-gradient(white, #00a1ae, white);" class="row">
+<div style=" background: linear-gradient(white, #fcfcfc, white);" class="row">
  <div class="col-sm-6 col-md-offset-2">
    <iframe width="760" height="515" src="{{$data->video}}" frameborder="0" allowfullscreen></iframe>
  </div>
@@ -82,7 +82,7 @@
 <br />
 <div>
   <center>
-    <a href="https://diagnosticquestions.com/"><img width="150px" src='/storage/dq logo.png'/></a>
+    <a href="https://diagnosticquestions.com/"><img width="150px" src='/images/dq logo.png'/></a>
     <h3>Ready to test yourself head to Diagnostic Questions.</h3>
     <br />
     <a href="https://diagnosticquestions.com/"></a><button type="button" class="btn btn-primary">Diagnostic Questions</button></a>
