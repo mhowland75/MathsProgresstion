@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="col-md-4">
-          <img class="img-rounded" src="/storage/help.png" />
+          <img class="img-rounded" src="/images/help.png" />
 
         </div>
     </div>

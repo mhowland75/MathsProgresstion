@@ -44,7 +44,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/storage/bath college logo.png" />
+                        <img src="/images/bath college logo.png" />
                     </a>
                 </div>
 

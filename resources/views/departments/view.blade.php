@@ -56,7 +56,7 @@
        </ol>
        <br />
          <center>
-           <a href="https://diagnosticquestions.com/"><img width="20%" src="/storage/dq logo.png" /></a>
+           <a href="https://diagnosticquestions.com/"><img width="20%" src="/images/dq logo.png" /></a>
          </center>
        <br />
        <center>
