@@ -18,6 +18,8 @@ class CreateDepartmentTable extends Migration
             $table->string('department');
             $table->string('group_code');
             $table->string('course_name');
+            $table->int('created_by');
+            $table->int('updated_by')->nullabe();
             $table->timestamps();
         });
     }
