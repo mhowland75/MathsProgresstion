@@ -21,7 +21,7 @@
        <div style="background: radial-gradient(white 50%, #f4f6f7 ) " class="panel panel-default">
          <div style="margin:auto" class="panel-body">
          <h3>Ready to test yourself?</h3><br />
-          <a href="https://diagnosticquestions.com/"><img width="46%" src="/storage/dq logo.png" /></a>
+          <a href="https://diagnosticquestions.com/"><img width="46%" src="/public/images/dq logo.png" /></a>
           <h2>Diagnostic Questons</h2>
         </div>
         </div>
