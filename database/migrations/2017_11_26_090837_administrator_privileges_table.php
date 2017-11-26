@@ -15,8 +15,8 @@ class AdministratorPrivilegesTable extends Migration
     {
       Schema::create('Administrator_privileges', function (Blueprint $table) {
         $table->increments('id');
-        $table->int('user_id');
-        $table->int('access_level');
+        $table->integer('user_id');
+        $table->integer('access_level');
         $table->timestamps();
       });
     }

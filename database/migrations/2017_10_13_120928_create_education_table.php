@@ -20,8 +20,8 @@ class CreateEducationTable extends Migration
           $table->string('explanation');
           $table->string('video');
           $table->string('image');
-          $table->int('created_by');
-          $table->int('updated_by')->nullable();
+          $table->integer('created_by');
+          $table->integer('updated_by')->nullable();
           $table->timestamps();
         });
     }
