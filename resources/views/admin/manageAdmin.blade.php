@@ -3,7 +3,7 @@
 @section('content')
 <div id="page">
   <div class="row">
-   <div class="col-sm-6">
+   <div class="col-sm-12">
      <div class="panel panel-default">
       <div class="panel-heading">Manage administrator privilages</div>
       <div class="panel-body">
