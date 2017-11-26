@@ -15,7 +15,7 @@ class CreateExampleTable extends Migration
     {
         Schema::create('examples', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('education_id');
+            $table->integer('education_id');
             $table->string('name');
             $table->string('introduction');
             $table->string('explanation');
