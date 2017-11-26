@@ -21,14 +21,14 @@
        <div style="background: radial-gradient(white 50%, #f4f6f7 ) " class="panel panel-default">
          <div style="margin:auto" class="panel-body">
          <h3>Ready to test yourself?</h3><br />
-          <a href="https://diagnosticquestions.com/"><img width="46%" src="/public/images/dq logo.png" /></a>
+          <a href="https://diagnosticquestions.com/"><img width="46%" src="/images/dq logo.png" /></a>
           <h2>Diagnostic Questons</h2>
         </div>
         </div>
      </center>
    </div>
    <div class="col-sm-6">
-     <img class="img-rounded" src="/storage/computer.jpg" />
+     <img class="img-rounded" src="/images/computer.jpg" />
    </div>
   </div>
 </div>

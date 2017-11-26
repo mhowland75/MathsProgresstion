@@ -43,7 +43,7 @@ img {
   background-color: #ffffff;
   opacity: 0.8;
   margin-bottom: 0px;
-  background-image: url("/public/images/dots.png");
+  background-image: url("/images/dots.png");
 }
 .jumbotron h1{
   margin-top: -20px;
@@ -61,12 +61,12 @@ img {
 #bannerEducation{
   opacity: 0.8;
   margin-bottom: 0px;
-  background-image: url("/public/images/blob.png");
+  background-image: url("/images/blob.png");
 }
 #bannerlearning{
   opacity: 0.8;
   margin-bottom: 0px;
-  background-image: url("/public/images/background.png");
+  background-image: url("/images/background.png");
 }
 #linksHeadings {
   color:white;
@@ -82,7 +82,7 @@ img {
   background-color: white;
 }
 #indexBanner{
-   background-image: url("/public/images/background1.jpg");
+   background-image: url("/images/background1.jpg");
    margin-bottom: 5px;
    height: 700px;
 
