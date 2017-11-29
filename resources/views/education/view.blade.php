@@ -11,14 +11,14 @@
   <a href="">Back to Education</a>
 </div>
 <div style="padding-top:10px;" class="row">
- <div class="col-sm-6">
+ <div class="col-sm-5 col-md-6">
    <img class="img-rounded" src='{{$data->image}}'/>
    <br />
    <div>
     {!!$data->description!!}
   </div>
  </div>
- <div class="col-sm-6">
+ <div class="col-sm-7 col-md-6">
  <div>
    {!!$data->explanation!!}
  </div>
@@ -28,8 +28,8 @@
 <hr />
 <br />
 <div style=" background: linear-gradient(white, #fcfcfc, white);" class="row">
- <div class="col-sm-6 col-md-offset-2">
-   <iframe width="760" height="515" src="{{$data->video}}" frameborder="0" allowfullscreen></iframe>
+ <div class="col-sm-12 col-md-8 col-md-offset-2">
+   <iframe id="video" src="{{$data->video}}" frameborder="0" allowfullscreen></iframe>
  </div>
 </div>
 <br />
@@ -48,14 +48,13 @@
       <?php $y=1;?>
   @foreach ($examples as $example)
     <div id="{{$example->id}}" <?php if($y == 1){echo'class="tab-pane fade in active"';}else{echo'class="tab-pane fade"';}?> >
+      <div class="page-header">
+        <center>
+          <h3>{{$example->name}}</h3>
+        </center>
+      </div>
       <div class="row">
-       <div class="col-sm-6">
-         <div class="page-header">
-           <center>
-             <h3>{{$example->name}}</h3>
-           </center>
-         </div>
-         <p>{{$example->introduction}}</p><br />
+       <div class="col-sm-7">
          <center>
            <h4>Queston: {{$example->question}}</h4>
          </center>
@@ -66,8 +65,9 @@
             <h2>The answer is {{$example->answer}}</h2>
           </div>
        </div>
-       <div class="col-sm-6">
+       <div class="col-sm-5">
           <img class="img-rounded" src='{{$example->image}}'/>
+          <p>{{$example->introduction}}</p><br />
        </div>
       </div>
 
@@ -76,16 +76,17 @@
   @endforeach
   </div>
 </div>
-@endif
 <br />
 <hr />
 <br />
+@endif
+
 <div>
   <center>
-    <a href="https://diagnosticquestions.com/"><img width="150px" src='/images/dq logo.png'/></a>
+    <a href="/departments/view"><img width="150px" src='/images/dq logo.png'/></a>
     <h3>Ready to test yourself head to Diagnostic Questions.</h3>
     <br />
-    <a href="https://diagnosticquestions.com/"></a><button type="button" class="btn btn-primary">Diagnostic Questions</button></a>
+    <a href="/departments/view"></a><button type="button" class="btn btn-primary">Diagnostic Questions</button></a>
     <br /><br />
   </center>
 

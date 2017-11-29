@@ -31,6 +31,9 @@ Route::get('/help/view', 'HelpController@view');
 Route::post('/help/store', 'HelpController@store');
 
 Route::group(['middleware'=>'AdminAccessLevel1'], function(){
+  Route::get('/admin/{id}/delete/user', 'AdminController@delete');
+  Route::get('/admin/edit/{id}', 'AdminController@edit');
+  Route::post('/admin/update/user', 'AdminController@update');
   Route::get('/admin/register', 'AdminController@create');
   Route::post('/admin/store', 'AdminController@store');
   Route::get('/admin/manage', 'AdminController@manage');

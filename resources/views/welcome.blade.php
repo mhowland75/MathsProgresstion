@@ -13,7 +13,17 @@
 </div>
 @endsection
 @section('content')
-
+<div>
+  <br />
+  <center>
+    <p style="font-size: 150%; font-weight: bold;">
+      MathsProgression has been created to provide Bath college students with a learning resources to aid them in passing the online maths tests at Diagnostic Questions.
+      <br />
+      We hope you find this website helpful and good luck passing your exams.
+    </p>
+  </center>
+  <br />
+</div>
 <div class="container">
   <div class="row" style="height:400px">
    <div class="col-sm-6">

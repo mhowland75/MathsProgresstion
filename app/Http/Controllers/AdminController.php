@@ -4,12 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use App\User;
 use DB;
+use Auth;
 
 class AdminController extends Controller
 {
+  public function delete($id){
+    if(empty(User::find($id))){
+      return redirect('/admin/manage');
+    }
+    User::destroy($id);
+    DB::table('administrator_privileges')->where('user_id', '=', $id)->delete();
+    return redirect('/admin/manage');
+  }
     public function create(){
-      return  view('auth.register');
+      return view('auth.register');
+    }
+    public function edit($id){
+      $data = User::find($id);
+      return view('admin.edit',compact('data'));
+    }
+    public function update(request $request){
+      $data = User::find($request->id);
+      $data->name = $request->name;
+      $data->email = $request->email;
+      $data->job_title = $request->job_title;
+      if(!empty($request->password)){
+        if($request->password === $request->password_confirmation){
+          $data->password = bcrypt($request->password);
+        }
+      }
+      $data->save();
+      return redirect('admin/manage');
     }
     public function store(request $request){
       $request->validate([

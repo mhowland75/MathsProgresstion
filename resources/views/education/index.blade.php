@@ -11,7 +11,7 @@
 <div  class="row">
   @foreach ($data as $x)
   <a id="linksHeadings" href="/education/view/{{$x->id}}">
-        <div class="col-sm-4">
+        <div class="col-md-4 col-sm-6 col-xs-12">
           <div id="educationIndexPanel" class="panel panel-default">
             <div id="wrapper" class="panel-body">
               <div id="hover">

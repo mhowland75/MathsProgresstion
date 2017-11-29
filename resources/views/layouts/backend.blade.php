@@ -62,25 +62,13 @@
                     <ul id="navbar" class="nav navbar-nav">
                           <li><a href="/home">Home</a></li>
                           <li><a href="/departments/index">Diagnostic Questions</a></li>
-                          <li  id="dropdown" class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Education</a>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="/education/manage">Manage</a></li>
-                                <li><a href="/education/create">Create</a></li>
-                              </ul>
-                          </li>
-                          <li  id="dropdown" class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Staff</a>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="/teachers/manage">Manage</a></li>
-                                <li><a href="/teachers/create">Create</a></li>
-                              </ul>
-                          </li>
+                          <li><a href="/education/manage">Education</a></li>
+                          <li><a href="/teachers/manage">Staff</a></li>
+
                           <li  id="dropdown" class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin</a>
                               <ul class="dropdown-menu" role="menu">
                                 <li><a href="/admin/manage">Manage</a></li>
-                                <li><a href="/admin/register">Create</a></li>
                                 <li><a href="/admin/manageAccess">Administrator Privileges</a></li>
                               </ul>
                           </li>

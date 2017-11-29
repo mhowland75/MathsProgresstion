@@ -2,7 +2,7 @@
 @section('banner')
 <div id="bannerDepartments" class="jumbotron">
   <center>
-    <h1>Dianostic Questons</h1>
+    <h1>Diagnostic Questions</h1>
     <p>Find your group code by clicking your department.</p>
   </center>
 </div>
@@ -50,9 +50,9 @@
         </center>
         <br />
         <ol>
-         <li>Set your username as your student ID, e.g ARK14286357</li>
-         <li>Create a password that you will easily be able to remember as you will have to access this website in future.</li>
-         <li>Ensure that you find out your group code from the Department options on the left to ensure that you register yourself into the correct group</li>
+         <li>Set your username as your student ID, e.g ARK14286357.</li>
+         <li>Create a password that you will easily be able to remember as you will have to access this website in the future.</li>
+         <li>Ensure that you find out your group code from the Department options on the left to ensure that you register yourself into the correct group.</li>
        </ol>
        <br />
          <center>

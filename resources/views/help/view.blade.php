@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-sm-8 col-md-8">
           <p style="text-align:center; font-weight:bold; font-size:16pt">
             If you have any issues either complete the contact form above or speak to one of the team pictured at the bottom of the page. Members of the team can be found in M302 at CCC or at the back of the library at SVC.
           </p>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-4 col-md-4">
           <img class="img-rounded" src="/images/help.png" />
 
         </div>
