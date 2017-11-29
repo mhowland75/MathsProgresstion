@@ -3,6 +3,7 @@
 <div id="indexBanner" class="jumbotron">
   <div id="indexBannerText">
     <h3>Welcome to</h3>
+    <br />
     <h1>MathsProgression</h1>
     <h3>We are here to help</h3>
     <center>

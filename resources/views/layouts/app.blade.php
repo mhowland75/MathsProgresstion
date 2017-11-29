@@ -64,12 +64,7 @@
 
                   <!-- Right Side Of Navbar -->
                   <ul class="nav navbar-nav navbar-right">
-                    <div id='medialinks'>
-                        <a href="https://www.facebook.com/MathsProgression-1782215791819800/" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-google"></a>
-                        <a href="#" class="fa fa-linkedin"></a>
-                    </div>
+
                       <!-- Authentication Links
                       @guest
                           <li><a href="{{ route('login') }}">Login</a></li>
