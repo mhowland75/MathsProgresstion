@@ -5,7 +5,7 @@ hr {
 }
 body{
   width: 100%;
-  padding:20px;
+  padding:0px;
   margin:0px;
   background-color: white;
   padding-top: 65px;
@@ -13,7 +13,7 @@ body{
 }
 #page{
   width: 100%;
-  padding:0px;
+  padding:12px;
   margin:0px;
   height: inherit;
   background-color: white;
