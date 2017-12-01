@@ -17,7 +17,7 @@
               <div id="hover">
               </div>
               <div id="imageDiv">
-                <img src='{{$x->image}}'/>
+                <img id="educationImage" src='{{$x->image}}'/>
               </div>
             </div>
             <div style="background-color:#0093A8" class="panel-footer"><center>

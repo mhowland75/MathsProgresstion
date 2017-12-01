@@ -4,7 +4,7 @@ hr {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 body{
-  background-color: #fcfcfc;
+  background-color:  #f4f6f7 ;
   padding-top: 65px;
 }
 img {
@@ -24,7 +24,7 @@ img {
   height:inherit;
 }
 #staffImage{
-  
+
 
 }
 .image-container{
@@ -60,8 +60,8 @@ img {
 
 }
 #bannerDepartments{
+
   background-color: #ffffff;
-  opacity: 0.8;
   margin-bottom: 0px;
   background-image: url("/images/dots.png");
 }
@@ -79,12 +79,10 @@ img {
 
 }
 #bannerEducation{
-  opacity: 0.8;
   margin-bottom: 0px;
   background-image: url("/images/blob.png");
 }
 #bannerlearning{
-  opacity: 0.8;
   margin-bottom: 0px;
   background-image: url("/images/background.png");
 }
@@ -94,7 +92,7 @@ img {
 #linksHeadings:hover {
   color:black;
 }
-#page{
+#page{margin-top: 20px;
   padding:1%;
   width:80%;
   height: inherit;
@@ -156,7 +154,7 @@ img {
 }
 #wrapper {
     width:100%;;
-    height:300px;
+    height:250px;
     display: inline-block;
     position: relative;
 }
