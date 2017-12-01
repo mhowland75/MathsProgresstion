@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-8">
             <div class="panel panel-default">
@@ -73,10 +72,8 @@
         </div>
         <div class="col-sm-4 col-md-4">
           <img id="helpImage" class="img-rounded" src="/images/help.png" />
-
         </div>
     </div>
-</div>
 <div class="page-header">
   <center>
     <h1>Staff</h1>

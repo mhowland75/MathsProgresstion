@@ -2,7 +2,8 @@
 
 }
 .navbar{
-  height: 66px;
+  height: 68px;
+    border-top: 2px solid #00a1ae;
       border-bottom: 2px solid #00a1ae;
 }
 #navbar{
@@ -44,6 +45,11 @@
   color: #00A1AE;
 }
 @media (max-width: 1200px) {
+  .navbar{
+    height: 68px;
+      border-top: 2px solid #00a1ae;
+        border-bottom: 2px solid #00a1ae;
+  }
     .navbar-header {
         float: none;
         height: 65px;
