@@ -19,7 +19,7 @@
   </div>
 
   <div class="panel-body">
-    <table  class="table table-striped">
+    <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
@@ -28,13 +28,16 @@
         <th>Video</th>
         <th>Created By</th>
         <th>Updated By</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
-    <tbody id="myTable">
+    <tbody>
       @foreach ($data as $x)
       <tr>
-        <td style="width: 15%;"><img class="img-thumbnail" src='{{$x->image}}'/></td>
-        <td style="width: 5%;">{{$x->name}}</td>
+        <td><img  class="img-thumbnail" src='{{$x->image}}'/></td>
+        <td>{{$x->name}}</td>
         <td>{!!$x->description!!}</td>
         <td>{{$x->video}}</td>
         <td>{{$x->created_by}}</td>

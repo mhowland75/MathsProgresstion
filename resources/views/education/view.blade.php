@@ -28,7 +28,7 @@
 <hr />
 <br />
 <div style=" background: linear-gradient(white, #fcfcfc, white);" class="row">
- <div class="col-sm-12 col-md-8 col-md-offset-2">
+ <div class="col-sm-12 col-md-10 col-md-offset-1">
    <iframe id="video" src="{{$data->video}}" frameborder="0" allowfullscreen></iframe>
  </div>
 </div>
@@ -36,7 +36,7 @@
 <hr />
 <br />
 @if (!empty($examples[0]))
-<div class="container">
+
   <ul class="nav nav-tabs">
     <?php $x=1;?>
     @foreach ($examples as $example)
@@ -75,7 +75,6 @@
     <?php $y++?>
   @endforeach
   </div>
-</div>
 <br />
 <hr />
 <br />
@@ -83,7 +82,11 @@
 
 <div>
   <center>
-    <a href="/departments/view"><img width="150px" src='/images/dq logo.png'/></a>
+    <a href="/departments/view">
+      <div id="dqImage">
+        <img src='/images/dq logo.png'/>
+      </div>
+      </a>
     <h3>Ready to test yourself head to Diagnostic Questions.</h3>
     <br />
     <a href="/departments/view"></a><button type="button" class="btn btn-primary">Diagnostic Questions</button></a>

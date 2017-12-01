@@ -3,10 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm-8 col-md-8">
-          <p style="text-align:center; font-weight:bold; font-size:16pt">
-            If you have any issues either complete the contact form above or speak to one of the team pictured at the bottom of the page. Members of the team can be found in M302 at CCC or at the back of the library at SVC.
-          </p>
+        <div class="col-sm-12 col-md-8">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="/help/store">
@@ -49,9 +46,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="message" class="col-md-2 control-label">Message</label>
-                            <div class="col-md-10">
-                                <textarea style="height:200px" id="message" type="text" class="form-control" name="message">{{ old('message') }}</textarea>
+                            <label for="message" class="col-xs-12 col-sm-2 col-md-2 control-label">Message</label>
+                            <div class="col-xs-12 col-sm-10 col-md-10">
+                                <textarea style="height:300px; width:95%" id="message" type="text" class="form-control" name="message">{{ old('message') }}</textarea>
                                 @if ($errors->has('message'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('message') }}</strong>
@@ -70,23 +67,31 @@
                     </form>
                 </div>
             </div>
+            <p style="text-align:center; font-weight:bold; font-size:16pt">
+              If you have any issues either complete the contact form above or speak to one of the team pictured at the bottom of the page. Members of the team can be found in M302 at CCC or at the back of the library at SVC.
+            </p>
         </div>
         <div class="col-sm-4 col-md-4">
-          <img class="img-rounded" src="/images/help.png" />
+          <img id="helpImage" class="img-rounded" src="/images/help.png" />
 
         </div>
     </div>
 </div>
 <div class="page-header">
-  <h1>Staff</h1>
+  <center>
+    <h1>Staff</h1>
+  </center>
 </div>
 <div class="row">
   @foreach ($data as $x)
-    <div class="col-sm-3">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 col-md-3 col-md-offset-0">
       <div style="height:350px" class="panel panel-default">
-        <div style="height:250px" class="panel-body"><center>
-          <img class="img-thumbnail" src='{{$x->image}}'/>
-        </center></div>
+        <div style="height:250px" class="panel-body">
+          <div  style="text-align: center;">
+            <img style="width:inherit; height:inherit;" class="img-thumbnail" src='{{$x->image}}'/>
+          </div>
+
+        </div>
         <div style="height:100px; background-color:#0093A8" class="panel-footer"><center><h4 style="color:white">{{$x->name}}</h4><br /><p style="color:white">{{$x->job_title}}</p></center></div>
       </div>
     </div>

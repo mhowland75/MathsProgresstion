@@ -8,15 +8,31 @@ body{
   padding-top: 65px;
 }
 img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    width: auto\9; /* ie8 */
+}
+#imageDiv{
+  margin-left: 5%;
+  width:90%;
+  height:inherit;
+
+}
+#dqImage{
+  margin:0;
+  max-width:300px;
+  width:60%;
+  height:inherit;
+}
+#staffImage{
+  
+
 }
 .image-container{
   width:inherit;
   display: flex;
   justify-content: center;
 }
+
 #educationIndexPanel{
   margin-top: 15px;
   margin:10px;

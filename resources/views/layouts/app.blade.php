@@ -18,8 +18,8 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/mathsprogression.css') }}" rel="stylesheet">
-    <link rel="stylesheet" media="screen and (min-width: 501px) and (max-width: 1028px)" href="{{ URL::asset('css/tablet.css') }}" />
-    <link rel="stylesheet" media="screen and (min-width: 201px) and (max-width: 500px)" href="{{ URL::asset('css/mobile.css') }}" />
+    <link rel="stylesheet" media="screen and (min-width:769px) and (max-width: 992px)" href="{{ URL::asset('css/tablet.css') }}" />
+    <link rel="stylesheet" media="screen and (min-width: 201px) and (max-width: 768px)" href="{{ URL::asset('css/mobile.css') }}" />
     <link href="{{ URL::asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/ionicons.css') }}" rel="stylesheet">

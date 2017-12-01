@@ -10,7 +10,7 @@
 @section('content')
 <div class="panel-body">
   <div class="row">
-   <div class="col-sm-6">
+   <div class="col-xs-12 col-sm-6">
        <div class="panel-group" id="accordion">
          <?php $y = 0; ?>
          @forelse ($results as $result)
@@ -26,8 +26,8 @@
 
              <div class="panel-body">
                <div class="row">
-                <div class="col-sm-6">{{ $x->course_name }}</div>
-                <div class="col-sm-6">{{ $x->group_code }}</div>
+                <div class="col-xs-6 col-sm-6">{{ $x->course_name }}</div>
+                <div class="col-xs-6 col-sm-6">{{ $x->group_code }}</div>
                </div>
              </div>
 
@@ -40,7 +40,7 @@
          </div>
    </div>
 
-   <div class="col-sm-6">
+   <div class="col-xs-12 col-sm-6">
      <div class="panel panel-default">
       <div class="panel-body">
         <center>
@@ -56,11 +56,15 @@
        </ol>
        <br />
          <center>
-           <a href="https://diagnosticquestions.com/"><img width="20%" src="/images/dq logo.png" /></a>
+           <a href="https://diagnosticquestions.com/">
+             <div id="dqImage">
+               <img src="/images/dq logo.png" />
+             </div>
+           </a>
          </center>
        <br />
        <center>
-          <a href="https://diagnosticquestions.com/"><button type="button" class="btn btn-primary btn-lg">Continue to Diagnostic Questions</button></a>
+          <a href="https://diagnosticquestions.com/"><button type="button" class="btn btn-primary btn-lg">Continue to <br /> Diagnostic Questions</button></a>
        </center>
         <br /><br />
       </div>
