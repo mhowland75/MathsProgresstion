@@ -72,6 +72,23 @@
                                 <li><a href="/admin/manageAccess">Administrator Privileges</a></li>
                               </ul>
                           </li>
+                          <li  id="dropdown" class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Results</a>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="/results/create">Upload</a></li>
+                                <li><a href="/results/index">Raw data</a></li>
+                                <li><a href="/results/departments">Departments</a></li>
+
+                              </ul>
+                          </li>
+                          <li  id="dropdown" class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Students</a>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="/student/create">Upload</a></li>
+                                <li><a href="/student/index">Raw data</a></li>
+
+                              </ul>
+                          </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
