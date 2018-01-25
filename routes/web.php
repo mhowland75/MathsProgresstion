@@ -42,8 +42,10 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/admin/delete/{id}', 'AdminController@removeAdministrator');
   Route::get('/results/index', 'ResultsController@index');
   Route::get('/results/create', 'ResultsController@create');
-  Route::post('/results/store', 'ResultsController@store');
   Route::get('/results/departments', 'ResultsController@deptView');
+  Route::post('/results/store', 'ResultsController@store');
+    Route::get('/results/{id}/studentdetails', 'ResultsController@studentDetails');
+      Route::get('/results/overallStats', 'ResultsController@overAllstats2');
   Route::get('/results/{department}/course', 'ResultsController@courseView');
   Route::get('/results/{course}/student', 'ResultsController@studentView');
   Route::get('/results/overall', 'ResultsController@overallStats');
