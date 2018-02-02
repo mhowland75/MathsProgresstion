@@ -10,9 +10,11 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/mathsprogression.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/backend.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/ionicons.css') }}" rel="stylesheet">
@@ -81,6 +83,7 @@
                                 <li><a href="/student/create">Student Upload</a></li>
                                 <li><a href="/results/index">Results Data</a></li>
                                 <li><a href="/student/index">Student Data</a></li>
+                                <li><a href="/results/passMark">Pass Mark</a></li>
 
                               </ul>
                           </li>

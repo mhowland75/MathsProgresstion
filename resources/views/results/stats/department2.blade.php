@@ -24,10 +24,10 @@
        <thead>
          <tr>
            <th>Department</th>
-           <th>Passed Tests</th>
-           <th>Total Tests</th>
-           <th>% Passed of All Tests</th>
-           <th>% passed of Complete Tests</th>
+           <th>Passed Students</th>
+           <th>Total Students</th>
+           <th>% Passed of All Students</th>
+           <th>% passed of Complete Students</th>
            <th>Passed quizes </th>
            <th>Total Quizes</th>
            <th>% Passed quizes </th>
@@ -57,9 +57,9 @@
        <thead>
          <tr>
            <th>Department</th>
-           <th>Compleated Tests</th>
-           <th>Total Tests</th>
-           <th>% Compleated Tests</th>
+           <th>Compleated Students</th>
+           <th>Total Students</th>
+           <th>% Compleated Students</th>
            <th>Compleated Quizes</th>
            <th>Total Quizes</th>
            <th>% Compleated Quizes</th>
@@ -89,9 +89,9 @@
        <thead>
          <tr>
            <th>Department</th>
-           <th>Attempted Tests</th>
-           <th>Total Tests</th>
-           <th>% Tests Attempted</th>
+           <th>Attempted Students</th>
+           <th>Total Students</th>
+           <th>% Students Attempted</th>
            <th>Attempted Quizes</th>
            <th>Total Quizes</th>
            <th>% Attempted Quizes</th>

@@ -24,7 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/departments/view', 'DepartmentsController@view');
 
-Route::get('/education/index', 'EducationController@index');
+Route::get('/education/index/{subject}', 'EducationController@index');
 Route::get('/education/view/{id}', 'EducationController@view');
 
 Route::get('/help/view', 'HelpController@view');
@@ -49,6 +49,9 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/results/{department}/course', 'ResultsController@courseView');
   Route::get('/results/{course}/student', 'ResultsController@studentView');
   Route::get('/results/overall', 'ResultsController@overallStats');
+  Route::get('/results/passMark', 'ResultsController@passMarkView');
+  Route::post('/results/storePassMark', 'ResultsController@storePassMark');
+
   Route::get('/student/index', 'StudentController@index');
   Route::get('/student/create', 'StudentController@create');
   Route::post('/student/store', 'StudentController@store');

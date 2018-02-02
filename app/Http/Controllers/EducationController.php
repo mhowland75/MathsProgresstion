@@ -12,6 +12,7 @@ use Auth;
 
 class EducationController extends Controller
 {
+
     public function store(request $request){
       $request->validate([
           'name' => 'required|max:50|min:4|unique:education,name',
@@ -22,6 +23,7 @@ class EducationController extends Controller
       ]);
       $filename = $request->image->getClientOriginalName();
       $data = new Education;
+      $data->subject = $request->subject;
       $data->name = $request->name;
       $data->description = $request->description;
       $data->explanation = $request->explanation;
@@ -50,16 +52,17 @@ class EducationController extends Controller
       return view('education.view', compact('data','examples'));
     }
 
-    public function index(){
-        $data = Education::all();
+    public function index($subject){
+        $data = Education::where('subject',$subject)->get();
         foreach($data as $x){
           $x->image = Storage::url($x->image);
         }
-        return view('education.index', compact('data'));
+        $subject = ucfirst($subject);
+        return view('education.index', compact('data','subject'));
     }
     public function manage(){
-      $data = Education::all();
-      foreach($data as $x){
+      $maths = Education::where('subject','Maths')->get();
+      foreach($maths as $x){
         $x->image = Storage::url($x->image);
         $user = User::find($x->created_by);
         $x->created_by = $user->name;
@@ -70,7 +73,19 @@ class EducationController extends Controller
           $x->updated_by = $user->name;
         }
       }
-      return view('education.manage', compact('data'));
+      $english = Education::where('subject','English')->get();
+      foreach($english as $x){
+        $x->image = Storage::url($x->image);
+        $user = User::find($x->created_by);
+        $x->created_by = $user->name;
+        $user = User::find($x->updated_by);
+        if(!$user){
+          $x->updated_by = 'Never Updated';
+        }else{
+          $x->updated_by = $user->name;
+        }
+      }
+      return view('education.manage', compact('maths','english'));
     }
     public function edit($id){
       if(empty(Education::find($id))){

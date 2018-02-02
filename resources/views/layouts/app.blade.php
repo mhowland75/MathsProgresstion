@@ -55,7 +55,8 @@
                   <!-- Left Side Of Navbar -->
                   <ul id="navbar" class="nav navbar-nav">
                         <li><a href="/departments/view">Diagnostic Questions</a></li>
-                        <li><a href="/education/index">Education</a></li>
+                        <li><a href="/education/index/maths">Maths</a></li>
+                        <li><a href="/education/index/english">English</a></li>
                         <li><a href="/help/view">Help</a></li>
                         @if (Auth::id())
                           <li><a href="/home">Backend</a></li>

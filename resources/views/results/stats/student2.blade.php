@@ -28,6 +28,29 @@
     </div>
   </div>
   <div class="col-sm-10">
+    <div class="row">
+     <div class="col-sm-4">
+       <center>
+         <p>
+           <b style="color:#2be973">Green</b> - Passed
+         </p>
+       </center>
+     </div>
+     <div class="col-sm-4">
+       <center>
+         <p>
+           <b style="color:red">Red</b> - Compleated not passed
+         </p>
+       </center>
+     </div>
+     <div class="col-sm-4">
+       <center>
+         <p>
+           <b style="color:purple">Purple</b> - Incompleate
+         </p>
+       </center>
+     </div>
+    </div>
     <div class="panel panel-default">
     <div class="panel-body">
       <table class="table table-striped">
@@ -61,30 +84,18 @@
         <thead>
           <tr>
             <th>Student ID</th>
-            <th>Pythagoras Theorem</th>
-            <th>Expanding two brackets</th>
-            <th>Perimeter Of A Semi Circle</th>
-            <th>Compound Interest</th>
-            <th>Reverse Percentages</th>
-            <th>Standard Form</th>
-            <th>Rearranging Formula</th>
-            <th>Volume Of A Prism</th>
-            <th>Trigonometry</th>
+            @foreach ($quizList as $list)
+              <th>{{$list['quiz_name']}}</th>
+            @endforeach
           </tr>
         </thead>
         <tbody id="myTable">
           @foreach ($results as $sId=>$x)
           <tr>
-            <td><a href="/results/{{$sId}}/studentdetails">{{$sId}}<br />{{$x['name']}}</a></td>
-            <td><?php if(!empty($x['PythagorasTheorem'])){echo $x['PythagorasTheorem'];}else{echo'<p style="color:purple">Not Started</p>';} ?></td>
-            <td><?php if(!empty($x['Expandingtwobrackets'])){echo $x['Expandingtwobrackets'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['PerimeterOfASemiCircle'])){echo $x['PerimeterOfASemiCircle'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['CompoundInterest'])){echo $x['CompoundInterest'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['ReversePercentages'])){echo $x['ReversePercentages'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['StandardForm'])){echo $x['StandardForm'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['RearrangingFormula'])){echo $x['RearrangingFormula'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['VolumeOfAPrism'])){echo $x['VolumeOfAPrism'];}else{echo'Not Started';} ?></td>
-            <td><?php if(!empty($x['Trigonometry'])){echo $x['Trigonometry'];}else{echo'Not Started';} ?></td>
+              <td><a href="/results/{{$sId}}/studentdetails">{{$sId}}<br />{{$x['name']}}</a></td>
+            @foreach ($noSpaceQuizList as $noSlist)
+              <td><?php if(!empty($x[$noSlist])){echo $x[$noSlist];}else{echo'<p style="color:purple">Not Started</p>';} ?></td>
+            @endforeach
           </tr>
           @endforeach
         </tbody>
@@ -92,6 +103,7 @@
       </div>
     </div>
 </div>
+
 
 </div>
 @endsection

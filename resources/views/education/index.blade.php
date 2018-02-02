@@ -2,7 +2,7 @@
 @section('banner')
 <div id="bannerEducation" class="jumbotron">
   <center>
-    <h1>Learning Resource</h1>
+    <h1>{{$subject}}</h1>
     <p>Please choose a subject you wish to study.</p>
   </center>
 </div>

@@ -4,9 +4,7 @@ hr {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 body{
-background-attachment:fixed;
-background-image: url("/images/confectionary.png");
-  /*background-color:  #f4f6f7 ;*/
+  background-color:  #f4f6f7 ;
   padding-top: 65px;
 }
 img {
@@ -83,7 +81,7 @@ img {
 }
 #bannerEducation{
   margin-bottom: 0px;
-  background-image: url("/images/panel4.jpg ");
+  background-image: url("/images/panel2.png ");
 }
 #bannerlearning{
   margin-bottom: 0px;
@@ -96,12 +94,12 @@ img {
   color:black;
 }
 #page{
-  margin-top: 0;
+  margin-top: 20px;
   padding:1%;
-  width:80%;
+  width:98%;
   height: inherit;
-  margin-left: 10%;
-  background-color: none;
+  margin-left: 1%;
+  background-color: white;
 }
 #indexBanner{
    background-image: url("/images/Background7.jpg");

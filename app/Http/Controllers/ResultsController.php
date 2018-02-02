@@ -8,62 +8,67 @@ use DB;
 
 class ResultsController extends Controller
 {
-    private $passMark = 30;
+    public function passMarkView(){
+      $passMark = DB::table('pass_mark')->select('pass_mark')->first();
+      $passMark = $passMark->pass_mark;
+      return view('results.stats.passMark', compact('passMark'));
+    }
+    public function storePassMark(request $request){
+      /*$request->validate([
+          'name' => 'required|max:50|min:4',
+          'introduction' => 'required|max:500',
+          'explanation' => 'required|max:5000|min:500',
+          'image' => 'required|image',
+      ]);*/
+      $passMark = DB::table('pass_mark')->select('pass_mark')->first();
+      if(!$passMark){
+        DB::table('pass_mark')
+           ->insert([
+             'pass_mark' => $request->passMark,
+           ]);
+      }else{
+        DB::table('pass_mark')
+           ->update([
+             'pass_mark' => $request->passMark,
+           ]);
+      }
+
+      return redirect('/results/passMark');
+    }
+    public function returnPassMark(){
+        $passMark = DB::table('pass_mark')->select('pass_mark')->first();
+        if(!$passMark){
+          return 30;
+        }else{
+          return $passMark->pass_mark;
+        }
+
+    }
+    public function listQuizzes(){
+      $quizNames = Results::select('quiz_name')->get();
+      $array = array();
+      foreach($quizNames as $quizName){
+        if (!in_array($quizName, $array))
+          {
+            $array[] = $quizName;
+          }
+      }
+      return $array;
+    }
     public function deptView(request $request){
       $nav = $this->listCoursesByDept();
       $dpts = $this->listDepartments();
       $testStats = $this->StatsTests();
-      /*
-      usort($testStats, function($a, $b) {
-          return $b['passedTests'] <=> $a['passedTests'];
-      });
-      $er =array();
-
-      foreach($testStats as $r){
-        $er[$r['dpt']] = $r;
-      }*/
-
       $quizes = $this->StatsQuizes();
       $array = array();
       foreach($dpts as $dpt){
         $array[$dpt]['quizes'] = $quizes[$dpt];
         $array[$dpt]['Tests'] = $testStats[$dpt];
       }
-      //return $array;
-
-      /*return $array;
-      $array = $this->overallStats();
-      $data = $this->departmentStats();
-      if($request->sort == "pl"){
-        usort($data, function($a, $b) {
-            return $a['pass'] <=> $b['pass'];
-        });
-        $sort = $request->sort;
-      }
-      elseif($request->sort == "ph"){
-        usort($data, function($a, $b) {
-            return $b['pass'] <=> $a['pass'];
-        });
-        $sort = $request->sort;
-      }
-      elseif($request->sort == "cl"){
-        usort($data, function($a, $b) {
-            return $a['compleate'] <=> $b['compleate'];
-        });
-        $sort = $request->sort;
-      }
-      elseif($request->sort == "ch"){
-        usort($data, function($a, $b) {
-            return $b['compleate'] <=> $a['compleate'];
-        });
-        $sort = $request->sort;
-      }
-      else{
-        $sort = 'pl';
-      }*/
       return view('results.stats.department2',compact('array','nav'));
     }
     public function courseView(request $request,$dept){
+
       $nav = $this->listCoursesByDept();
       $dpts = $this->listDepartments('course',$dept);
       $testStats = $this->StatsTests('course',$dept);
@@ -75,40 +80,6 @@ class ResultsController extends Controller
         $array[$dpt]['Tests'] = $testStats[$dpt];
         $array[$dpt]['com'] = $com[$dpt];
       }
-      /*
-      $data = $this->courseStats($dept);
-      foreach($data as $r => $v){
-        $data[$r]['classname'] = $r;
-      }
-      if($request->sort == "pl"){
-        usort($data, function($a, $b) {
-            return $a['percentPass'] <=> $b['percentPass'];
-        });
-        $sort = $request->sort;
-      }
-      elseif($request->sort == "ph"){
-        usort($data, function($a, $b) {
-            return $b['percentPass'] <=> $a['percentPass'];
-        });
-        $sort = $request->sort;
-      }
-      elseif($request->sort == "cl"){
-        usort($data, function($a, $b) {
-            return $a['studentsComplete'] <=> $b['studentsComplete'];
-        });
-        $sort = $request->sort;
-      }
-      elseif($request->sort == "ch"){
-        usort($data, function($a, $b) {
-            return $b['studentsComplete'] <=> $a['studentsComplete'];
-        });
-        $sort = $request->sort;
-      }
-      else{
-        $sort = 'pl';
-      }
-      */
-      //return $array;
       return view('results.stats.course2',compact('array','dept','nav'));
     }
     public function studentView($course){
@@ -118,49 +89,51 @@ class ResultsController extends Controller
        $navDept = $this->listDepartments();
        $navCourse = $this->listDepartments('course','all');
        $department = $department->dept;
-      /*
-      $data = Student::select('student_id','dept')->where('course',$course)->get();
-      $dept =  $data[0]->dept;
-      $f = array();
-      foreach($data as $t){
-        $f[] = Results::where('student_id',$t->student_id)->get();
-      }
-      //return $f;
-      foreach($f as $d){
-        $r = $this->cleanResult($d[0]->results);
-        $d[0]->results = $r['score'].' / '.$r['outOf'];
-      }
-      */
-      return view('results.stats.student2',compact('results','course','department','nav'));
+       $quizList = $this->listQuizzes();
+       $noSpaceQuizList = array();
+       foreach($quizList as $quiz){
+         $noSpaceQuizList[] = str_replace(' ','',$quiz['quiz_name']);
+       }
+      return view('results.stats.student2',compact('results','course','department','nav','noSpaceQuizList','quizList'));
     }
     public function studentDetails($studentId){
       $nav = $this->listCoursesByDept();
       $sDetails = Student::select()->where('student_id',$studentId)->get();
       $results = Results::select()->where('student_id',$studentId)->get();
       $array = array();
+      $passed = 0;
+      $incompleate = 0;
       foreach($results as $result){
         $c = $this->cleanResult($result->results);
-        if($c['score'] >= $this->passMark){
-          $result->results = '<p style="color:green">'.$c['score'].'/'.$c['outOf'].'</p>';
+        if($c['score'] >= $this->returnPassMark()){
+          $result->results = '<p style="color:green; font-size:12px">'.$c['score'].'/'.$c['outOf'].'</p>';
+          $passed++;
         }else{
-          $result->results = '<p style="color:red">'.$c['score'].'/'.$c['outOf'].'</p>';
+          $result->results = '<p style="color:red; font-size:12px">'.$c['score'].'/'.$c['outOf'].'</p>';
+          $incompleate++;
         }
         $array[str_replace(' ','',$result->quiz_name)] = array('result'=>$result->results,
-        'startDate'=>$result->start_date,
-        'dateStarted'=>$result->date_started,
-        'dateCom'=>$result->date_completed,
-        'dateDue'=>$result->date_due,
+        'startDate'=>'<p style="font-size:12px">'.$result->start_date.'</p>',
+        'dateStarted'=>'<p style="font-size:12px">'.$result->date_started.'</p>',
+        'dateCom'=>'<p style="font-size:12px">'.$result->date_completed.'</p>',
+        'dateDue'=>'<p style="font-size:12px">'.$result->date_due.'</p>',
       );
       }
       //return $sDetails;
       //return $array;
-      return view('results.stats.studentDetails',compact('sDetails','array','nav'));
+      $quizList = $this->listQuizzes();
+      $noSpaceQuizList = array();
+      foreach($quizList as $quiz){
+        $noSpaceQuizList[] = str_replace(' ','',$quiz['quiz_name']);
+      }
+      //return   $noSpaceQuizList;
+      return view('results.stats.studentDetails',compact('sDetails','array','nav', 'quizList','noSpaceQuizList','passed','incompleate'));
     }
     public function overAllstats2(){
       $nav = $this->listCoursesByDept();
       $totalStudents =  Student::select()->count();
       $attemptedQuizes = Results::select()->count();
-      $totalQuizes = $totalStudents * 9;
+      $totalQuizes = $totalStudents * count($this->listQuizzes());
       $quizesLeft = $totalQuizes - $attemptedQuizes;
       $sIds = Student::select('student_id')->get();
       $passedStudents = 0;
@@ -173,7 +146,7 @@ class ResultsController extends Controller
         $d = 0;
         foreach($results as $result){
           $score = $this->cleanResult($result->results);
-          if($score['score'] >= $this->passMark && $result->completed == 'Yes'){
+          if($score['score'] >= $this->returnPassMark() && $result->completed == 'Yes'){
             $g++;
           }
           if($result->completed == 'Yes'){
@@ -182,10 +155,10 @@ class ResultsController extends Controller
           $d++;
         }
 
-        if($g == 9){
+        if($g == count($this->listQuizzes())){
           $passedStudents++;
         }
-        if($e == 9){
+        if($e == count($this->listQuizzes())){
           $comTests++;
         }
         if($d > 0){
@@ -196,7 +169,7 @@ class ResultsController extends Controller
       $passedQuizes = 0;
       foreach($results as $result){
         $result = $this->cleanResult($result->results);
-        if($result['score'] >= $this->passMark){
+        if($result['score'] >= $this->returnPassMark()){
           $passedQuizes++;
         }
       }
@@ -228,8 +201,9 @@ class ResultsController extends Controller
         'attemptedTests'=>$attemptedTests,
         'perAttemptedTests'=>$perAttemptedTests,
       );
+      $passMark = $this->returnPassMark();
       //return $array;
-        return view('results.stats.overallStats',compact('array','nav'));
+        return view('results.stats.overallStats',compact('array','nav','passMark'));
     }
     public function create(){
       return view('results.create');
@@ -239,7 +213,6 @@ class ResultsController extends Controller
       $data = Results::paginate(100);
       return view('results.index',compact('data'));
     }
-
     public function listStudentResultsByCourse($course){
       $array = array();
        $sids = Student::select('student_id','firstname','surname')->where('course',$course)->get();
@@ -251,7 +224,7 @@ class ResultsController extends Controller
          $comQuizes = 0;
          foreach($sResults as $r){
             $result = $this->cleanResult($r->results);
-            if($result['score'] >= $this->passMark && $r->completed == 'Yes'){
+            if($result['score'] >= $this->returnPassMark() && $r->completed == 'Yes'){
               $s++;
             }
             if($r->completed == 'Yes'){
@@ -259,22 +232,22 @@ class ResultsController extends Controller
             }
             $r->results = $result['score'].'/'.$result['outOf'];
             $e['name'] = $name;
-            if($r->results >= $this->passMark && $r->completed == 'Yes'){
+            if($r->results >= $this->returnPassMark() && $r->completed == 'Yes'){
               $results = '<p style="color:#2be973">'.$r->results.'</p>';
             }
-            elseif($r->results < $this->passMark && $r->completed == 'Yes'){
+            elseif($r->results < $this->returnPassMark() && $r->completed == 'Yes'){
               $results = '<p style="color:red">'.$r->results.'</p>';
             }
             elseif($r->completed == 'No'){
               $results = '<p style="color:purple">'.$r->results.'</p>';
             }
-            if($s == 9){
+            if($s == count($this->listQuizzes())){
               $passedTest = '<p style="color:green">Passed</p>';
             }
-            elseif($comQuizes == 9 && $s < 9){
-              $passedTest = '<p style="color:red">Failed</p>';
+            elseif($comQuizes == count($this->listQuizzes()) && $s < count($this->listQuizzes())){
+              $passedTest = '<p style="color:red">Incompleate</p>';
             }
-            elseif($comQuizes < 9){
+            elseif($comQuizes < count($this->listQuizzes())){
                 $passedTest = '<p style="color:purple">Incompleate</p>';
             }
             $e[str_replace(' ','',$r->quiz_name)] = $results;
@@ -353,7 +326,7 @@ class ResultsController extends Controller
           $total++;
           $studentResults = Results::select('results','completed')->where('student_id',$sid)->get();
           //return $studentResults;
-          if(count($studentResults) == 9){
+          if(count($studentResults) == count($this->listQuizzes())){
             foreach($studentResults as $sr){
               if(strtolower($sr->completed) == 'no'){
                 $incom++;
@@ -378,7 +351,7 @@ class ResultsController extends Controller
       $array = array();
       foreach($student_ids as $dpt=>$sids){
         $totalStudents = count($sids);
-        $totalQuiz = $totalStudents * 9;
+        $totalQuiz = $totalStudents * count($this->listQuizzes());
         $attemptedQuizes = 0;
         foreach($sids as $sid){
           $studentResults = Results::select('results','completed')->where('student_id',$sid)->get();
@@ -398,17 +371,23 @@ class ResultsController extends Controller
         $array[$dpt]['attmptedQuiz'] = $attemptedQuizes;
       }
       //return $array;
+
       $fr = array();
       foreach($array as $dpt=>$re){
         $total = count($re) - 2;
         $i = 0;
-        foreach ($re as $result){
+        foreach ($re as $key=>$result){
           //return $re;
-          if($result >= $this->passMark){
+          if(!$key == 0){
+            if($key =='totalQuiz' || $key =='attmptedQuiz'){
+              continue;
+            }
+          }
+          if($result >= $this->returnPassMark()){
             $i++;
           }
         }
-        $per = $i/$total * 100;
+        $per = $i/$re['totalQuiz'] * 100;
         $perAttemptedQuizes = $re['attmptedQuiz']/$re['totalQuiz'] *100;
         $perComQuiz = $total / $re['totalQuiz'] *100;
         $fr[$dpt] = array('dpt'=>$dpt,
@@ -435,16 +414,16 @@ class ResultsController extends Controller
           $studentResults = Results::select('results','completed')->where('student_id',$sid)->get();
           $rco = count($studentResults);
           $i = 0;
-          if($rco == 9){
+          if($rco == count($this->listQuizzes())){
             $totalCom++;
             foreach($studentResults as $sr){
               $cResult =  $this->cleanResult($sr->results);
-              if($cResult['score'] >= $this->passMark){
+              if($cResult['score'] >= $this->returnPassMark()){
                 $i++;
               }else{
                 break;
               }
-              if($i == 9){
+              if($i == count($this->listQuizzes())){
                 $passed++;
               }
             }
@@ -455,7 +434,11 @@ class ResultsController extends Controller
         }
         $perAttemptedTests = round($attemptedTests/$total*100,2);
         $per = $passed/$total * 100;
-        $perPassOfCom = $passed/$totalCom * 100;
+        if(!$passed){
+          $perPassOfCom = 0;
+        }else{
+          $perPassOfCom = $passed/$totalCom * 100;
+        }
         $perCom = round($totalCom/$total*100,2);
         $array[$dpt] = array('dpt'=>$dpt,
         'passedTests'=>$passed,
