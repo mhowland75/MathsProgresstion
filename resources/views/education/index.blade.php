@@ -17,7 +17,9 @@
               <div id="hover">
               </div>
               <div id="imageDiv">
-                <img id="educationImage" src='{{$x->image}}'/>
+                <center>
+                  <img style="max-height:200px; max-width:300px;" src='{{$x->image}}'/>
+                </center>
               </div>
             </div>
             <div style="background-color:#0093A8" class="panel-footer"><center>

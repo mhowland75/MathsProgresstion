@@ -13,7 +13,9 @@
   <div class="panel-body">
     <div class="row" style="padding:20px;">
      <div class="col-sm-5 col-md-6" >
-       <img class="img-rounded" src='{{$data->image}}'/>
+       <center>
+         <img style="max-height:500px; max-width:500px;" class="img-rounded" src='{{$data->image}}'/>
+       </center>
        <br />
        <div>
         {!!$data->description!!}
