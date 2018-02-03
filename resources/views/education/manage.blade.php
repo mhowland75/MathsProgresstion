@@ -39,7 +39,7 @@
         <tbody>
           @foreach ($maths as $x)
           <tr>
-            <td><img  class="img-thumbnail" src='{{$x->image}}'/></td>
+            <td><img style="max-width:200px"  class="img-thumbnail" src='{{$x->image}}'/></td>
             <td>{{$x->name}}</td>
             <td>{!!$x->description!!}</td>
             <td>{{$x->video}}</td>
@@ -73,7 +73,7 @@
         <tbody>
           @foreach ($english as $x)
           <tr>
-            <td><img  class="img-thumbnail" src='{{$x->image}}'/></td>
+            <td><img style="max-width:200px" class="img-thumbnail" src='{{$x->image}}'/></td>
             <td>{{$x->name}}</td>
             <td>{!!$x->description!!}</td>
             <td>{{$x->video}}</td>

@@ -26,7 +26,7 @@
        <div class="form-group{{ $errors->has('introduction') ? ' has-error' : '' }}">
            <label for="introduction" class="col-md-2 control-label">Introduction</label>
            <div class="col-md-10">
-               <textarea id="introduction" type="text" class="form-control" name="introduction">{!! old('introduction') !!}</textarea>
+               <textarea style="height:200px" id="introduction" type="text" class="form-control" name="introduction">{!! old('introduction') !!}</textarea>
                @if ($errors->has('introduction'))
                    <span class="help-block">
                        <strong>{{ $errors->first('introduction') }}</strong>

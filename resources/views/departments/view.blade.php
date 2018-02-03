@@ -58,7 +58,7 @@
          <center>
            <a href="https://diagnosticquestions.com/">
              <div id="dqImage">
-               <img src="/images/dq logo.png" />
+               <img style="max-width:200px" src="/images/dq logo.png" />
              </div>
            </a>
          </center>
