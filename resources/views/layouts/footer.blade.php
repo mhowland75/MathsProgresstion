@@ -36,7 +36,7 @@
       </div>
 
         <div id='footertext'>
-            <p>Copywright &copy MathsProgression - Online mathematics learning resource</p>
+            <p>Copywright &copy Diagnostic Revision - Online mathematics & english learning resource</p>
         </div>
         <div id='medialinks'>
             <a href="https://www.facebook.com/MathsProgression-1782215791819800/" class="fa fa-facebook"></a>

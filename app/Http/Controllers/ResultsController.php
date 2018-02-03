@@ -9,8 +9,15 @@ use DB;
 class ResultsController extends Controller
 {
     public function passMarkView(){
+
       $passMark = DB::table('pass_mark')->select('pass_mark')->first();
-      $passMark = $passMark->pass_mark;
+      if(count($passMark) > 0){
+        $passMark = $passMark->pass_mark;
+      }
+      else {
+        $passMark = 30;
+      }
+
       return view('results.stats.passMark', compact('passMark'));
     }
     public function storePassMark(request $request){

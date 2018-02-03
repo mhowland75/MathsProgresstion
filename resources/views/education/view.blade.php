@@ -74,9 +74,10 @@
           <?php $y++?>
         @endforeach
         </div>
+        <br />
+        <hr />
       @endif
-    <br />
-    <hr />
+
     <br />
       <center>
         <a href="/departments/view">
