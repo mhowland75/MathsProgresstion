@@ -29,10 +29,10 @@
            <th>Passed Tests</th>
            <th>Total Tests</th>
            <th>% Passed of All Tests</th>
-           <th>% passed of Complete Tests</th>
-           <th>Passed quizes </th>
-           <th>Total Quizes</th>
-           <th>% Passed quizes </th>
+           <th>% Passed of Completed Tests</th>
+           <th>Passed Quizzes </th>
+           <th>Total Quizzes</th>
+           <th>% Passed Quizzes </th>
          </tr>
        </thead>
        <tbody id="myTable">
@@ -54,17 +54,17 @@
      </div>
    <div class="panel-body">
      <div class="panel panel-default">
-       <div class="panel-heading">Compleated</div>
+       <div class="panel-heading">Completed</div>
        <table class="table table-striped">
        <thead>
          <tr>
            <th>Department</th>
-           <th>Compleated Tests</th>
+           <th>Completed Tests</th>
            <th>Total Tests</th>
-           <th>% Compleated Tests</th>
-           <th>Compleated Quizes</th>
-           <th>Total Quizes</th>
-           <th>% Compleated Quizes</th>
+           <th>% Completed Tests</th>
+           <th>Completed Quizzes</th>
+           <th>Total Quizzes</th>
+           <th>% Completed Quizzes</th>
          </tr>
        </thead>
        <tbody id="myTable">
@@ -94,9 +94,9 @@
            <th>Attempted Tests</th>
            <th>Total Tests</th>
            <th>% Tests Attempted</th>
-           <th>Attempted Quizes</th>
-           <th>Total Quizes</th>
-           <th>% Attempted Quizes</th>
+           <th>Attempted Quizzes</th>
+           <th>Total Quizzes</th>
+           <th>% Attempted Quizzes</th>
          </tr>
        </thead>
        <tbody id="myTable">

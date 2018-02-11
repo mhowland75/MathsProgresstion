@@ -85,7 +85,7 @@
             <img src='/images/dq logo.png'/>
           </div>
           </a>
-        <h3>Ready to test yourself head to Diagnostic Questions.</h3>
+        <h3>Ready to test yourself? <br /> Head to Diagnostic Questions.</h3>
         <br />
         <a href="/departments/view"></a><button type="button" class="btn btn-primary">Diagnostic Questions</button></a>
         <br /><br />

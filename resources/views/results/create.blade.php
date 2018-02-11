@@ -16,7 +16,7 @@
         <div class="col-sm-6 col-sm-offset-3">
           <center>
             <input type="radio" name="data" value="0" checked> Append<br>
-            <input type="radio" name="data" value="1"> Overwight<br><br />
+            <input type="radio" name="data" value="1"> Overwrite<br><br />
           </center>
           <div class="form-group{{ $errors->has('results') ? ' has-error' : '' }}">
                   <input id="results" type="file" name="results" value="{{ old('results') }}" required autofocus>

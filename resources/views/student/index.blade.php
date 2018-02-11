@@ -18,14 +18,14 @@
   <thead>
     <tr>
       <th>Student ID</th>
-      <th>Firstname</th>
+      <th>First Name</th>
       <th>Surname</th>
       <th>DOB</th>
       <th>Department</th>
       <th>Course</th>
       <th>GCSE Maths Grade</th>
-      <th>Primary tutor</th>
-      <th>Withdrwan</th>
+      <th>Primary Tutor</th>
+      <th>Withdrawn</th>
     </tr>
   </thead>
   <tbody id="myTable">

@@ -13,9 +13,9 @@
   <br />
   <center>
     <p id="indexText">
-      Diagnostic Revision has been created to provide Bath college students with a learning resources to aid them in passing the online maths and english tests at Diagnostic Questions.
+      Diagnostic Revision has been created to provide Bath College students with a learning resource to aid them in passing the online maths and english tests at Diagnostic Questions.
       <br />
-      We hope you find this website helpful and good luck passing your exams.
+      We hope you find this website helpful and good luck with passing your exams.
     </p>
   </center>
   <br />
@@ -59,7 +59,7 @@
             </div>
           </div>
           <h3>Ready to test yourself?</h3><br />
-          <a href="https://diagnosticquestions.com/"><button type="button" class="btn btn-success btn-lg">Diagnostic Questons</button></a>
+          <a href="https://diagnosticquestions.com/"><button type="button" class="btn btn-success btn-lg">Diagnostic Questions</button></a>
         </center>
       </div>
     </div>

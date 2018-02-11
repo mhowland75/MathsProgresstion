@@ -13,7 +13,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-     <div class="col-sm-4"><a href="/education/create"><button  style="margin:20px; width:80%;" type="button" class="btn btn-primary">Create New learning Aid</button></a></div>
+     <div class="col-sm-4"><a href="/education/create"><button  style="margin:20px; width:80%;" type="button" class="btn btn-primary">Create New Learning Aid</button></a></div>
      <div class="col-sm-4"></div>
      <div class="col-sm-4"><center><input style="margin:20px; width:80%;" class="form-control" id="myInput" type="text" placeholder="Search.."></center></div>
     </div>
@@ -29,7 +29,7 @@
             <tr>
               <th></th>
               <th>Concept</th>
-              <th>Intoduction</th>
+              <th>Introduction</th>
               <th>Video</th>
               <th>Created By</th>
               <th>Updated By</th>

@@ -39,14 +39,14 @@
      <div class="col-sm-4">
        <center>
          <p>
-           <b style="color:red">Red</b> - Compleated not passed
+           <b style="color:red">Red</b> - Completed not passed
          </p>
        </center>
      </div>
      <div class="col-sm-4">
        <center>
          <p>
-           <b style="color:purple">Purple</b> - Incompleate
+           <b style="color:purple">Purple</b> - Incomplete
          </p>
        </center>
      </div>
@@ -58,9 +58,9 @@
         <tr>
           <th>Student ID</th>
           <th>Passed Test</th>
-          <th>Quizes Passed</th>
-          <th>Quizes Compleated</th>
-          <th>Quizes Attempted</th>
+          <th>Quizzes Passed</th>
+          <th>Quizzes Completed</th>
+          <th>Quizzes Attempted</th>
         </tr>
       </thead>
       <tbody id="myTable">

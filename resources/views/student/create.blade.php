@@ -15,7 +15,7 @@
         {{ csrf_field() }}
         <center>
           <input type="radio" name="data" value="0" checked> Append<br>
-          <input type="radio" name="data" value="1"> Overwight<br><br />
+          <input type="radio" name="data" value="1"> Overwrite<br><br />
         </center>
         <div class="form-group{{ $errors->has('students') ? ' has-error' : '' }}">
             <div class="col-md-6 col-sm-offset-3">

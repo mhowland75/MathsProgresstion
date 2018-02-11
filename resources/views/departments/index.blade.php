@@ -12,7 +12,7 @@
          <thead>
            <tr>
              <th>Course Name</th>
-             <th>Dpartment</th>
+             <th>Department</th>
              <th>Group Code</th>
              <th>Created By</th>
              <th>Updated By</th>

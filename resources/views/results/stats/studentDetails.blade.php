@@ -28,7 +28,7 @@
              <div class="col-sm-6">{{$x->student_id}}</div>
            </div>
            <div class="row">
-             <div class="col-sm-6">Firstname</div>
+             <div class="col-sm-6">First Name</div>
              <div class="col-sm-6">{{$x->firstname}}</div>
            </div>
            <div class="row">
@@ -105,7 +105,7 @@
                 @endforeach
               </tr>
               <tr>
-                <td><b>Date compleated</b></td>
+                <td><b>Date Completed</b></td>
                   @foreach ($noSpaceQuizList as $quizNoS)
                     <td><?php if(!empty($array[$quizNoS]['dateCom'])){echo $array[$quizNoS]['dateCom'];}else{echo'<p style="color:purple">Not Started</p>';} ?></td>
                   @endforeach

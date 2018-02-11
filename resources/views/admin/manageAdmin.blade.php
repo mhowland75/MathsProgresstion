@@ -5,7 +5,7 @@
   <div class="row">
    <div class="col-sm-12">
      <div class="panel panel-default">
-      <div class="panel-heading">Manage administrator privilages</div>
+      <div class="panel-heading">Manage administrator privileges</div>
       <div class="panel-body">
       <div class="row">
         <div class="col-md-11 col-md-offset-1">

@@ -18,11 +18,11 @@
     <tr>
       <th>Student ID</th>
       <th>Student Name</th>
-      <th>Compleated</th>
-      <th>results</th>
-      <th>Start date</th>
-      <th>date Compleated</th>
-      <th>date due</th>
+      <th>Completed</th>
+      <th>Results</th>
+      <th>Start Date</th>
+      <th>Date Completed</th>
+      <th>Date Due</th>
       <th>Quiz Name</th>
 
     </tr>

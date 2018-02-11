@@ -252,10 +252,10 @@ class ResultsController extends Controller
               $passedTest = '<p style="color:green">Passed</p>';
             }
             elseif($comQuizes == count($this->listQuizzes()) && $s < count($this->listQuizzes())){
-              $passedTest = '<p style="color:red">Incompleate</p>';
+              $passedTest = '<p style="color:red">Incomplete</p>';
             }
             elseif($comQuizes < count($this->listQuizzes())){
-                $passedTest = '<p style="color:purple">Incompleate</p>';
+                $passedTest = '<p style="color:purple">Incomplete</p>';
             }
             $e[str_replace(' ','',$r->quiz_name)] = $results;
             $e['passedTest'] = $passedTest;

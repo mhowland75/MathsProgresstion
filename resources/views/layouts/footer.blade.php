@@ -32,7 +32,7 @@
        <div id="footerlinks" class="col-xs-0 col-sm-3"></div>
       </div>
         <div id='footertext'>
-            <p>Copywright &copy Diagnostic Revision - Online mathematics & english learning resource</p>
+            <p>Copyright &copy Diagnostic Revision - Online mathematics & english learning resource</p>
         </div>
         <div id='medialinks'>
             <a href="https://www.facebook.com/MathsProgression-1782215791819800/" class="fa fa-facebook"></a>

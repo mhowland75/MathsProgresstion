@@ -16,9 +16,9 @@
       <tr>
         <th></th>
         <th>Title</th>
-        <th>Intoduction</th>
+        <th>Introduction</th>
         <th>Explanation</th>
-        <th>Queston</th>
+        <th>Question</th>
         <th>Answer</th>
         <th>Created body</th>
         <th>Updated By</th>
