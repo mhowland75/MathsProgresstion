@@ -30,78 +30,59 @@
       bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 //]]>
 </script>
+<script>
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "navBar") {
+        x.className += " responsive";
+    } else {
+        x.className = "navBar";
+    }
+}
+function displayBlock() {
+  var element = document.getElementById('sideNav'),
+    style = window.getComputedStyle(element),
+    top = style.getPropertyValue('width');
+  if(top == "0px"){
+      document.getElementById('sideNav').style.cssText = 'width:300px';
+  }
+  else{
+      document.getElementById('sideNav').style.cssText = 'width:0px';
+  }
+}
+</script>
 </head>
 <body>
-    <div id="app">
-      <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container">
-              <div class="navbar-header">
-
-                  <!-- Collapsed Hamburger -->
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                      <span class="sr-only">Toggle Navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-
-                  <!-- Branding Image -->
-                  <a class="navbar-brand" href="{{ url('/') }}">
-                      <img src="/images/bath college logo.png" />
-                  </a>
-              </div>
-
-              <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                  <!-- Left Side Of Navbar -->
-                  <ul id="navbar" class="nav navbar-nav">
-                        <li><a href="/departments/view">Diagnostic Questions</a></li>
-                        <li><a href="/education/index/maths">Maths</a></li>
-                        <li><a href="/education/index/english">English</a></li>
-                        <li><a href="/help/view">Help</a></li>
-                        @if (Auth::id())
-                          <li><a href="/home">Backend</a></li>
-                        @endif
-                  </ul>
-
-                  <!-- Right Side Of Navbar -->
-                  <ul class="nav navbar-nav navbar-right">
-
-                      <!-- Authentication Links
-                      @guest
-                          <li><a href="{{ route('login') }}">Login</a></li>
-                          <li><a href="{{ route('register') }}">Register</a></li>
-                      @else
-                          <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                  {{ Auth::user()->name }} <span class="caret"></span>
-                              </a>
-
-                              <ul class="dropdown-menu" role="menu">
-                                  <li>
-                                      <a href="{{ route('logout') }}"
-                                          onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
-                                          Logout
-                                      </a>
-
-                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                          {{ csrf_field() }}
-                                      </form>
-                                  </li>
-                              </ul>
-                          </li>
-                      @endguest
-                  </ul>
-                  -->
-              </div>
-          </div>
-      </nav>
+  <div class="navBar" id="myTopnav">
+      <a id="nav_logo" href="{{ url('/') }}">
+          <img src="/images/bathCollegeLogo.png" />
+      </a>
+      <a href="/education/index/maths">Maths</a>
+      <a href="/education/index/english">English</a>
+      <a href="/departments/view">Diagnostic Questions</a>
+      <a href="/help/view">Help</a>
+      @if (Auth::id())
+        <a href="/home">Backend</a>
+      @endif
+  <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>
+</div>
+<div id="sideNav">
+  <div>
+    <a href="/education/index/maths">Maths</a>
+    <a href="/education/index/english">English</a>
+    <a href="/departments/view">Diagnostic Questions</a>
+    <a href="/help/view">Help</a>
+    @if (Auth::id())
+      <a href="/home">Backend</a>
+    @endif
+  </div>
+</div>
           @yield('banner')
         <div id="page">
             @yield('content')
         </div>
 
-    </div>
     @include('layouts.footer')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

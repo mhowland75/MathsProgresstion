@@ -1,3 +1,224 @@
+#nav_logo{
+  margin:0;
+  padding:5px;
+  max-width: 200px;
+}
+#nav_logo:hover{
+  background-color: white;
+}
+
+/* Add a black background color to the top navigation */
+.navBar {
+  position: fixed;
+  top:0px;
+  border-bottom: 2px solid #00A1AE;
+  height: 60px;
+    width:100%;
+    background-color: #ffffff;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Style the links inside the navigation bar */
+.navBar a {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #00A1AE;
+  margin-top: 2px;
+  border-radius: 5px 5px 0px 0px;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 16px 18px;
+    text-decoration: none;
+}
+.navBar a:hover {
+  background-color: #00A1AE;
+  color: white;
+}
+
+/* Add an active class to highlight the current page */
+
+
+/* Hide the link that should open and close the topnav on small screens */
+.navBar .icon {
+    display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdownBox {
+    float: left;
+    overflow: hidden;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdownBox .dropbtnx {
+  margin-top: 2px;
+  border-radius: 5px 5px 0px 0px;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #00A1AE;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: inherit;
+}
+.dropdownBox .dropbtnx:hover {
+
+  color: white;
+
+}
+.dropdownBox .dropbtnx a {
+    font-size: 15px;
+
+    padding: 14px 16px;
+
+}
+.dropdownBox .dropbtnx a:hover {
+    font-size: 15px;
+    color:white;
+    padding: 14px 16px;
+
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: fixed;
+    top:58px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Add a dark background on topnav links and the dropdown button on hover */
+.topnavBar a:hover, .dropdownBox:hover .dropbtnx {
+    background-color: #00A1AE;
+    color: white;
+}
+.topnavBar a:hover, .dropdownBox:hover .dropbtnx a {
+    background-color: #00A1AE;
+    color: white;
+}
+
+/* Add a grey background to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+.dropdownBox:hover .dropdown-content {
+    display: block;
+}
+
+#sideNav{
+display: none;
+
+}
+
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 700px) {
+  .navBar a:not(:first-child) {
+    display: none;
+  }
+  .navBar a.icon {
+
+    float: right;
+    display: block;
+  }
+  .dropbtnx{
+    display: none;
+
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 700px) {
+
+  #sideNav{
+    display: block;
+    transition: width 0.5s;
+    position: fixed;
+    background-color: rgba(66, 73, 73, 0.7);
+    top: 58px;
+    right:0px;
+    width:0px;
+    height:100%;
+    z-index: 1;
+
+  }
+  #sideNav a{
+    display: inline-block;
+    border-bottom: 1px solid #00A1AE;
+    color: white;
+    background-color: rgba(66, 73, 73, 0.7);
+    padding:15px 18px;
+    width:100%;
+
+  }
+  #sideNav a:hover{
+    transition: padding-left 0.3s;
+    display: inline-block;
+    border-left: 3px solid red;
+    text-decoration: none;
+    background-color: rgba(66, 73, 73, 0.9);
+    padding-left:40px;
+
+  }
+
+  .navBar.responsive {
+    background-color:blue;
+    position: fixed;
+    top:0px;
+  }
+  .navBar.responsive a.icon {
+
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navBar.responsive a {
+
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .navBar.responsive .dropdownBox {
+    float: none;
+  }
+  .navBar.responsive .dropdown-content {
+    position: relative;
+  }
+  .navBar.responsive .dropdownBox .dropbtnx {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 .vertical-menu {
     width: 200px; /* Set a width if you like */
 }
@@ -18,23 +239,27 @@
     background-color: #4CAF50; /* Add a green color to the "active/current" link */
     color: white;
 }
+/*
 
 .navbar-header{
 
 }
 .navbar{
   height: 69px;
-
-      border-bottom: 2px solid #00a1ae;
+  border-bottom: 2px solid #00a1ae;
 }
 #navbar{
-  margin-top:15px;
+
+  margin-top:17px;
 }
 #navbar li {
 
   background-color: #FFFFFF;
 }
 #navbar li :hover{
+  border-radius:  5px 5px 0px 0px;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
   background-color: #00A1AE;
   color: #FFFFFF;
 }
@@ -43,7 +268,8 @@
   color:white;
 }
 #navbar li a{
-  font-size: 15px;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-size: 16px;
   font-weight:520;
   color: #00A1AE;
 }
@@ -65,14 +291,15 @@
   color: #FFFFFF;
 }
 #dropdown ul li a :hover{
+
   color: #00A1AE;
 }
 @media (max-width: 1200px) {
-  .navbar{
-    height: 68px;
-      border-top: 2px solid #00a1ae;
-        border-bottom: 2px solid #00a1ae;
-  }
+
+    .navbar{
+      height: 68px;
+      border-bottom: 2px solid #00a1ae;
+    }
     .navbar-header {
         float: none;
         height: 65px;
@@ -85,8 +312,6 @@
         display: block;
     }
     .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 
     }
     .navbar-fixed-top {
@@ -98,16 +323,41 @@
     }
     .navbar-nav {
         float: none!important;
-        margin-top: 7.5px;
+
     }
     .navbar-nav>li {
         float: none;
     }
     .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
+
     }
     .collapse.in{
         display:block !important;
+    }
+
+    #app-navbar-collapse{
+      margin:0;
+      padding:0;
+      width:300px;
+      height:800px;
+      position: absolute;
+      top: 51px;
+      right: 0;
+
+
+    }
+    #app-navbar-collapse ul {
+
+    }
+    #app-navbar-collapse ul li{
+      background-color: rgba(66, 73, 73, 0.7);
+    }
+    #app-navbar-collapse ul li a{
+      color:white;
+    }
+    #app-navbar-collapse ul li a:hover{
+      border-radius: 0px;
+      background-color: black;
+      color:gray;
     }
 }

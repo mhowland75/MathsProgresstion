@@ -4,14 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/backend.css') }}" rel="stylesheet">
@@ -28,6 +23,19 @@
     </script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+  /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+  function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "navBar") {
+          x.className += " responsive";
+      } else {
+          x.className = "navBar";
+      }
+  }
+  </script>
+
   <script>
     $(document).ready(function(){
     $("#myInput").on("keyup", function() {
@@ -40,88 +48,43 @@
   </script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
+  <div class="navBar" id="myTopnav">
+    <a id="nav_logo" href="{{ url('/') }}">
+        <img src="/images/bathCollegeLogo.png" />
+    </a>
+    <a href="/home">Home</a>
+    <a href="/departments/index">Diagnostic Questions</a>
+    <a href="/education/manage">Education</a>
+    <a href="/teachers/manage">Staff</a>
+    <div class="dropdownBox">
+      <button class="dropbtnx"><a href="">Admin</a>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+      </button>
+      <div class="dropdown-content">
+        <a href="/admin/manage">Manage</a>
+        <a href="/admin/manageAccess">Administrator Privileges</a>
+      </div>
+    </div>
+    <div class="dropdownBox">
+      <button class="dropbtnx">
+          <a href="">Results</a>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/images/bath college logo.png" />
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul id="navbar" class="nav navbar-nav">
-                          <li><a href="/home">Home</a></li>
-                          <li><a href="/departments/index">Diagnostic Questions</a></li>
-                          <li><a href="/education/manage">Education</a></li>
-                          <li><a href="/teachers/manage">Staff</a></li>
-
-                          <li  id="dropdown" class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin</a>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="/admin/manage">Manage</a></li>
-                                <li><a href="/admin/manageAccess">Administrator Privileges</a></li>
-                              </ul>
-                          </li>
-                          <li  id="dropdown" class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Results</a>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="/results/overallStats">Overall Results</a></li>
-                                <li><a href="/results/departments">Results</a></li>
-                                <li><a href="/results/create">Results Upload</a></li>
-                                <li><a href="/student/create">Student Upload</a></li>
-                                <li><a href="/results/index">Results Data</a></li>
-                                <li><a href="/student/index">Student Data</a></li>
-                                <li><a href="/results/passMark">Pass Mark</a></li>
-
-                              </ul>
-                          </li>
-                    </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div id="page">
-            @yield('content')
-        </div>
-
+      </button>
+      <div class="dropdown-content">
+        <a href="/results/overallStats">Overall Results</a>
+        <a href="/results/departments">Results</a>
+        <a href="/results/create">Results Upload</a>
+        <a href="/student/create">Student Upload</a>
+        <a href="/results/index">Results Data</a>
+        <a href="/student/index">Student Data</a>
+        <a href="/results/passMark">Pass Mark</a>
+      </div>
+    </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+    <div id="page">
+        @yield('content')
+    </div>
     </div>
     @include('layouts.footer')
     <!-- Scripts -->

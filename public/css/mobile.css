@@ -3,12 +3,17 @@ hr {
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
+img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  overflow: hidden;
+}
 body{
+  margin-top:58px;
   width: 100%;
   padding:0px;
-  margin:0px;
   background-color: white;
-  padding-top: 65px;
   overflow-x: hidden;
 }
 #page{
@@ -18,12 +23,43 @@ body{
   height: inherit;
   background-color: white;
 }
-img {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  overflow: hidden;
+#indexBanner{
+  background-image: url("/images/background7.jpg");
+   height: 270px;
+
 }
+#indexBannerText  h3{
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: none;
+	line-height:50px;
+  color: #003270;
+  text-align: center;
+
+}
+#indexBannerText  h1{
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  font-size: 35px;
+  font-style: normal;
+  font-variant: normal;
+  line-height:10px;
+  color: #003270;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px white, 0px 0px 10px white, 0px 0px 10px white;
+}
+#indexBannerText {
+  margin-top: 50px;
+
+}
+#indexText{
+  font-size: 100%;
+  font-weight: 300;
+  line-height: 25px;
+}
+
 #imageDiv{
   margin-left: 5%;
   width:90%;
@@ -67,22 +103,33 @@ img {
   height:110px;
   opacity: 0.8;
   margin-bottom: 0px;
-  background-image: url("/images/dots.png");
+  background-image: url("/images/panel1.png");
 }
-.jumbotron h1{
-  margin-top: -10px;
-  color: black;
-  font-weight: bold;
-  font-size: 25px;
-  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;
+.jumbotron h1 {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-size: 30px;
+	font-style: normal;
+	font-variant: normal;
+	line-height: 10px;
+  color: #F2F3F4;
+  text-align: center;
 
 }
-.jumbotron p{
-  color: black;
-  font-weight: bold;
-  font-size: 15px;
-  text-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;
-
+h3 {
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-size: 15px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 15.4px;
+}
+p {
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
 }
 #video{
  width:100%;
@@ -92,13 +139,13 @@ img {
   opacity: 0.8;
   height: 110px;
   margin-bottom: 0px;
-  background-image: url("/images/blob.png");
+  background-image: url("/images/panel4.jpg ");
 }
 #bannerlearning{
   opacity: 0.8;
   height: 110px;
   margin-bottom: 0px;
-  background-image: url("/images/background.png");
+  background-image: url("/images/panel3.png");
 }
 #linksHeadings {
   color:white;
@@ -107,29 +154,7 @@ img {
   color:black;
 }
 
-#indexBanner{
-   background-image: url("/images/Background1.jpg");
-   height: 300px;
 
-}
-#indexBannerText  h3{
-  color: black;
-  text-align: center;
-  font-weight: bold;
-  font-size: 23px;
-  text-shadow: 1px 1px 2px white, 0 0 25px grey, 0 0 5px darkblue;
-}
-#indexBannerText  h1{
-  color: black;
-  text-align: center;
-  font-weight: bold;
-  font-size: 37px;
-  text-shadow: 1px 1px 2px white, 0 0 25px grey, 0 0 5px darkblue;
-}
-#indexBannerText {
-  margin-top: 10px;
-
-}
 
 #indexImageLink{
   padding:2px;

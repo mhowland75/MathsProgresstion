@@ -66,14 +66,19 @@
                     </form>
                 </div>
             </div>
-            <p style="text-align:center; font-weight:bold; font-size:16pt">
-              If you have any issues either complete the contact form above or speak to one of the team pictured at the bottom of the page. Members of the team can be found in M302 at CCC or at the back of the library at SVC.
-            </p>
         </div>
+
         <div class="col-sm-4 col-md-4">
           <img id="helpImage" class="img-rounded" src="/images/help.png" />
         </div>
     </div>
+    <hr />
+    <br />
+    <p style="text-align:center; font-size: 150%; font-weight: 400; line-height: 35px;">
+      If you have any issues either complete the contact form above or speak to one of the team pictured at the bottom of the page. Members of the team can be found in M302 at CCC or at the back of the library at SVC.
+    </p>
+    <br />
+    <hr />
 <div class="page-header">
   <center>
     <h1>Staff</h1>

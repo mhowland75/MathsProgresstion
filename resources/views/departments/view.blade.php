@@ -3,7 +3,6 @@
 <div id="bannerDepartments" class="jumbotron">
   <center>
     <h1>Diagnostic Questions</h1>
-    <p>Find your group code by clicking your department.</p>
   </center>
 </div>
 @endsection

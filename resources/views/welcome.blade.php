@@ -3,9 +3,7 @@
 <div id="indexBanner" class="jumbotron">
   <div id="indexBannerText">
     <h3>Welcome to</h3>
-    <br />
     <h1>Diagnostic Revision</h1>
-    <h3>We are here to help</h3>
   </div>
 </div>
 @endsection
@@ -14,7 +12,7 @@
   <hr />
   <br />
   <center>
-    <p style="font-size: 150%; font-weight: bold;">
+    <p id="indexText">
       Diagnostic Revision has been created to provide Bath college students with a learning resources to aid them in passing the online maths and english tests at Diagnostic Questions.
       <br />
       We hope you find this website helpful and good luck passing your exams.
@@ -25,7 +23,7 @@
 <hr />
   <br />
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-xs-6 col-sm-4">
     <div class="panel panel-default">
       <div class="panel-body">
         <center>
@@ -38,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-xs-6 col-sm-4">
     <div class="panel panel-default">
       <div class="panel-body">
         <center>
@@ -53,10 +51,12 @@
   </div>
   <div class="col-sm-4">
     <div class="panel panel-default">
-      <div class="panel-body">
+      <div style="max-width:300px;" class="panel-body">
         <center>
-          <div id="dqImage">
-            <img src="/images/dq logo.png" />
+          <div>
+            <div id="dqImage">
+              <img src="/images/dq logo.png" />
+            </div>
           </div>
           <h3>Ready to test yourself?</h3><br />
           <a href="https://diagnosticquestions.com/"><button type="button" class="btn btn-success btn-lg">Diagnostic Questons</button></a>
