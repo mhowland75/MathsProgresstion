@@ -7,19 +7,21 @@
     <meta name="keywords" content="maths, mathsprogression,bath college maths, mathprogression, learning maths">
     <meta name="description" content="Online mathematical learning resource.">
     <meta name="author" content="Michael Howland">
-    <meta name="application-name" content="MathsProgression">
+    <meta name="application-name" content="Diagnostic Revision">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Diagnostic Revision') }}</title>
 
     <!-- Styles -->
+
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/mathsprogression.css') }}" rel="stylesheet">
     <link rel="stylesheet" media="screen and (min-width:769px) and (max-width: 992px)" href="{{ URL::asset('css/tablet.css') }}" />
-    <link rel="stylesheet" media="screen and (min-width: 201px) and (max-width: 768px)" href="{{ URL::asset('css/mobile.css') }}" />
+    <link rel="stylesheet" media="screen and (min-width: 451px) and (max-width: 768px)" href="{{ URL::asset('css/smallTablet.css') }}" />
+    <link rel="stylesheet" media="screen and (min-width: 201px) and (max-width: 450px)" href="{{ URL::asset('css/mobile.css') }}" />
     <link href="{{ URL::asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/ionicons.css') }}" rel="stylesheet">

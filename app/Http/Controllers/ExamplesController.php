@@ -8,9 +8,25 @@ use App\Education;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use DB;
 
 class ExamplesController extends Controller
 {
+    public function visibility($id){
+      $status = DB::table('examples')->where('id',$id)->get();
+      if($status[0]->visibility == 1){
+        DB::table('examples')
+              ->where('id', $id)
+              ->update(['visibility' => 0, ]);
+      }
+      elseif($status[0]->visibility == 0){
+        DB::table('examples')
+              ->where('id', $id)
+              ->update(['visibility' => 1, ]);
+      }
+      $x = $status[0]->education_id;
+        return redirect('/examples/'.$x.'/manage');
+    }
     public function create(request $request){
       $id = $request->id;
       $data = Education::find($id);
@@ -29,6 +45,7 @@ class ExamplesController extends Controller
       $data->name = $request->name;
       $data->introduction = $request->introduction;
       $data->explanation = $request->explanation;
+      $data->visibility = 0;
       $data->question = $request->question;
       $data->answer = $request->answer;
       $data->image = $filename;

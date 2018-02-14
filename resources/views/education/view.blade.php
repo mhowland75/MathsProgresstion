@@ -11,7 +11,7 @@
 @section('content')
 <div class="panel panel-default">
   <div class="panel-body">
-    <div class="row" style="padding:20px;">
+    <div class="row" style="padding:5px;">
      <div class="col-sm-5 col-md-6" >
        <center>
          <img style="max-height:500px; max-width:500px;" class="img-rounded" src='{{$data->image}}'/>
@@ -21,6 +21,7 @@
         {!!$data->description!!}
       </div>
      </div>
+     <br />
      <div class="col-sm-7 col-md-6">
      <div>
        {!!$data->explanation!!}
@@ -29,7 +30,7 @@
     </div>
   </div>
 </div>
-<br />
+
 <div style=" background-color:none;" class="row">
  <div class="col-sm-12 col-md-10 col-md-offset-1">
    <iframe id="video1" src="{{$data->video}}" frameborder="0" allowfullscreen></iframe>
@@ -38,7 +39,7 @@
 <br />
 <div class="panel panel-default">
   <div class="panel-body">
-    <div style="padding:20px;">
+    <div style="padding:5px;">
       @if (!empty($examples[0]))
         <ul class="nav nav-tabs">
           <?php $x=1;?>
@@ -82,7 +83,7 @@
       <center>
         <a href="/departments/view">
           <div id="dqImage">
-            <img src='/images/dq logo.png'/>
+            <img style="max-width:200px" src='/images/dq logo.png'/>
           </div>
           </a>
         <h3>Ready to test yourself? <br /> Head to Diagnostic Questions.</h3>

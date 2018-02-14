@@ -10,7 +10,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/backend.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/backendNavbar.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/ionicons.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -57,7 +57,7 @@
     <a href="/education/manage">Education</a>
     <a href="/teachers/manage">Staff</a>
     <div class="dropdownBox">
-      <button class="dropbtnx"><a href="">Admin</a>
+      <button class="dropbtnx"><a href="#">Admin</a>
 
       </button>
       <div class="dropdown-content">
@@ -67,7 +67,7 @@
     </div>
     <div class="dropdownBox">
       <button class="dropbtnx">
-          <a href="">Results</a>
+          <a href="#">Results</a>
 
       </button>
       <div class="dropdown-content">
@@ -80,7 +80,7 @@
         <a href="/results/passMark">Pass Mark</a>
       </div>
     </div>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+  <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>
 </div>
     <div id="page">
         @yield('content')

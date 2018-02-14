@@ -8,10 +8,26 @@ use App\Example;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use DB;
 
 
 class EducationController extends Controller
 {
+
+  public function visibility($id){
+    $status = DB::table('education')->where('id',$id)->get();
+    if($status[0]->visibility == 1){
+      DB::table('education')
+            ->where('id', $id)
+            ->update(['visibility' => 0, ]);
+    }
+    elseif($status[0]->visibility == 0){
+      DB::table('education')
+            ->where('id', $id)
+            ->update(['visibility' => 1, ]);
+    }
+      return redirect('/education/manage');
+  }
 
     public function store(request $request){
       $request->validate([
@@ -26,6 +42,7 @@ class EducationController extends Controller
       $data->subject = $request->subject;
       $data->name = $request->name;
       $data->description = $request->description;
+      $data->visibility = 0;
       $data->explanation = $request->explanation;
       $data->image = $filename;
       $data->video = $request->video;
@@ -53,7 +70,7 @@ class EducationController extends Controller
     }
 
     public function index($subject){
-        $data = Education::where('subject',$subject)->get();
+        $data = Education::where('subject',$subject)->where('visibility', 1)->get();
         foreach($data as $x){
           $x->image = Storage::url($x->image);
         }
@@ -62,6 +79,7 @@ class EducationController extends Controller
     }
     public function manage(){
       $maths = Education::where('subject','Maths')->get();
+      //return $maths;
       foreach($maths as $x){
         $x->image = Storage::url($x->image);
         $user = User::find($x->created_by);

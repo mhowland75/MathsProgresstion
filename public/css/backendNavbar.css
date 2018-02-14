@@ -1,6 +1,5 @@
 #nav_logo{
-  margin-left: 10%;
-  margin-right: 10px;
+  margin:0;
   padding:5px;
   max-width: 200px;
 }
@@ -35,8 +34,6 @@
     text-decoration: none;
 }
 .navBar a:hover {
-  transition: color 0.5s;
-
   background-color: #00A1AE;
   color: white;
 }
@@ -134,88 +131,24 @@ display: none;
 
 }
 
-/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
-@media screen and (max-width: 700px) {
-  .navBar a:not(:first-child) {
-    display: none;
-  }
-  .navBar a.icon {
 
-    float: right;
-    display: block;
-  }
-  .dropbtnx{
-    display: none;
-
-  }
-  #nav_logo{
-    margin-left: 0;
-    margin-right: 0;
-    padding:5px;
-    max-width: 200px;
-  }
+.vertical-menu {
+    width: 200px; /* Set a width if you like */
 }
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 700px) {
+.vertical-menu a {
+    background-color: #eee; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+}
 
-  #sideNav{
-    display: block;
-    transition: width 0.5s;
-    position: fixed;
-    background-color: rgba(66, 73, 73, 0.7);
-    top: 58px;
-    right:0px;
-    width:0px;
-    height:100%;
-    z-index: 1;
+.vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+}
 
-  }
-  #sideNav a{
-    display: inline-block;
-    border-bottom: 1px solid #00A1AE;
+.vertical-menu a.active {
+    background-color: #4CAF50; /* Add a green color to the "active/current" link */
     color: white;
-    background-color: rgba(66, 73, 73, 0.7);
-    padding:15px 18px;
-    width:100%;
-
-  }
-  #sideNav a:hover{
-    transition: padding-left 0.3s;
-    display: inline-block;
-    border-left: 3px solid red;
-    text-decoration: none;
-    background-color: rgba(66, 73, 73, 0.9);
-    padding-left:40px;
-
-  }
-
-  .navBar.responsive {
-    background-color:blue;
-    position: fixed;
-    top:0px;
-  }
-  .navBar.responsive a.icon {
-
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .navBar.responsive a {
-
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .navBar.responsive .dropdownBox {
-    float: none;
-  }
-  .navBar.responsive .dropdown-content {
-    position: relative;
-  }
-  .navBar.responsive .dropdownBox .dropbtnx {
-    display: block;
-    width: 100%;
-    text-align: left;
-  }
 }

@@ -28,7 +28,7 @@
      <li class="list-group-item">Passed Quizzes <span class="badge">{{$array['passedQuizes']}}</span></li>
    </ul>
 
- <h2>Compleated</h2>
+ <h2>Completed</h2>
  <ul class="list-group">
 
    <li class="list-group-item">Completed Students <span class="badge">{{$array['comTests']}}</span></li>

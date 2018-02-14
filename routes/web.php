@@ -64,6 +64,7 @@ Route::group(['middleware'=>'AdminAccessLevel2'], function(){
   Route::get('/education/create', 'EducationController@create');
   Route::post('/education/store', 'EducationController@store');
   Route::get('/education/manage', 'EducationController@manage');
+  Route::get('/education/manage/visibility/{id}', 'EducationController@visibility');
   Route::get('/education/{id}/edit', 'EducationController@edit');
   Route::post('/education/update', 'EducationController@update');
   Route::get('/education/{id}/delete', 'EducationController@delete');
@@ -78,6 +79,7 @@ Route::group(['middleware'=>'AdminAccessLevel2'], function(){
   Route::get('/examples/{id}/create', 'ExamplesController@create');
   Route::post('/examples/store', 'ExamplesController@store');
   Route::get('/examples/{id}/manage', 'ExamplesController@manage');
+  Route::get('/examples/manage/visibility/{id}', 'ExamplesController@visibility');
   Route::get('/examples/{id}/delete', 'ExamplesController@delete');
   Route::get('/examples/{id}/edit', 'ExamplesController@edit');
   Route::post('/examples/update', 'ExamplesController@update');

@@ -28,7 +28,7 @@
     <tbody id="myTable">
       @foreach ($data as $x)
       <tr>
-        <td><img class="img-thumbnail" src='{{$x->image}}'/></td>
+        <td><img style="max-width:200px; min-width:100px" class="img-thumbnail" src='{{$x->image}}'/></td>
         <td>{{$x->name}}</td>
         <td>{!!$x->introduction!!}</td>
         <td>{!!$x->explanation!!}</td>
@@ -36,6 +36,7 @@
         <td>{{$x->answer}}</td>
         <td>{{$x->created_by}}</td>
         <td>{{$x->updated_by}}</td>
+        <td><a data-toggle="tooltip" title="Visibility" href="/examples/manage/visibility/{{$x->id}}"><?php if($x->visibility == 1){echo'<i style="font-size:20px" class="ion-eye"></i>';}else{echo'<i style="font-size:20px" class="ion-eye-disabled"></i>';} ?></a></td>
         <td><a data-toggle="tooltip" title="Edit" href="/examples/{{$x->id}}/edit"><i style="font-size:20px" class="ion-edit"></i></a></td>
         <td><a data-toggle="tooltip" title="Remove" href="/examples/{{$x->id}}/delete"><i style="font-size:20px" class="ion-android-delete"></i></a></td>
       </tr>

@@ -22,8 +22,9 @@
 </div>
 <hr />
   <br />
-<div class="row">
-  <div class="col-xs-6 col-sm-4">
+<div id="indexBoxesContainer">
+  <div class="row">
+  <div class="col-xs-12 col-sm-4">
     <div class="panel panel-default">
       <div class="panel-body">
         <center>
@@ -36,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xs-6 col-sm-4">
+  <div class="col-xs-12 col-sm-4">
     <div class="panel panel-default">
       <div class="panel-body">
         <center>
@@ -49,9 +50,9 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-xs-12 col-sm-4">
     <div class="panel panel-default">
-      <div style="max-width:300px;" class="panel-body">
+      <div class="panel-body">
         <center>
           <div>
             <div id="dqImage">
@@ -65,5 +66,5 @@
     </div>
   </div>
 </div>
-
+</div>
 @endsection

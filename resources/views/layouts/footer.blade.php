@@ -18,7 +18,7 @@
        <div id="footerlinks" class="col-xs-4 col-sm-2">
          <h4 class="footerLinkHeaders">Staff</h4>
          @if (Auth::guest())
-         <li><a class="footerLinks" href="{{ route('login') }}">Login</a></li><br />
+         <a class="footerLinks" href="{{ route('login') }}">Login</a><br />
          @else
          <a class="footerLinks" href="{{ route('logout') }}"
             onclick="event.preventDefault();
