@@ -126,6 +126,7 @@ class EducationController extends Controller
           $request->image->storeAs('public', $filename);
           $data->image = $filename;
       }
+      $data->subject = $request->subject;
       $data->name = $request->name;
       $data->description = $request->description;
       $data->explanation = $request->explanation;

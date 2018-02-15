@@ -24,6 +24,20 @@
                @endif
            </div>
        </div>
+       <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
+           <label for="subject" class="col-md-2 control-label">Subject</label>
+           <div class="col-md-10">
+              <select class="form-control" id="sel1" name="subject">
+                <option <?php if($data->subject == "Maths"){echo"selected='selected'";} ?>>Maths</option>
+                <option <?php if($data->subject == "English"){echo"selected='selected'";} ?>>English</option>
+              </select>
+               @if ($errors->has('subject'))
+                   <span class="help-block">
+                       <strong>{{ $errors->first('subject') }}</strong>
+                   </span>
+               @endif
+           </div>
+       </div>
 
        <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
            <label for="description" class="col-md-2 control-label">Description</label>
