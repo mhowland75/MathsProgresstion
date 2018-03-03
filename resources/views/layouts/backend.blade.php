@@ -63,6 +63,7 @@
       <div class="dropdown-content">
         <a href="/admin/manage">Manage</a>
         <a href="/admin/manageAccess">Administrator Privileges</a>
+        <a href="/admin/activity">Activity</a>
       </div>
     </div>
     <div class="dropdownBox">

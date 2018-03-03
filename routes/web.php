@@ -10,16 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware'=>'ip_address'], function(){
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/restrictedAccess', function () {
-    return view('restrictedAccess');
-});
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/departments/view', 'DepartmentsController@view');
@@ -30,7 +24,16 @@ Route::get('/education/view/{id}', 'EducationController@view');
 Route::get('/help/view', 'HelpController@view');
 Route::post('/help/store', 'HelpController@store');
 
+Route::get('/restrictedAccess', function () {
+    return view('restrictedAccess');
+});
+  });
+
+Auth::routes();
+
 Route::group(['middleware'=>'AdminAccessLevel1'], function(){
+  Route::get('/admin/activity', 'ip_addressController@activity');
+
   Route::get('/admin/{id}/delete/user', 'AdminController@delete');
   Route::get('/admin/edit/{id}', 'AdminController@edit');
   Route::post('/admin/update/user', 'AdminController@update');
