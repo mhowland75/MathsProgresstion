@@ -54,7 +54,16 @@
     </a>
     <a href="/home">Home</a>
     <a href="/departments/index">Diagnostic Questions</a>
-    <a href="/education/manage">Education</a>
+    <div class="dropdownBox">
+      <button class="dropbtnx">
+          <a href="#">Education</a>
+
+      </button>
+      <div class="dropdown-content">
+        <a href="/education/manage">Lessons</a>
+        <a href="/education/popularity">Popularity</a>
+      </div>
+    </div>
     <a href="/teachers/manage">Staff</a>
     <div class="dropdownBox">
       <button class="dropbtnx"><a href="#">Admin</a>
@@ -81,6 +90,26 @@
         <a href="/results/passMark">Pass Mark</a>
       </div>
     </div>
+    <div class="dropdownBox">
+      <button class="dropbtnx">
+          <a href="#">Testing</a>
+      </button>
+      <div class="dropdown-content">
+        <a href="/unit/manage">Maths</a>
+        <a href="/test/manage/maths">Maths</a>
+        <a href="/test/manage/english">English</a>
+      </div>
+    </div>
+    <div class="dropdownBox">
+      <button class="dropbtnx">
+          <a href="#">Students</a>
+      </button>
+      <div class="dropdown-content">
+        <a href="/student_login/create">Create</a>
+        <a href="/student_login/index">Manage</a>
+      </div>
+    </div>
+    <a href="/help/index">Inbox</a>
   <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>
 </div>
     <div id="page">
@@ -90,5 +119,6 @@
     @include('layouts.footer')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/functions.js') }}"></script>
 </body>
 </html>

@@ -20,3 +20,31 @@ img {
   margin-left: 1%;
   background-color: rgba(254, 254, 254, 0.7);
 }
+#dashboardBox{
+  text-align: center;
+  height:100px;
+  margin-top:30px;
+}
+#dashboardBox p{
+  font-size: 16px;
+  color: white;
+  line-height: normal;
+
+}
+#dashboardBox i{
+
+  color: white;
+  line-height: normal;
+}
+
+.messageInfo{
+  padding:10px;
+  margin:10px;
+  width:100%;
+  height:100px;
+
+}
+#inbox{
+  height:800px;
+  overflow: auto;
+}

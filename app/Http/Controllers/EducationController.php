@@ -56,11 +56,16 @@ class EducationController extends Controller
     }
 
     public function view($id){
+
       if(empty(Education::find($id))){
         $data = Education::first();
         $id = $data->id;
       }
       $data = Education::find($id);
+      $views =  $data->views + 1;
+      DB::table('education')
+            ->where('id', $id)
+            ->update(['views' => $views]);
       $data->image = Storage::url($data->image);
       $examples = Example::where('education_id',$id)->get();
       foreach($examples as $example){
@@ -141,5 +146,19 @@ class EducationController extends Controller
       }
       Education::destroy($id);
       return redirect('/education/manage');
+    }
+    public function lessonPopularity(){
+      $data = Education::select('name','views')->orderBy('views', 'DESC')->get();
+      $r = 1;
+      foreach($data as $x){
+        $x->rank = $r;
+        $r++;
+
+      }
+      return $data;
+    }
+    public function popularityView(){
+      $data = $this->lessonPopularity();
+        return view('education.popularity',compact('data'));
     }
 }

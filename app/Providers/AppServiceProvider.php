@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\StudentLogin;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      View::composer('*', function($view){
+         $view->with('student_id', StudentLogin::get_student_id());
+      });
+
     }
 
     /**

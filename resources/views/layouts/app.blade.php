@@ -64,6 +64,24 @@ function displayBlock() {
       <a href="/education/index/english">English</a>
       <a href="/departments/view">Diagnostic Questions</a>
       <a href="/help/view">Help</a>
+      <div class="dropdownBox">
+        <button class="dropbtnx">
+            <a href="#">Tests</a>
+        </button>
+        <div class="dropdown-content">
+          <a href="/test/index/maths">Maths</a>
+          <a href="/test/index/english">English</a>
+          <a href="/studentsResults/index/maths">Maths Results</a>
+          <a href="/studentsResults/index/english">English Results</a>
+        </div>
+      </div>
+      @if($student_id)
+        <a href="/home">{{$student_id}}</a>
+        <a href="/student/logout">Logout</a>
+      @else
+        <a href="/student/login">Login</a>
+      @endif
+
       @if (Auth::id())
         <a href="/home">Backend</a>
       @endif
@@ -75,9 +93,11 @@ function displayBlock() {
     <a href="/education/index/english">English</a>
     <a href="/departments/view">Diagnostic Questions</a>
     <a href="/help/view">Help</a>
+
     @if (Auth::id())
       <a href="/home">Backend</a>
     @endif
+
   </div>
 </div>
           @yield('banner')
@@ -88,5 +108,6 @@ function displayBlock() {
     @include('layouts.footer')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/functions.js') }}"></script>
 </body>
 </html>

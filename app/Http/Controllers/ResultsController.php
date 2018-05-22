@@ -137,7 +137,6 @@ class ResultsController extends Controller
       return view('results.stats.studentDetails',compact('sDetails','array','nav', 'quizList','noSpaceQuizList','passed','incompleate'));
     }
     public function overAllstats2(){
-      $nav = $this->listCoursesByDept();
       $totalStudents =  Student::select()->count();
       $attemptedQuizes = Results::select()->count();
       $totalQuizes = $totalStudents * count($this->listQuizzes());
@@ -189,8 +188,7 @@ class ResultsController extends Controller
       $perQuizesAttempted = round($attemptedQuizes/$totalQuizes * 100,2);
       $perComTests = round($comTests/$totalStudents * 100,2);
       $perAttemptedTests = round($attemptedTests/$totalStudents * 100,2);
-      $totalTests =
-      $array = array(
+      return array(
         'totalStudents'=>$totalStudents,
         'totalQuizes'=>$totalQuizes,
         'attemptedQuizes'=>$attemptedQuizes,
@@ -208,9 +206,12 @@ class ResultsController extends Controller
         'attemptedTests'=>$attemptedTests,
         'perAttemptedTests'=>$perAttemptedTests,
       );
+    }
+    public function overallStatsView(){
+      $array = $this->overAllstats2();
+      $nav = $this->listCoursesByDept();
       $passMark = $this->returnPassMark();
-      //return $array;
-        return view('results.stats.overallStats',compact('array','nav','passMark'));
+      return view('results.stats.overallStats',compact('array','nav','passMark'));
     }
     public function create(){
       return view('results.create');

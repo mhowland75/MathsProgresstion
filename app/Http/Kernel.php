@@ -61,5 +61,7 @@ class Kernel extends HttpKernel
         'AdminAccessLevel1' =>\App\Http\Middleware\AdminAccessLevel1::class,
         'AdminAccessLevel2' =>\App\Http\Middleware\AdminAccessLevel2::class,
         'ip_address' =>\App\Http\Middleware\LogIp_address::class,
+        'Student' =>\App\Http\Middleware\Student::class,
+        'ChangePassword' =>\App\Http\Middleware\ChangePassword::class,
     ];
 }

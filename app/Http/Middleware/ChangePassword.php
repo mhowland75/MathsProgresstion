@@ -3,10 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
-use DB;
+use App\StudentLogin;
 
-class AdminAccessLevel2
+class ChangePassword
 {
     /**
      * Handle an incoming request.
@@ -17,13 +16,11 @@ class AdminAccessLevel2
      */
     public function handle($request, Closure $next)
     {
-      $user = DB::table('administrator_privileges')->where('user_id', Auth::id())->get();
-      if(empty($user[0]->id)){
-        return redirect('/login');
-      }
-      if($user[0]->access_level <= 2){
+      if(StudentLogin::get_student_id()){
         return $next($request);
       }
-      return redirect('/login');
+      else{
+        return redirect('/student/login');
+      }
     }
 }

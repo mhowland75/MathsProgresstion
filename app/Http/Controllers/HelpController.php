@@ -30,13 +30,38 @@ class HelpController extends Controller
       $message->email = $request->email;
       $message->subject = $request->subject;
       $message->message = $request->message;
+      $message->viewed = 0;
       $message->save();
       $x = 'sdds';
       Mail::to($request->email)->send(new HelpStudents($request->name, $request->email, $request->subject, $request->message));
       return redirect('/help/view');
     }
     public function index(){
-      $data = Help::all();
-      return view('help.index',compact('data'));
+      if(empty($id)){
+        $message = Help::first();
+      }else{
+        $message = Help::where('id',$id)->get();
+      }
+      $data = Help::orderBy('created_at', 'DESC')->get();
+
+      return view('help.index',compact('data','message'));
     }
+    public function viewMessage(){
+      $data = Help::where('id',$id)->get();
+      $f = Help::find($id);
+      $f->viewed = 1;
+      $f->save();
+      //return $data;
+      return view('help.message',compact('data'));
+    }
+      public function helpAjax($id){
+        //return 'hello';
+        $f = Help::find($id);
+        $f->viewed = 1;
+        $f->save();
+        $data = Help::where('id',$id)->get();
+        return view('help.mes',compact('data'));
+
+      }
+
 }

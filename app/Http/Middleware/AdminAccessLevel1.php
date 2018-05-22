@@ -19,11 +19,14 @@ class AdminAccessLevel1
     {
       $user = DB::table('administrator_privileges')->where('user_id', Auth::id())->get();
       if(empty($user[0]->id)){
-        return redirect('/restrictedAccess');
+        return redirect('/login');
       }
       if($user[0]->access_level == 1){
         return $next($request);
       }
-      return redirect('/restrictedAccess');
+      else{
+        return redirect('/home');
+      }
+      return redirect('/login');
     }
 }

@@ -60,7 +60,7 @@
                 <br />
                 <h4>Queston: {{$example->question}}</h4>
                <br />
-               <p>{{$example->explanation}}</p><br />
+               <p>{{!!$example->explanation!!}}</p><br />
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{$example->id}}answer">Answer</button>
                 <div id="{{$example->id}}answer" class="collapse">
                   <h2>The answer is {{$example->answer}}</h2>
@@ -68,7 +68,7 @@
              </div>
              <div class="col-sm-5">
                 <img class="img-rounded" src='{{$example->image}}'/>
-                <p>{{$example->introduction}}</p><br />
+                <p>{{!!$example->introduction!!}}</p><br />
              </div>
             </div>
           </div>
