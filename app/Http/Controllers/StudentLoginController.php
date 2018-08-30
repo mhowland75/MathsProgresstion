@@ -8,17 +8,6 @@ use Session;
 
 class StudentLoginController extends Controller
 {
-    public function create(){
-      return view('student_login.create');
-    }
-    public function store(request $request){
-      $data = new StudentLogin;
-      $data->student_id = $request->student_id;
-      $data->password = bcrypt($request->student_id);
-      $data->password_reset = 0;
-      $data->save();
-      return redirect('student_login/view/'.$data->id);
-    }
     public function view(StudentLogin $id){
       return $id;
     }
@@ -29,7 +18,7 @@ class StudentLoginController extends Controller
     public function login(Request $request){
       $request->validate([
           'student_id' => 'required|min:8|max:12',
-          'password' => 'required|min:8|max:12',
+          'password' => 'required|min:8|max:15',
       ]);
 
       if(StudentLogin::studentAuth($request->student_id,$request->password)){

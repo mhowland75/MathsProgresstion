@@ -27,6 +27,12 @@ class question extends Model
       else{
         static::where('id',$question_id)->update(['visibility' => 1]);
       }
-
+    }
+    public static function deleteQuestion($question_id){
+      $answers = Answer::where('question_id',$question_id)->get();
+      foreach($answers as $answer){
+        $answer->delete();
+      }
+      static::destroy($question_id);
     }
 }

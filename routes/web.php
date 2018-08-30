@@ -51,28 +51,55 @@ Auth::routes();
 
 Route::group(['middleware'=>'AdminAccessLevel1'], function(){
 
-  Route::get('/student_login/create', 'StudentLoginController@create');
-  Route::post('/student_login/create', 'StudentLoginController@store');
+  Route::get('/students/results/{year}/overall/{subject}', 'StudentsResultsController@overall');
+
+  Route::get('/student_year/create', 'StudentYearController@manage');
+  Route::post('/student_year/create', 'StudentYearController@store');
+  Route::get('/student_year/{year}/delete', 'StudentYearController@delete');
+  Route::get('/student_year/{year}/edit', 'StudentYearController@edit');
+  Route::post('/student_year/{year}/edit', 'StudentYearController@update');
+  Route::get('/student_year/{year}/activate', 'StudentYearController@activateStudentLogins');
+  Route::get('/student_year/{year}/results_rest', 'StudentYearController@studentResultsReset');
+
+    Route::get('/student/{year}/deleteAll', 'StudentController@deleteAllByStudentYear');
+    Route::get('/student/{id}/delete', 'StudentController@delete');
+    Route::post('/student/create', 'StudentController@store');
+    Route::post('/student/create/student', 'StudentController@storeStudent');
+    Route::get('/student/{student}/edit', 'StudentController@edit');
+    Route::post('/student/update', 'StudentController@update');
+    Route::get('/student/{studentId}/activate', 'StudentController@activate');
+
+
   Route::get('/student_login/view/{id}', 'StudentLoginController@view');
   Route::get('/unit/manage', 'UnitsController@manage');
   Route::get('/unit/{unit_id}/results', 'UnitsController@results');
+  Route::get('/unit/{unit_id}/delete', 'UnitsController@delete');
   Route::post('/unit/create', 'UnitsController@store');
   Route::get('/test/{unit_id}/manage', 'TestController@manage');
   Route::get('/test/create', 'TestController@create');
   Route::post('/test/create', 'TestController@store');
   Route::get('/test/{id}/questions', 'TestController@manageQuestions');
-  Route::get('/test/{id}/delete', 'TestController@delete');
+  Route::get('/test/{test}/delete', 'TestController@delete');
+  Route::get('/test/{test}/edit', 'TestController@edit');
+  Route::post('/test/{id}/update', 'TestController@update');
+
   Route::get('/questions/{id}/answers', 'QuestionsController@manage');
-  Route::get('/questions/{id}/delete', 'QuestionsController@delete');
-  Route::get('/question/create', 'QuestionsController@create');
+  Route::get('/question/{question}/edit', 'QuestionsController@edit');
+  Route::get('/questions/{question}/delete', 'QuestionsController@delete');
+  Route::get('/question/{question}/visibility', 'QuestionsController@visibility');
   Route::post('/question/create', 'QuestionsController@store');
+  Route::post('/question/edit', 'QuestionsController@update');
+
   Route::get('/answers/create', 'AnswersController@create');
   Route::post('/answers/create', 'AnswersController@store');
-  Route::get('/answer/{id}/correct', 'AnswersController@correct_answer');
-  Route::get('/answer/{id}/delete', 'AnswersController@delete');
-  Route::get('/answer/{id}/visibility', 'AnswersController@visiblity');
+  Route::get('/answer/{answer}/correct', 'AnswersController@correct_answer');
+  Route::get('/answer/{answer}/delete', 'AnswersController@delete');
+  Route::get('/answer/{answer}/visibility', 'AnswersController@visiblity');
+  Route::get('/answer/{answer}/edit', 'AnswersController@edit');
+  Route::post('/answer/edit', 'AnswersController@update');
+
     Route::get('/question/{id}/visibility', 'QuestionsController@visiblity');
-      Route::get('/test/{id}/visibility', 'TestController@visiblity');
+      Route::get('/test/{test}/visibility', 'TestController@visiblity');
   Route::get('/admin/activity', 'ip_addressController@activity');
 
   Route::get('/admin/{id}/delete/user', 'AdminController@delete');
@@ -84,7 +111,11 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/admin/manageAccess', 'AdminController@manageAdministration');
   Route::post('/admin/update', 'AdminController@updateAdministrator');
   Route::get('/admin/delete/{id}', 'AdminController@removeAdministrator');
-  Route::get('/results/index', 'ResultsController@index');
+
+  Route::get('/results/index/{yearId}', 'studentsResultsController@index');
+  Route::get('/results/department/{yearId}', 'studentsResultsController@departmentResults');
+  Route::get('/results/course/{yearId}/dept/{dept}', 'studentsResultsController@courseResults');
+  Route::get('/results/course/{yearId}/course/{course}', 'studentsResultsController@studentsResults');
   Route::get('/results/create', 'ResultsController@create');
   Route::get('/results/departments', 'ResultsController@deptView');
   Route::post('/results/store', 'ResultsController@store');
@@ -96,9 +127,6 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/results/passMark', 'ResultsController@passMarkView');
   Route::post('/results/storePassMark', 'ResultsController@storePassMark');
 
-  Route::get('/student/index', 'StudentController@index');
-  Route::get('/student/create', 'StudentController@create');
-  Route::post('/student/store', 'StudentController@store');
 });
 
 Route::group(['middleware'=>'AdminAccessLevel2'], function(){

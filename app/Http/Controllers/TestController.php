@@ -8,31 +8,63 @@ use App\Answer;
 use Illuminate\Support\Facades\Storage;
 use App\StudentsResult;
 use App\Unit;
-
+use App\StudentYear;
+use App\Student;
+use App\StudentLogin;
 class TestController extends Controller
 {
-    public function view(Test $test){
-      foreach($test->questions as $x){
-        if(!empty($x->image)){
-          $x->image = Storage::url($x->image);
-        }else{
-          $x->image = 0;
-        }
+    public function edit(Test $test){
+      if(Unit::unitActive($test->unit->id)){
+        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
       }
-      return view('tests.view', compact('test'));
+      return view('tests.edit', compact('test'));
+    }
+    public function update(request $request, $id){
+      $test = test::find($id);
+      $test->name = $request->name;
+      $test->department = $request->department;
+      $test->passmark = $request->passmark;
+      $test->save();
+      return redirect('/test/'.$test->unit->id.'/manage');
+    }
+    public function view(Test $test){
+      if(Test::studentTestVerification($test->id)){
+        foreach($test->questions as $x){
+          if(!empty($x->image)){
+            $x->image = Storage::url($x->image);
+          }else{
+            $x->image = 0;
+          }
+        }
+        return view('tests.view', compact('test'));
+      }else {
+        return redirect()->back();
+      }
     }
     public function index($subject){
-      $tests = Test::return_test_by_department($subject)->where('visibility',1)->get();;
-      return view('tests.index',compact('tests'));
+      $tests = Test::getStudentTests($subject);
+      $results = Test::getStudentsTestsResults($tests);
+      //$results[11]->test->passmark;
+      $overallResults = Test::studentTestResultsSummery($results);
+      $subject = ucfirst($subject);
+      //return $results;
+      //$tests = Test::return_test_by_department($subject)->where('visibility',1)->get();
+      return view('tests.index',compact('tests','results','subject', 'overallResults'));
     }
     public function manage(Unit $unit_id){
-      $tests = $unit_id->tests;
-      return view('tests.manage',compact('tests','unit_id'));
+      $mathsTests = $unit_id->tests->where('department','maths');
+      $engTests = $unit_id->tests->where('department','english');
+      //return $mathsTests;
+      return view('tests.manage',compact('engTests','mathsTests','unit_id'));
     }
     public function create(){
       return view('tests.create');
     }
     public function store(request $request){
+      if(Unit::unitActive($request->unit_id)){
+        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+      }
+      //return $request->unit_id;
       $request->validate([
         'name' => 'required|unique:tests|max:30',
         'passmark' => 'required|integer',
@@ -40,9 +72,10 @@ class TestController extends Controller
       //$filename = $request->image->getClientOriginalName();
       $data = new Test;
       $data->name = $request->name;
+      $data->unit_id = $request->unit_id;
       $data->department = $request->department;
       $data->passmark = $request->passmark;
-      $data->visibility = 0;
+      $data->visibility = 1;
       //$data->created_by = Auth::id();
       $data->save();
       //$request->image->storeAs('public', $filename);
@@ -56,20 +89,23 @@ class TestController extends Controller
           $x->image = 0;
         }
       }
+      //return $id;
       return view('tests.questions.manage',compact('id'));
     }
 
-    public function visiblity($id){
-      Test::change_visibility($id);
+    public function visiblity(Test $test){
+      if(Unit::unitActive($test->unit->id)){
+        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+      }
+      Test::change_visibility($test->id);
       return redirect()->back();
     }
-    public function delete($id){
-      StudentsResult::delete_test($id);
-      Test::destroy($id);
+    public function delete(Test $test){
+      if(Unit::unitActive($test->unit->id)){
+        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+      }
+      Test::deleteTest($test->id);
       return redirect()->back();
     }
 
-    public function results(){
-      return 'hello';
-    }
 }

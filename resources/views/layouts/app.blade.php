@@ -60,10 +60,15 @@ function displayBlock() {
       <a id="nav_logo" href="{{ url('/') }}">
           <img src="/images/bathCollegeLogo.png" />
       </a>
-      <a href="/education/index/maths">Maths</a>
-      <a href="/education/index/english">English</a>
-      <a href="/departments/view">Diagnostic Questions</a>
-      <a href="/help/view">Help</a>
+      <div class="dropdownBox">
+        <button class="dropbtnx">
+            <a href="#">Lessons</a>
+        </button>
+        <div class="dropdown-content">
+          <a href="/education/index/maths">Maths</a>
+          <a href="/education/index/english">English</a>
+        </div>
+      </div>
       <div class="dropdownBox">
         <button class="dropbtnx">
             <a href="#">Tests</a>
@@ -71,19 +76,35 @@ function displayBlock() {
         <div class="dropdown-content">
           <a href="/test/index/maths">Maths</a>
           <a href="/test/index/english">English</a>
-          <a href="/studentsResults/index/maths">Maths Results</a>
-          <a href="/studentsResults/index/english">English Results</a>
         </div>
       </div>
-      @if($student_id)
-        <a href="/home">{{$student_id}}</a>
-        <a href="/student/logout">Logout</a>
-      @else
-        <a href="/student/login">Login</a>
-      @endif
+      <a href="/education/index/english">Results</a>
+      <a href="/help/view">Help</a>
 
-      @if (Auth::id())
-        <a href="/home">Backend</a>
+      @if(!empty($student[0]->student_id))
+      <div style="float:right; margin-right:10%">
+        @if (Auth::id())
+          <a href="/home">Backend</a>
+        @endif
+        <div class="dropdownBox">
+          <button class="dropbtnxLogin">
+              <a href="/home">
+                  Hello {{$student[0]->firstname}}<br />{{$student[0]->student_id}}
+              </a>
+          </button>
+          <div class="dropdown-content">
+            <a href="/student/logout">Logout</a>
+            <a href="/student/password_reset">Change Password</a>
+          </div>
+        </div>
+      </div>
+      @else
+      <div style="float:right; margin-right:10%">
+        @if (Auth::id())
+          <a href="/home">Backend</a>
+        @endif
+        <a href="/student/login">Login</a>
+      </div>
       @endif
   <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>
 </div>
@@ -91,7 +112,6 @@ function displayBlock() {
   <div>
     <a href="/education/index/maths">Maths</a>
     <a href="/education/index/english">English</a>
-    <a href="/departments/view">Diagnostic Questions</a>
     <a href="/help/view">Help</a>
 
     @if (Auth::id())

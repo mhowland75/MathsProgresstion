@@ -1,44 +1,43 @@
 @extends('layouts.app')
+
 @section('banner')
-<div style="background-color:#00A1AE; width:100%; height:100%">
-  <div id="bannerlearning" class="jumbotron">
+  <div id="titleBanner">
     <center>
       <h1>{{$data->name}}</h1>
     </center>
   </div>
-</div>
 @endsection
 @section('content')
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row" style="padding:5px;">
-     <div class="col-sm-5 col-md-6" >
-       <center>
-         <img style="max-height:500px; max-width:500px;" class="img-rounded" src='{{$data->image}}'/>
-       </center>
-       <br />
-       <div>
-        {!!$data->description!!}
-      </div>
-     </div>
-     <br />
-     <div class="col-sm-7 col-md-6">
-     <div>
-       {!!$data->explanation!!}
-     </div>
-    </div>
-    </div>
+<div class="row" style="padding:0px;">
+ <div class="col-sm-5 col-md-6" style="margin-bottom:30px">
+   <center>
+     <img style="max-height:500px; max-width:500px;" class="img-rounded" src='{{$data->image}}'/>
+   </center>
+   <br />
+   <div>
+     <p>
+       {!!$data->description!!}
+     </p>
   </div>
+ </div>
+ <br />
+ <div class="col-sm-7 col-md-6">
+ <div>
+   <p>
+     {!!$data->explanation!!}
+   </p>
+ </div>
 </div>
-
+</div>
+<hr />
+<br />
 <div style=" background-color:none;" class="row">
  <div class="col-sm-12 col-md-10 col-md-offset-1">
    <iframe id="video1" src="{{$data->video}}" frameborder="0" allowfullscreen></iframe>
  </div>
 </div>
+<hr />
 <br />
-<div class="panel panel-default">
-  <div class="panel-body">
     <div style="padding:5px;">
       @if (!empty($examples[0]))
         <ul class="nav nav-tabs">
@@ -60,7 +59,7 @@
                 <br />
                 <h4>Queston: {{$example->question}}</h4>
                <br />
-               <p>{{!!$example->explanation!!}}</p><br />
+               <p>{!!$example->explanation!!}</p><br />
                 <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{$example->id}}answer">Answer</button>
                 <div id="{{$example->id}}answer" class="collapse">
                   <h2>The answer is {{$example->answer}}</h2>
@@ -75,26 +74,8 @@
           <?php $y++?>
         @endforeach
         </div>
-        <br />
-        <hr />
       @endif
-
-    <br />
-      <center>
-        <a href="/departments/view">
-          <div id="dqImage">
-            <img style="max-width:200px" src='/images/dq logo.png'/>
-          </div>
-          </a>
-        <h3>Ready to test yourself? <br /> Head to Diagnostic Questions.</h3>
-        <br />
-        <a href="/departments/view"></a><button type="button" class="btn btn-primary">Diagnostic Questions</button></a>
-        <br /><br />
-      </center>
     </div>
-  </div>
-</div>
-
 </div>
 
 @endsection

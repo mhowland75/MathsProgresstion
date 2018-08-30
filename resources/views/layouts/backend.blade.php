@@ -53,21 +53,18 @@
         <img src="/images/bathCollegeLogo.png" />
     </a>
     <a href="/home">Home</a>
-    <a href="/departments/index">Diagnostic Questions</a>
     <div class="dropdownBox">
       <button class="dropbtnx">
           <a href="#">Education</a>
-
       </button>
       <div class="dropdown-content">
         <a href="/education/manage">Lessons</a>
         <a href="/education/popularity">Popularity</a>
       </div>
     </div>
-    <a href="/teachers/manage">Staff</a>
     <div class="dropdownBox">
-      <button class="dropbtnx"><a href="#">Admin</a>
-
+      <button class="dropbtnx">
+        <a href="#">Admin</a>
       </button>
       <div class="dropdown-content">
         <a href="/admin/manage">Manage</a>
@@ -75,40 +72,9 @@
         <a href="/admin/activity">Activity</a>
       </div>
     </div>
-    <div class="dropdownBox">
-      <button class="dropbtnx">
-          <a href="#">Results</a>
-
-      </button>
-      <div class="dropdown-content">
-        <a href="/results/overallStats">Overall Results</a>
-        <a href="/results/departments">Results</a>
-        <a href="/results/create">Results Upload</a>
-        <a href="/student/create">Student Upload</a>
-        <a href="/results/index">Results Data</a>
-        <a href="/student/index">Student Data</a>
-        <a href="/results/passMark">Pass Mark</a>
-      </div>
-    </div>
-    <div class="dropdownBox">
-      <button class="dropbtnx">
-          <a href="#">Testing</a>
-      </button>
-      <div class="dropdown-content">
-        <a href="/unit/manage">Maths</a>
-        <a href="/test/manage/maths">Maths</a>
-        <a href="/test/manage/english">English</a>
-      </div>
-    </div>
-    <div class="dropdownBox">
-      <button class="dropbtnx">
-          <a href="#">Students</a>
-      </button>
-      <div class="dropdown-content">
-        <a href="/student_login/create">Create</a>
-        <a href="/student_login/index">Manage</a>
-      </div>
-    </div>
+    <a href="/unit/manage">Testing</a>
+    <a href="/student_year/create">Students</a>
+    <a href="/teachers/manage">Staff</a>
     <a href="/help/index">Inbox</a>
   <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>
 </div>

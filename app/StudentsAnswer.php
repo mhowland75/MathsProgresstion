@@ -14,6 +14,9 @@ class StudentsAnswer extends Model
   public function questions(){
     return $this->belongsTo('App\Question','question_id');
   }
+  public function answers(){
+    return $this->belongsTo('App\Answer','answer_id');
+  }
 
   public static function delete_results_from_answer_deletion($id){
     $answers =  static::select('id')->where('answer_id',$id)->get();

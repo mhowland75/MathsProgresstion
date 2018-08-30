@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('banner')
-<div id="bannerEducation" class="jumbotron">
-  <center>
-    <h1>{{$subject}}</h1>
-  </center>
-</div>
+  <div id="titleBanner">
+    <center>
+      <h1>{{$subject}}</h1>
+    </center>
+  </div>
 @endsection
 @section('content')
 <div id="educationIndexBoxesContainer">

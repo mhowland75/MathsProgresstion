@@ -6,7 +6,8 @@ hr {
 body{
   margin-top:58px;
   background-attachment:fixed;
-  background-image: url("/images/confectionary.png");
+  background-color: #EFEFEF;
+  /*background-image: url("/images/confectionary.png");*/
 }
 img {
     width: 100%;
@@ -32,6 +33,7 @@ h3 {
 	line-height: 30px;
 }
 p {
+  color:black;
 	font-family: Tahoma, Verdana, Segoe, sans-serif;
 	font-size: 14px;
 	font-style: normal;
@@ -40,12 +42,33 @@ p {
 	line-height: 20px;
 }
 #page{
+  border-left: 2px solid #DFDFDF;
+  border-right: 2px solid #DFDFDF;
   min-height:570px;
   padding:2%;
   width:80%;
   height: inherit;
   margin-left: 10%;
-  background-color: rgba(200, 200, 200, 0.4);
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+#titleBanner{
+  border-radius: 5px 5px 0px 0px;
+  margin-top: 80px;
+  height:100px;
+  padding:2%;
+  width:80%;
+  margin-left: 10%;
+  background-color: #00477f;
+  border-bottom: 2px solid #585959;
+  /*background-color: rgba(254, 254, 254, 0.9);*/
+}
+#titleBanner h1{
+  text-shadow: 0 0 6px #585959, 0 0 10px #585959;
+  color:white;
+  margin-top: -10px;
+  font-size: 60px;
+  font-weight: bold;
 }
 #indexText{
   font-size: 150%;
@@ -97,7 +120,7 @@ p {
 
 }
 
-#bannerDepartments{
+#bannerTests{
   margin-bottom: 0px;
   background-image: url("/images/panel1.png");
 }
@@ -108,6 +131,16 @@ p {
 #bannerlearning{
   margin-bottom: 0px;
   background-image: url("/images/panel3.png");
+}
+#bannertestresults{
+  margin-bottom: 0px;
+  background-image: url("/images/panel5.jpg");
+}
+#testboxtext{
+  color: #17202a ;
+}
+#testboxtext:hover{
+  color:   #566573   ;
 }
 #linksHeadings {
   color:white;

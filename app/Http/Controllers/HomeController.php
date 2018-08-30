@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      /*
         $newMail = DB::table('help')->where('viewed',0)->count();
         $bg = app('App\Http\Controllers\ip_addressController')->connectionCount();
         $totalLessons = DB::table('education')->count();
@@ -39,9 +40,9 @@ class HomeController extends Controller
         $totalStudents = $results['totalStudents'];
         $perPassStudents = $results['perPassedStudents'];
         $totalVisits = DB::table('ip_address')->count();
-
+        */
         //return $newMail;
-        return view('home', compact('bg','newMail','totalLessons','activeLessons','courses','teachers','passedStudents','passmark','totalStudents','perPassStudents','totalVisits','mostPopulareLesson'));
+        return view('home');
     }
 
 }

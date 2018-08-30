@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Unit;
-
+use App\StudentLogin;
 class UnitsController extends Controller
 {
     public function manage(){
       $units = Unit::get_all_units();
+      foreach($units as $unit){
+        $unit->status = Unit::unitActive($unit->id);
+      }
       return view('units.manage',compact('units'));
     }
     public function store(request $request){
@@ -38,5 +41,9 @@ class UnitsController extends Controller
         }
       }
       return $x->studentsResults;
+    }
+    public function delete($id){
+      Unit::unitDelete($id);
+      return redirect()->back();
     }
 }
