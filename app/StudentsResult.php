@@ -157,6 +157,9 @@ class StudentsResult extends Model
     ); ;
     }
     public static function calPercentage($number1,$number2){
+      if(!$number1 OR !$number2){
+        return 0;
+      }
       $x = $number1 / $number2 * 100;
       return  round($x,2);
     }

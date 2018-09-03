@@ -65,8 +65,9 @@ function displayBlock() {
             <a href="#">Lessons</a>
         </button>
         <div class="dropdown-content">
-          <a href="/education/index/maths">Maths</a>
-          <a href="/education/index/english">English</a>
+          @foreach($lessonSubjects as $subject)
+            <a href="/education/index/{{$subject}}">{{$subject}}</a>
+          @endforeach
         </div>
       </div>
       <div class="dropdownBox">
@@ -74,8 +75,9 @@ function displayBlock() {
             <a href="#">Tests</a>
         </button>
         <div class="dropdown-content">
-          <a href="/test/index/maths">Maths</a>
-          <a href="/test/index/english">English</a>
+          @foreach($testSubjects as $subject)
+            <a href="/test/index/{{$subject}}">{{$subject}}</a>
+          @endforeach
         </div>
       </div>
       <a href="/education/index/english">Results</a>

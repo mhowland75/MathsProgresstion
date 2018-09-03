@@ -10,6 +10,7 @@ use App\StudentsResult;
 use App\Unit;
 use App\StudentYear;
 use App\Student;
+use App\Subject;
 use App\StudentLogin;
 class TestController extends Controller
 {
@@ -52,10 +53,13 @@ class TestController extends Controller
       return view('tests.index',compact('tests','results','subject', 'overallResults'));
     }
     public function manage(Unit $unit_id){
-      $mathsTests = $unit_id->tests->where('department','maths');
-      $engTests = $unit_id->tests->where('department','english');
-      //return $mathsTests;
-      return view('tests.manage',compact('engTests','mathsTests','unit_id'));
+      $subjects = Subject::getSubjects();
+    //  return $subjects;
+      $array = array();
+      foreach($subjects as $subject){
+        $array[$subject->subject] = $unit_id->tests->where('department',$subject->subject);
+      }
+      return view('tests.manage',compact('array','subjects','unit_id'));
     }
     public function create(){
       return view('tests.create');

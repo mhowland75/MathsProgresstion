@@ -69,6 +69,9 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
     Route::post('/student/update', 'StudentController@update');
     Route::get('/student/{studentId}/activate', 'StudentController@activate');
 
+    Route::get('/subject/view', 'SubjectController@view');
+    Route::get('/subject/create', 'SubjectController@create');
+    Route::post('/subject/create', 'SubjectController@store');
 
   Route::get('/student_login/view/{id}', 'StudentLoginController@view');
   Route::get('/unit/manage', 'UnitsController@manage');

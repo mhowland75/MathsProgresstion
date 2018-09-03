@@ -14,32 +14,27 @@
    </div>
  </div>
  <div class="col-sm-10">
-   <h2>Maths</h2>
+ @foreach($subjects as $subject =>$c)
+
+   <h2>{{$c->subject}}</h2>
+   @if(!empty($results[$c->subject]['testResults']['totalTest']))
    <ul class="list-group">
-     <li class="list-group-item">Students Passed<span class="badge">{{$results['maths']['unitResults']['testsPassed']}}</span><span class="badge">{{$results['maths']['unitResults']['%testsPassed']}}%</span></li>
-     <li class="list-group-item">Students Attempted<span class="badge">{{$results['maths']['unitResults']['testsAttempted']}}</span><span class="badge">{{$results['maths']['unitResults']['%testsAttempted']}}%</span></li>
-     <li class="list-group-item">Students Not Started <span class="badge">{{$results['maths']['unitResults']['testsNotAttempted']}}</span><span class="badge">{{$results['maths']['unitResults']['%testsNotAttempted']}}%</span></li>
-     <li class="list-group-item">Total Students <span class="badge">{{$results['maths']['unitResults']['totalStudents']}}</span></li>
+     <li class="list-group-item">Students Passed<span class="badge">{{$results[$c->subject]['unitResults']['testsPassed']}}</span><span class="badge">{{$results[$c->subject]['unitResults']['%testsPassed']}}%</span></li>
+     <li class="list-group-item">Students Attempted<span class="badge">{{$results[$c->subject]['unitResults']['testsAttempted']}}</span><span class="badge">{{$results[$c->subject]['unitResults']['%testsAttempted']}}%</span></li>
+     <li class="list-group-item">Students Not Started <span class="badge">{{$results[$c->subject]['unitResults']['testsNotAttempted']}}</span><span class="badge">{{$results[$c->subject]['unitResults']['%testsNotAttempted']}}%</span></li>
+     <li class="list-group-item">Total Students <span class="badge">{{$results[$c->subject]['unitResults']['totalStudents']}}</span></li>
    </ul>
    <ul class="list-group">
-     <li class="list-group-item">Tests Passed<span class="badge">{{$results['maths']['testResults']['passed']}}</span><span class="badge">{{$results['maths']['testResults']['%passed']}}%</span></li>
-     <li class="list-group-item">Tests Attempted<span class="badge">{{$results['maths']['testResults']['attempted']}}</span><span class="badge">{{$results['maths']['testResults']['%attempted']}}%</span></li>
-     <li class="list-group-item">Tests Not Started <span class="badge">{{$results['maths']['testResults']['notAttempted']}}</span><span class="badge">{{$results['maths']['testResults']['%notAttempted']}}%</span></li>
-     <li class="list-group-item">Total Tests <span class="badge">{{$results['maths']['testResults']['totalTest']}}</span></li>
-     </ul>
-   <h2>English</h2>
-   <ul class="list-group">
-     <li class="list-group-item">Students Passed<span class="badge">{{$results['english']['unitResults']['testsPassed']}}</span><span class="badge">{{$results['english']['unitResults']['%testsPassed']}}%</span></li>
-     <li class="list-group-item">Students Attempted<span class="badge">{{$results['english']['unitResults']['testsAttempted']}}</span><span class="badge">{{$results['english']['unitResults']['%testsAttempted']}}%</span></li>
-     <li class="list-group-item">Students Not Started <span class="badge">{{$results['english']['unitResults']['testsNotAttempted']}}</span><span class="badge">{{$results['english']['unitResults']['%testsNotAttempted']}}%</span></li>
-     <li class="list-group-item">Total Students <span class="badge">{{$results['english']['unitResults']['totalStudents']}}</span></li>
-   </ul>
-   <ul class="list-group">
-     <li class="list-group-item">Tests Passed<span class="badge">{{$results['english']['testResults']['passed']}}</span><span class="badge">{{$results['english']['testResults']['%passed']}}%</span></li>
-     <li class="list-group-item">Tests Attempted<span class="badge">{{$results['english']['testResults']['attempted']}}</span><span class="badge">{{$results['english']['testResults']['%attempted']}}%</span></li>
-     <li class="list-group-item">Tests Not Started <span class="badge">{{$results['english']['testResults']['notAttempted']}}</span><span class="badge">{{$results['english']['testResults']['%notAttempted']}}%</span></li>
-     <li class="list-group-item">Total Tests <span class="badge">{{$results['english']['testResults']['totalTest']}}</span></li>
-     </ul>
- </div>
+     <li class="list-group-item">Tests Passed<span class="badge">{{$results[$c->subject]['testResults']['passed']}}</span><span class="badge">{{$results[$c->subject]['testResults']['%passed']}}%</span></li>
+     <li class="list-group-item">Tests Attempted<span class="badge">{{$results[$c->subject]['testResults']['attempted']}}</span><span class="badge">{{$results[$c->subject]['testResults']['%attempted']}}%</span></li>
+     <li class="list-group-item">Tests Not Started <span class="badge">{{$results[$c->subject]['testResults']['notAttempted']}}</span><span class="badge">{{$results[$c->subject]['testResults']['%notAttempted']}}%</span></li>
+     <li class="list-group-item">Total Tests <span class="badge">{{$results[$c->subject]['testResults']['totalTest']}}</span></li>
+    </ul>
+    @else
+      There are no tests for this subject.
+    @endif
+
+ @endforeach
+  </div>
 </div>
 @endsection

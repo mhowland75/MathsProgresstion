@@ -12,107 +12,64 @@
     </ul>
     <div class="row">
      <div class="col-sm-7">
-       <div class="row">
-         <div class="col-sm-12">
-           <div class="panel panel-default">
-            <div class="panel-heading">Maths</div>
-            <div class="panel-body">
-              <table class="table table-striped">
-                  @if(count($mathsTests))
-                    <thead>
-                      <tr>
-                        <th>Test Name</th>
-                        <th>No. of Questions</th>
-                        <th>Passmark</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                  @endif
-                  @forelse($mathsTests as $test)
-                  <tr>
-                    <td><a href="/test/{{$test->id}}/questions">{{$test->name}}</a></td>
-                    <td>{{$test->questions->count()}}</td>
-                    <td>{{$test->passmark}}</td>
-                    <td><a data-toggle="tooltip" title="Edit" href="/test/{{$test->id}}/edit"><i style="font-size:20px" class="ion-edit"></i></a></td>
-                    <td>
-                      @if($test->visibility)
-                       <a data-toggle="tooltip" title="Visibility" href="/test/{{$test->id}}/visibility/">
-                         <i style="font-size:20px" class="ion-eye"></i>
-                       </a>
-                      @else
-                      <a data-toggle="tooltip" title="Visibility" href="/test/{{$test->id}}/visibility/">
-                        <i style="font-size:20px" class="ion-eye-disabled"></i>
-                      </a>
+
+           @foreach($array as $key => $sub)
+           <div class="row">
+             <div class="col-sm-12">
+               <div class="panel panel-default">
+                <div class="panel-heading">
+                  {{$key}}
+                </div>
+                <div class="panel-body">
+                  <table class="table table-striped">
+                      @if(count($sub))
+                        <thead>
+                          <tr>
+                            <th>Test Name</th>
+                            <th>No. of Questions</th>
+                            <th>Passmark</th>
+                          </tr>
+                        </thead>
+                        <tbody>
                       @endif
-                    </td>
-                    <td>
-                      <a data-toggle="tooltip" title="Delete" href="/test/{{$test->id}}/delete">
-                        <i style="font-size:20px" class="ion-ios-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  @empty
-                     <p>
-                       There are no test.
-                     </p>
-                  @endforelse
-                </tbody>
-              </table>
-            </div>
-          </div>
-         </div>
-         <div class="col-sm-12">
-           <div class="panel panel-default">
-            <div class="panel-heading">English</div>
-            <div class="panel-body">
-              <table class="table table-striped">
-                  @if(count($engTests))
-                    <thead>
+                      @forelse($sub as $test)
                       <tr>
-                        <th>Test Name</th>
-                        <th>No. of Questions</th>
-                        <th>Passmark</th>
+                        <td><a href="/test/{{$test->id}}/questions">{{$test->name}}</a></td>
+                        <td>{{$test->questions->count()}}</td>
+                        <td>{{$test->passmark}}</td>
+                        <td><a data-toggle="tooltip" title="Edit" href="/test/{{$test->id}}/edit"><i style="font-size:20px" class="ion-edit"></i></a></td>
+                        <td>
+                          @if($test->visibility)
+                           <a data-toggle="tooltip" title="Visibility" href="/test/{{$test->id}}/visibility/">
+                             <i style="font-size:20px" class="ion-eye"></i>
+                           </a>
+                          @else
+                          <a data-toggle="tooltip" title="Visibility" href="/test/{{$test->id}}/visibility/">
+                            <i style="font-size:20px" class="ion-eye-disabled"></i>
+                          </a>
+                          @endif
+                        </td>
+                        <td>
+                          <a data-toggle="tooltip" title="Delete" href="/test/{{$test->id}}/delete">
+                            <i style="font-size:20px" class="ion-ios-trash"></i>
+                          </a>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody>
-                  @endif
-                  @forelse($engTests as $test)
-                  <tr>
-                    <td><a href="/test/{{$test->id}}/questions">{{$test->name}}</a></td>
-                    <td>{{$test->questions->count()}}</td>
-                    <td>{{$test->passmark}}</td>
-                    <td><a data-toggle="tooltip" title="Edit" href="/test/{{$test->id}}/edit"><i style="font-size:20px" class="ion-edit"></i></a></td>
-                    <td>
-                      @if($test->visibility)
-                       <a data-toggle="tooltip" title="Visibility" href="/test/{{$test->id}}/visibility/">
-                         <i style="font-size:20px" class="ion-eye"></i>
-                       </a>
-                      @else
-                      <a data-toggle="tooltip" title="Visibility" href="/test/{{$test->id}}/visibility/">
-                        <i style="font-size:20px" class="ion-eye-disabled"></i>
-                      </a>
-                      @endif
-                    </td>
-                    <td>
-                      <a data-toggle="tooltip" title="Delete" href="/test/{{$test->id}}/delete">
-                        <i style="font-size:20px" class="ion-ios-trash"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  @empty
-                     <p>
-                       There are no test.
-                     </p>
-                  @endforelse
-                </tbody>
-              </table>
+                      @empty
+                         <p>
+                           There are no test.
+                         </p>
+                      @endforelse
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          </div>
-         </div>
-       </div>
-     </div>
+            </div>
+           @endforeach
+    </div>
      <div class="col-sm-5">
-           <div class="col-md-8 col-md-offset-2">
+           <div class="col-md-12">
                <div class="panel panel-default">
                    <div class="panel-heading">Create Test</div>
                    <div class="panel-body">
@@ -135,8 +92,9 @@
                                <label for="department" class="col-md-4 control-label">Department</label>
                                <div class="col-md-6">
                                  <select  class="form-control" name="department">
-                                    <option value="maths">Maths</option>
-                                    <option value="english">English</option>
+                                   @foreach($subjects as $subject)
+                                    <option value="{{$subject->subject}}">{{$subject->subject}}</option>
+                                   @endforeach
                                   </select>
                                    @if ($errors->has('department'))
                                        <span class="help-block">
@@ -170,7 +128,7 @@
                </div>
        </div>
      </div>
-    </div>
+
   </div>
 </div>
 

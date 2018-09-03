@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Education;
 use App\Example;
 use App\User;
+use App\Subject;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 use DB;
@@ -46,13 +47,15 @@ class EducationController extends Controller
       $data->explanation = $request->explanation;
       $data->image = $filename;
       $data->video = $request->video;
+      $data->views = 0;
       $data->created_by = Auth::id();
       $data->save();
       $request->image->storeAs('public', $filename);
       return redirect('education/manage');
     }
     public function create(){
-      return view('education.create');
+      $subjects = Subject::getSubjects();
+      return view('education.create', compact('subjects'));
     }
 
     public function view($id){
@@ -83,32 +86,24 @@ class EducationController extends Controller
         return view('education.index', compact('data','subject'));
     }
     public function manage(){
-      $maths = Education::where('subject','Maths')->get();
-      //return $maths;
-      foreach($maths as $x){
-        $x->image = Storage::url($x->image);
-        $user = User::find($x->created_by);
-        $x->created_by = $user->name;
-        $user = User::find($x->updated_by);
-        if(!$user){
-          $x->updated_by = 'Never Updated';
-        }else{
-          $x->updated_by = $user->name;
+      $array = array();
+      $subjects = subject::getSubjects();
+      foreach($subjects as $subject){
+        $xe = Education::where('subject',$subject->subject)->get();
+        foreach($xe as $x){
+          $x->image = Storage::url($x->image);
+          $user = User::find($x->created_by);
+          $x->created_by = $user->name;
+          $user = User::find($x->updated_by);
+          if(!$user){
+            $x->updated_by = 'Never Updated';
+          }else{
+            $x->updated_by = $user->name;
+          }
         }
+        $array[$subject->subject] = $xe;
       }
-      $english = Education::where('subject','English')->get();
-      foreach($english as $x){
-        $x->image = Storage::url($x->image);
-        $user = User::find($x->created_by);
-        $x->created_by = $user->name;
-        $user = User::find($x->updated_by);
-        if(!$user){
-          $x->updated_by = 'Never Updated';
-        }else{
-          $x->updated_by = $user->name;
-        }
-      }
-      return view('education.manage', compact('maths','english'));
+      return view('education.manage', compact('array'));
     }
     public function edit($id){
       if(empty(Education::find($id))){

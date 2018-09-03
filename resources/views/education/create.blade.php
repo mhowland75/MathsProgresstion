@@ -28,8 +28,9 @@
            <label for="subject" class="col-md-2 control-label">Subject</label>
            <div class="col-md-10">
               <select class="form-control" id="sel1" name="subject">
-                <option>Maths</option>
-                <option>English</option>
+                @foreach($subjects as $subject)
+                  <option>{{$subject->subject}}</option>
+                @endforeach
               </select>
                @if ($errors->has('subject'))
                    <span class="help-block">

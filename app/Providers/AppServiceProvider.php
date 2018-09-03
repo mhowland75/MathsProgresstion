@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Student;
+use App\Subject;
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
 
       View::composer('*', function($view){
          $view->with('student', Student::getStudentInfo());
+      });
+      View::composer('*', function($view){
+         $view->with('lessonSubjects', Subject::lessonSubjects());
+      });
+      View::composer('*', function($view){
+         $view->with('testSubjects', Subject::testSubjects());
       });
 
     }
