@@ -61,8 +61,7 @@ class StudentsResultsController extends Controller
       $results = array();
       $students = Student::where('student_year_id',$year_id)->get();
       foreach($subjects as $subject){
-        
-        $results[$subject->subject]['unitResults'] = StudentsResult::studentoverallTestsResults($students,$subject->subje);
+        $results[$subject->subject]['unitResults'] = StudentsResult::studentoverallTestsResults($students,$subject->subject);
         $results[$subject->subject]['testResults'] = StudentsResult::studentsTestResults($students,$subject->subject);
       }
       //return $results;
@@ -117,5 +116,15 @@ class StudentsResultsController extends Controller
     return view('tests.studentResults.studentsResults',compact('tests','nav','year_id','course','array'));
 
   }
-
+  public function resultsView(){
+    $subj = Subject::getSubjects();
+    $array = array();
+    foreach($subj as $sub =>$c){
+      $s = Student::where('student_id',StudentLogin::get_student_id())->get();
+      $results = StudentsResult::studentResults($s,$c->subject);
+      $array[$c->subject] = $results;
+    }
+    //return $array;
+    return view('tests.studentResults.results',compact('tests','nav','year_id','course','array'));
+  }
 }

@@ -1,4 +1,5 @@
 @extends('layouts.backend')
+
 @section('content')
 <center>
   <h1>{{$course}} Results</h1>

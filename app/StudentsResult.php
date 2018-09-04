@@ -130,15 +130,18 @@ class StudentsResult extends Model
          if(!empty($array[$subject])){
            if(count($array[$subject]) == $totalTests){
              foreach($array[$subject] as $mathsResults){
-               if($mathsResults->correct_answer >= $mathsResults->test->passMark){
+               if($mathsResults->correct_answers >= $mathsResults->test->passmark){
                  $testpassed++;
                }
              }
-             if($testpassed == $totalTests){
+             if($testpassed >= $totalTests){
                $testsPassed++;
              }
+             elseif($testpassed <= $totalTests){
+               $testsAttempted++;
+             }
            }
-           elseif(count($array[$subject]) < $totalTests && count($array[$subject]) > 0){
+           elseif(!empty($array[$subject]) && count($array[$subject]) <= $totalTests){
              $testsAttempted++;
            }
          }

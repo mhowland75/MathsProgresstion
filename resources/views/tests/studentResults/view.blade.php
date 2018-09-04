@@ -1,8 +1,12 @@
 @extends('layouts.app')
+@section('banner')
+  <div id="titleBanner">
+    <center>
+      <h1>{{$studentResults->student_answers[0]->questions->test->name}} Results</h1>
+    </center>
+  </div>
+@endsection
 @section('content')
-<div class="page-header">
-  <h1>{{$studentResults->student_answers[0]->questions->test->name}} Results</h1>
-</div>
 @if($studentResults->correct_answers >= $studentResults->test->passmark)
 <div class="row" style=" height:170px;">
   <div class="col-sm-3" style="background-color:#2ecc71; height:inherit;">

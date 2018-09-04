@@ -116,6 +116,8 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/admin/delete/{id}', 'AdminController@removeAdministrator');
 
   Route::get('/results/index/{yearId}', 'studentsResultsController@index');
+  Route::get('/results/view', 'studentsResultsController@resultsView');
+
   Route::get('/results/department/{yearId}', 'studentsResultsController@departmentResults');
   Route::get('/results/course/{yearId}/dept/{dept}', 'studentsResultsController@courseResults');
   Route::get('/results/course/{yearId}/course/{course}', 'studentsResultsController@studentsResults');

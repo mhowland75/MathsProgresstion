@@ -80,7 +80,7 @@ function displayBlock() {
           @endforeach
         </div>
       </div>
-      <a href="/education/index/english">Results</a>
+      <a href="/results/view">Results</a>
       <a href="/help/view">Help</a>
 
       @if(!empty($student[0]->student_id))

@@ -1,5 +1,11 @@
 @extends('layouts.app')
-
+@section('banner')
+  <div id="titleBanner">
+    <center>
+      <h1>{{$subject}} Tests</h1>
+    </center>
+  </div>
+@endsection
 @section('content')
 <div class="row">
  <div class="col-sm-3">
