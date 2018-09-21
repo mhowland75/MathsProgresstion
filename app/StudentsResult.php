@@ -77,7 +77,7 @@ class StudentsResult extends Model
     public static function studentTestResultsSummery($results, $students, $subject){
       $year = studentYear::where('id', $students[0]->student_year_id)->get();
       $unit = $year[0]->unit()->get();
-      $totalTests = $unit[0]->tests()->where('department',$subject)->count() * $students->count();
+      $totalTests = $unit[0]->tests()->where('subject_id',$subject->id)->count() * $students->count();
       $passed = 0;
       $attempted = 0;
       $notAttempted = 0;
@@ -105,31 +105,31 @@ class StudentsResult extends Model
       $results = array();
       foreach($students as $student){
         foreach($student->studentResult as $result){
-          if($result->test->department == $subject){
+          if($result->test->subject_id == $subject->id){
             $results[] = $result;
           }
         }
       }
-      return  $array[$subject] = StudentsResult::studentTestResultsSummery($results, $students, $subject);
+      return  $array[$subject->subject] = StudentsResult::studentTestResultsSummery($results, $students, $subject);
 
     }
     public static function studentoverallTestsResults($students, $subject){
       $testsPassed = 0;
       $testsAttempted = 0;
       $testsNotAttempted = 0;
-      $totalTests = $students[0]->studentLogin->studentYear->unit->tests->where('department',$subject)->count();
+      $totalTests = $students[0]->studentLogin->studentYear->unit->tests->where('subject_id',$subject->id)->count();
       foreach($students as $student){
          $array = array();
          $results = $student->studentResult;
          foreach($results as $result){
-           if($result->test->department == $subject){
-             $array[$subject][] = $result;
+           if($result->test->subject_id == $subject->id){
+             $array[$subject->subject][] = $result;
            }
          }
          $testpassed = 0;
-         if(!empty($array[$subject])){
-           if(count($array[$subject]) == $totalTests){
-             foreach($array[$subject] as $mathsResults){
+         if(!empty($array[$subject->subject])){
+           if(count($array[$subject->subject]) == $totalTests){
+             foreach($array[$subject->subject] as $mathsResults){
                if($mathsResults->correct_answers >= $mathsResults->test->passmark){
                  $testpassed++;
                }
@@ -141,7 +141,7 @@ class StudentsResult extends Model
                $testsAttempted++;
              }
            }
-           elseif(!empty($array[$subject]) && count($array[$subject]) <= $totalTests){
+           elseif(!empty($array[$subject->subject]) && count($array[$subject->subject]) <= $totalTests){
              $testsAttempted++;
            }
          }
@@ -169,7 +169,7 @@ class StudentsResult extends Model
     public static function studentResults($students,$subject){
       foreach($students as $student){
         $unit_id = $student->studentLogin->studentYear->unit->id;
-        $tests = Test::where('department',$subject)->where('unit_id',$unit_id)->get();
+        $tests = Test::where('subject_id',$subject->id)->where('unit_id',$unit_id)->get();
         $testResults = array();
         $student->tests = $tests;
         $passed = 0;

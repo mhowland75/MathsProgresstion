@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="panel panel-default">
-  <div style="background-color:#d0d3d4"  class="panel-heading">
+  <div id="main-panel-head"  class="panel-heading">
     <center>
       <h1>{{$id->test->name}} - {{$id->question}}</h1>
     </center>
@@ -12,7 +12,7 @@
     </div>
     @endif
   </div>
-  <div style="background-color:#F5F5F5" class="panel-body">
+  <div id="main-panel-head" class="panel-body">
     <ul class="breadcrumb" style="background-color:#FFFFFF">
       <li><a href="/unit/manage">Units</a></li>
       <li><a href="/test/{{$id->test->unit->id}}/manage">Unit - {{$id->test->unit->name}}</a></li>

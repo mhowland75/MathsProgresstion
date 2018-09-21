@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('banner')
   <div id="titleBanner">
     <center>

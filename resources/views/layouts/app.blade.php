@@ -66,7 +66,7 @@ function displayBlock() {
         </button>
         <div class="dropdown-content">
           @foreach($lessonSubjects as $subject)
-            <a href="/education/index/{{$subject}}">{{$subject}}</a>
+            <a href="/education/index/{{$subject->id}}">{{$subject->subject}}</a>
           @endforeach
         </div>
       </div>
@@ -76,7 +76,7 @@ function displayBlock() {
         </button>
         <div class="dropdown-content">
           @foreach($testSubjects as $subject)
-            <a href="/test/index/{{$subject}}">{{$subject}}</a>
+            <a href="/test/index/{{$subject->id}}">{{$subject->subject}}</a>
           @endforeach
         </div>
       </div>
@@ -105,7 +105,14 @@ function displayBlock() {
         @if (Auth::id())
           <a href="/home">Backend</a>
         @endif
-        <a href="/student/login">Login</a>
+        <div style="margin-top:15px" class="login-container">
+          <form method="POST" action="/student/login">
+            {{ csrf_field() }}
+            <input id="login-text-box" placeholder=" Student ID"  type="student_id" name="student_id">
+            <input id="login-text-box" placeholder=" Password"  type="password" name="password">
+            <button type="submit" class="btn btn-primary btn-sm">Login</button>
+          </form>
+        </div>
       </div>
       @endif
   <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>

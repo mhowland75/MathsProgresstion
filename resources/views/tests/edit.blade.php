@@ -1,5 +1,6 @@
 @extends('layouts.backend')
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -24,9 +25,10 @@
                         <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
                             <label for="department" class="col-md-4 control-label">Department</label>
                             <div class="col-md-6">
-                              <select class="form-control" name="department">
-                                 <option value="maths"<?php if($test->department == "maths"){echo'selected';} ?>>Maths</option>
-                                 <option value="english" <?php if($test->department == "english"){echo'selected';} ?>>English</option>
+                              <select class="form-control" name="subject_id">
+                                @foreach($subjects as $subject)
+                                  <option value="{{$subject->id}}"<?php if($test->subject_id == $subject->subject){echo'selected';} ?>>{{$subject->subject}}</option>
+                                @endforeach
                                </select>
                                 @if ($errors->has('department'))
                                     <span class="help-block">

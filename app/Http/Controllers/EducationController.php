@@ -31,16 +31,18 @@ class EducationController extends Controller
   }
 
     public function store(request $request){
-      $request->validate([
-          'name' => 'required|max:50|min:4|unique:education,name',
-          'description' => 'required|max:500',
-          'explanation' => 'required|max:5000|min:1000',
-          'image' => 'required|image',
-          'video' => 'required|url',
-      ]);
+      //return $request->all();
+      //$request->validate([
+      //    'name' => 'required|max:50|min:4|unique:education,name',
+      //    'description' => 'required|max:500',
+      //    'explanation' => 'required|max:5000|min:1000',
+      //    'image' => 'required|image',
+      //    'video' => 'required|url',
+      //]);
       $filename = $request->image->getClientOriginalName();
       $data = new Education;
-      $data->subject = $request->subject;
+      $data->subject = 0;
+      $data->subject_id = $request->subject_id;
       $data->name = $request->name;
       $data->description = $request->description;
       $data->visibility = 0;
@@ -77,19 +79,19 @@ class EducationController extends Controller
       return view('education.view', compact('data','examples'));
     }
 
-    public function index($subject){
-        $data = Education::where('subject',$subject)->where('visibility', 1)->get();
+    public function index(Subject $subject_id){
+        $data = Education::where('subject_id',$subject_id->id)->where('visibility', 1)->get();
         foreach($data as $x){
           $x->image = Storage::url($x->image);
         }
-        $subject = ucfirst($subject);
+        $subject = ucfirst($subject_id->subject);
         return view('education.index', compact('data','subject'));
     }
     public function manage(){
       $array = array();
       $subjects = subject::getSubjects();
       foreach($subjects as $subject){
-        $xe = Education::where('subject',$subject->subject)->get();
+        $xe = Education::where('subject_id',$subject->id)->get();
         foreach($xe as $x){
           $x->image = Storage::url($x->image);
           $user = User::find($x->created_by);
@@ -103,15 +105,18 @@ class EducationController extends Controller
         }
         $array[$subject->subject] = $xe;
       }
+    //  return $array;
       return view('education.manage', compact('array'));
     }
     public function edit($id){
       if(empty(Education::find($id))){
         return redirect('/education/manage');
       }
+      $subjects = Subject::getSubjects();
       $data = Education::find($id);
       $data->image = Storage::url($data->image);
-      return view('education.edit',compact('data'));
+      //return $data->subject_subject;
+      return view('education.edit',compact('data','subjects'));
     }
     public function update(request $request){
       $request->validate([
@@ -126,7 +131,8 @@ class EducationController extends Controller
           $request->image->storeAs('public', $filename);
           $data->image = $filename;
       }
-      $data->subject = $request->subject;
+      $data->subject = 0;
+      $data->subject_id = $request->subject_id;
       $data->name = $request->name;
       $data->description = $request->description;
       $data->explanation = $request->explanation;

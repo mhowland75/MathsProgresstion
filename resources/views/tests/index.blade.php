@@ -58,34 +58,25 @@
               @if(!empty($results[$test->id]->correct_answers))
                 @if($results[$test->id]->correct_answers >= $test->passmark)
                   <center>
-                    <div class="col-sm-3" style="background-color: #abebc6 ; border-radius:0px 0px 0px 5px ; padding:10px;"><b>Status</b><br /> Passed</div>
+                    <div class="col-sm-4" style="background-color: #abebc6 ; border-radius:0px 0px 0px 5px ; padding:10px;"><b>Status</b><br /> Passed</div>
                   </center>
                 @else
                   <center>
-                    <div class="col-sm-3" style="background-color: #f9e79f ; border-radius:0px 0px 0px 5px ; padding:10px;"><b>Status</b><br /> Attempted</div>
+                    <div class="col-sm-4" style="background-color: #f9e79f ; border-radius:0px 0px 0px 5px ; padding:10px;"><b>Status</b><br /> Attempted</div>
                   </center>
                 @endif
               @else
                 <center>
-                  <div class="col-sm-3" style="background-color: #f5b7b1 ; border-radius:0px 0px 0px 5px ; padding:10px;"><b>Status</b><br /> Not Attempted</div>
+                  <div class="col-sm-4" style="background-color: #f5b7b1 ; border-radius:0px 0px 0px 5px ; padding:10px;"><b>Status</b><br /> Not Attempted</div>
                 </center>
               @endif
-              <div class="col-sm-3" style="background-color: #d7bde2 ;  padding:10px;">
-                <center>
-                <b>Correct Answers</b> <br />
-                  @if(!empty($results[$test->id]->correct_answers))
-                    {{$results[$test->id]->correct_answers}}
-                  @else
-                    N/A
-                  @endif
-                </center>
-              </div>
-              <div class="col-sm-3" style="background-color: #fad7a0 ;  padding:10px;">
+
+              <div class="col-sm-4" style="background-color: #fad7a0 ;  padding:10px;">
                 <center>
                   <b>Passmark</b> <br />{{$test->passmark}}
                 </center>
               </div>
-              <div class="col-sm-3" style="background-color: #a9cce3 ; border-radius:0px 0px 5px 0px; padding:10px;">
+              <div class="col-sm-4" style="background-color: #a9cce3 ; border-radius:0px 0px 5px 0px; padding:10px;">
                 <center>
                   <b>Questions</b> <br /> {{$test->questions->count()}}
                 </center>

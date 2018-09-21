@@ -1,14 +1,10 @@
-@extends('layouts.app')
-
+@extends('layouts.backend')
 @section('content')
-<div class="page-header">
-  <h1>Staff</h1>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Create department code</div>
+                <div class="panel-heading">Edit {{$data->name}}</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="/teachers/update" enctype="multipart/form-data">
                         {{ csrf_field() }}

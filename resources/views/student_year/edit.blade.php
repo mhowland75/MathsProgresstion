@@ -3,14 +3,13 @@
 @section('content')
 
 <div class="panel panel-default">
-  <div style="background-color:#d0d3d4"  class="panel-heading">
+  <div id="main-panel-head"  class="panel-heading">
     <center>
       <h1>Edit Student Year - {{$year->name}}</h1>
     </center>
   </div>
-  <div style="background-color:#F5F5F5" class="panel-body">
-    <div class="col-sm-12">
-      <div class="row">
+  <div id="main-panel-body" class="panel-body">
+    <div class="row">
           <div class="col-md-4">
               <div class="panel panel-default">
                   <div class="panel-heading">Edit Student Year - {{$year->name}}</div>
@@ -257,84 +256,75 @@
        </div>
       </div>
     </div>
-   </div>
    <div class="panel panel-default">
     <div class="panel-body">
-
-    </div>
-  </div>
-   <div class="row">
-    <div class="col-sm-8">
-      <div class="page-header">
-        <center>
-          <h1>{{$year->name}} Student Data</h1>
-        </center>
+      <div class="row">
+       <div class="col-sm-8">
+         <div class="page-header">
+           <center>
+             <h1>{{$year->name}} Student Data</h1>
+           </center>
+         </div>
+       </div>
+       <div class="col-sm-4">
+         <input style="margin-top:30px" class="form-control" id="myInput" type="text" placeholder="Search..">
+       </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <input style="margin-top:30px" class="form-control" id="myInput" type="text" placeholder="Search..">
-    </div>
-   </div>
-   <div class="panel-body">
-     <table class="table table-striped">
-     <thead>
-       <tr>
-         <th>Student ID</th>
-         <th>First Name</th>
-         <th>Surname</th>
-         <th>DOB</th>
-         <th>Department</th>
-         <th>Course</th>
-         <th>GCSE Maths Grade</th>
-         <th>Primary Tutor</th>
-         <th>Withdrawn</th>
-         <th>
-           Edit
-         </th>
-         <th>
-           <a href="/student/{{$year->id}}/deleteAll">Delete All</a>
-         </th>
-       </tr>
-     </thead>
-     <tbody id="myTable">
-       @foreach ($data as $x)
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>DOB</th>
+            <th>Department</th>
+            <th>Course</th>
+            <th>GCSE Maths Grade</th>
+            <th>Primary Tutor</th>
+            <th>Withdrawn</th>
+            <th>
+              Edit
+            </th>
+            <th>
+              <a href="/student/{{$year->id}}/deleteAll">Delete All</a>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          @foreach ($data as $x)
 
-       <tr>
-         <td>{{$x->student_id}}</td>
-         <td>{{$x->firstname}}</td>
-         <td>{{$x->surname}}</td>
-         <td>{{$x->dob}}</td>
-         <td>{{$x->dept}}</td>
-         <td>{{$x->course}}</td>
-         <td>{{$x->gcse_maths_grade}}</td>
-         <td>{{$x->primary_tutor}}</td>
-         <td>{{$x->withdrawn}}</td>
-         <td>
-           @if($x->studentLogin->active)
-             <a href="/student/{{$x->student_id}}/activate">Active</a>
-           @else
-             <a href="/student/{{$x->student_id}}/activate">Deactivated</a>
-           @endif
-         </td>
-         <td>
-           <a href="/student/{{$x->id}}/edit">Edit</a>
-         </td>
-         <td>
-           <a data-toggle="tooltip" title="Delete" href="/student/{{$x->student_id}}/delete">
-             <i style="font-size:20px" class="ion-ios-trash"></i>
-           </a>
-         </td>
-       </tr>
+          <tr>
+            <td>{{$x->student_id}}</td>
+            <td>{{$x->firstname}}</td>
+            <td>{{$x->surname}}</td>
+            <td>{{$x->dob}}</td>
+            <td>{{$x->dept}}</td>
+            <td>{{$x->course}}</td>
+            <td>{{$x->gcse_maths_grade}}</td>
+            <td>{{$x->primary_tutor}}</td>
+            <td>{{$x->withdrawn}}</td>
+            <td>
+              @if($x->studentLogin->active)
+                <a href="/student/{{$x->student_id}}/activate">Active</a>
+              @else
+                <a href="/student/{{$x->student_id}}/activate">Deactivated</a>
+              @endif
+            </td>
+            <td>
+              <a href="/student/{{$x->id}}/edit">Edit</a>
+            </td>
+            <td>
+              <a data-toggle="tooltip" title="Delete" href="/student/{{$x->student_id}}/delete">
+                <i style="font-size:20px" class="ion-ios-trash"></i>
+              </a>
+            </td>
+          </tr>
 
-       @endforeach
-     </tbody>
-   </table>
-   {{ $data->links() }}
-   </div>
-   </div>
-  </div>
-</div>
-
-
-
+          @endforeach
+        </tbody>
+      </table>
+      {{ $data->links() }}
+      </div>
+      </div>
+     </div>
 @endsection

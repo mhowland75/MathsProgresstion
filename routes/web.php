@@ -14,16 +14,17 @@ Route::group(['middleware'=>'Student'], function(){
   Route::post('/studentsResults/store', 'StudentsResultsController@store');
   Route::get('/studentsResults/view/{id}', 'StudentsResultsController@view');
   Route::get('/studentsResults/index/{subject}', 'StudentsResultsController@index');
+  Route::get('/results/view', 'studentsResultsController@resultsView');
+
   Route::get('/departments/view', 'DepartmentsController@view');
 
-  Route::get('/education/index/{subject}', 'EducationController@index');
+  Route::get('/education/index/{subject_id}', 'EducationController@index');
   Route::get('/education/view/{id}', 'EducationController@view');
-
 
   Route::post('/help/store', 'HelpController@store');
   Route::get('/help/view', 'HelpController@view');
 
-  Route::get('/test/index/{subject}', 'TestController@index');
+  Route::get('/test/index/{subject_id}', 'TestController@index');
   Route::get('/test/{test}/view', 'TestController@view');
 
 
@@ -72,6 +73,9 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
     Route::get('/subject/view', 'SubjectController@view');
     Route::get('/subject/create', 'SubjectController@create');
     Route::post('/subject/create', 'SubjectController@store');
+    Route::get('/subject/manage', 'SubjectController@manage');
+    Route::get('/subject/edit/{subject_id}', 'SubjectController@edit');
+    Route::post('/subject/edit', 'SubjectController@update');
 
   Route::get('/student_login/view/{id}', 'StudentLoginController@view');
   Route::get('/unit/manage', 'UnitsController@manage');
@@ -116,7 +120,7 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/admin/delete/{id}', 'AdminController@removeAdministrator');
 
   Route::get('/results/index/{yearId}', 'studentsResultsController@index');
-  Route::get('/results/view', 'studentsResultsController@resultsView');
+
 
   Route::get('/results/department/{yearId}', 'studentsResultsController@departmentResults');
   Route::get('/results/course/{yearId}/dept/{dept}', 'studentsResultsController@courseResults');

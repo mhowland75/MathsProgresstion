@@ -72,6 +72,7 @@
         <a href="/admin/activity">Activity</a>
       </div>
     </div>
+    <a href="/subject/manage">Subjects</a>
     <a href="/unit/manage">Testing</a>
     <a href="/student_year/create">Students</a>
     <a href="/teachers/manage">Staff</a>

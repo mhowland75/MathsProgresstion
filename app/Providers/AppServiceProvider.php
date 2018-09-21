@@ -21,10 +21,10 @@ class AppServiceProvider extends ServiceProvider
          $view->with('student', Student::getStudentInfo());
       });
       View::composer('*', function($view){
-         $view->with('lessonSubjects', Subject::lessonSubjects());
+         $view->with('lessonSubjects', Subject::getSubjects());
       });
       View::composer('*', function($view){
-         $view->with('testSubjects', Subject::testSubjects());
+         $view->with('testSubjects', Subject::getSubjects());
       });
 
     }

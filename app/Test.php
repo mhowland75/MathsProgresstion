@@ -45,12 +45,12 @@ class Test extends Model
     }
   }
 
-  public static function getStudentTests($subject = NULL){
+  public static function getStudentTests($subject_id = NULL){
     $x = StudentLogin::where('student_id',StudentLogin::get_student_id())->get();
     $y = StudentYear::find($x[0]->student_year_id);
     //return $y->unit->tests;
-    if($subject){
-      $tests = $y->unit->tests->where('visibility',1)->where('department', $subject);
+    if(!empty($subject_id->id)){
+      $tests = $y->unit->tests->where('visibility',1)->where('subject_id', $subject_id->id);
       return $tests;
     }else{
       $tests = $y->unit->tests->where('visibility',1);

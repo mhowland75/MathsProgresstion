@@ -7,6 +7,9 @@ use App\Test;
 
 class Subject extends Model
 {
+  public function lessons(){
+    return $this->hasMany('App\Education','subject_id');
+  }
     public static function getSubjects(){
       return Subject::all();
     }

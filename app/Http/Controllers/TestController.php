@@ -18,12 +18,15 @@ class TestController extends Controller
       if(Unit::unitActive($test->unit->id)){
         return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
       }
-      return view('tests.edit', compact('test'));
+      $subjects = Subject::getSubjects();
+      //return $subjects;
+      return view('tests.edit', compact('test','subjects'));
     }
     public function update(request $request, $id){
       $test = test::find($id);
       $test->name = $request->name;
-      $test->department = $request->department;
+      $test->subject_id = $request->subject_id;
+      $test->department = 0;
       $test->passmark = $request->passmark;
       $test->save();
       return redirect('/test/'.$test->unit->id.'/manage');
@@ -42,12 +45,12 @@ class TestController extends Controller
         return redirect()->back();
       }
     }
-    public function index($subject){
-      $tests = Test::getStudentTests($subject);
+    public function index(Subject $subject_id){
+      $tests = Test::getStudentTests($subject_id);
       $results = Test::getStudentsTestsResults($tests);
       //$results[11]->test->passmark;
       $overallResults = Test::studentTestResultsSummery($results);
-      $subject = ucfirst($subject);
+      $subject = ucfirst($subject_id->subject);
       //return $results;
       //$tests = Test::return_test_by_department($subject)->where('visibility',1)->get();
       return view('tests.index',compact('tests','results','subject', 'overallResults'));
@@ -57,7 +60,7 @@ class TestController extends Controller
     //  return $subjects;
       $array = array();
       foreach($subjects as $subject){
-        $array[$subject->subject] = $unit_id->tests->where('department',$subject->subject);
+        $array[$subject->subject] = $unit_id->tests->where('subject_id',$subject->id);
       }
       return view('tests.manage',compact('array','subjects','unit_id'));
     }
@@ -77,7 +80,8 @@ class TestController extends Controller
       $data = new Test;
       $data->name = $request->name;
       $data->unit_id = $request->unit_id;
-      $data->department = $request->department;
+      $data->department = 0;
+      $data->subject_id = $request->subject_id;
       $data->passmark = $request->passmark;
       $data->visibility = 1;
       //$data->created_by = Auth::id();

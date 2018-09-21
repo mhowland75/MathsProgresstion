@@ -55,17 +55,18 @@ class StudentsResultsController extends Controller
     return view('tests.studentResults.view',compact('studentResults'));
   }
   public function index($year_id){
+    $year = StudentYear::find($year_id);
     $nav = Student::listCoursesByDepartment($year_id);
     $subjects = Subject::getSubjects();
     //return $subjects;
       $results = array();
       $students = Student::where('student_year_id',$year_id)->get();
       foreach($subjects as $subject){
-        $results[$subject->subject]['unitResults'] = StudentsResult::studentoverallTestsResults($students,$subject->subject);
-        $results[$subject->subject]['testResults'] = StudentsResult::studentsTestResults($students,$subject->subject);
+        $results[$subject->subject]['unitResults'] = StudentsResult::studentoverallTestsResults($students,$subject);
+        $results[$subject->subject]['testResults'] = StudentsResult::studentsTestResults($students,$subject);
       }
       //return $results;
-    return view('tests.studentResults.index',compact('results','nav','year_id','subjects'));
+    return view('tests.studentResults.index',compact('results','nav','year_id','subjects','year'));
   }
   public function departmentResults($year_id){
     $nav = Student::listCoursesByDepartment($year_id);
@@ -76,8 +77,8 @@ class StudentsResultsController extends Controller
       foreach($departments as $department){
         $students = Student::where('student_year_id',$year_id)->where('dept',$department)->get();
         $results = array();
-        $results['unitResults'] = StudentsResult::studentoverallTestsResults($students,$c->subject);
-        $results['testResults'] = StudentsResult::studentsTestResults($students,$c->subject);
+        $results['unitResults'] = StudentsResult::studentoverallTestsResults($students,$c);
+        $results['testResults'] = StudentsResult::studentsTestResults($students,$c);
         $array[$c->subject][$department] = $results;
       }
     }
@@ -90,27 +91,27 @@ class StudentsResultsController extends Controller
     $array = array();
     $courses = Student::listCourseOfDepartment($year_id,$department);
     $subjects = Subject::getSubjects();
-    foreach($subjects as $subject => $c){
+    foreach($subjects as $subject){
       foreach($courses as $course){
         $students = Student::where('student_year_id',$year_id)->where('course',$course)->get();
         $results = array();
-        $results['unitResults'] = StudentsResult::studentoverallTestsResults($students,$c->subject);
-        $results['testResults'] = StudentsResult::studentsTestResults($students,$c->subject);
-        $array[$c->subject][$course] = $results;
+        $results['unitResults'] = StudentsResult::studentoverallTestsResults($students,$subject);
+        $results['testResults'] = StudentsResult::studentsTestResults($students,$subject);
+        $array[$subject->subject][$course] = $results;
       }
     }
     //return $array;
-    return view('tests.studentResults.courseResults',compact('array','nav','year_id'));
+    return view('tests.studentResults.courseResults',compact('array','nav','year_id','department'));
   }
   public function studentsResults($year_id,$course){
     $nav = Student::listCoursesByDepartment($year_id);
     $subj = Subject::getSubjects();
 
     $array = array();
-    foreach($subj as $sub =>$c){
+    foreach($subj as $subject){
       $s = Student::where('student_year_id',$year_id)->where('course',$course)->get();
-      $results = StudentsResult::studentResults($s,$c->subject);
-      $array[$c->subject] = $results;
+      $results = StudentsResult::studentResults($s,$subject);
+      $array[$subject->subject] = $results;
     }
     //return $array;
     return view('tests.studentResults.studentsResults',compact('tests','nav','year_id','course','array'));
@@ -119,10 +120,10 @@ class StudentsResultsController extends Controller
   public function resultsView(){
     $subj = Subject::getSubjects();
     $array = array();
-    foreach($subj as $sub =>$c){
+    foreach($subj as $sub){
       $s = Student::where('student_id',StudentLogin::get_student_id())->get();
-      $results = StudentsResult::studentResults($s,$c->subject);
-      $array[$c->subject] = $results;
+      $results = StudentsResult::studentResults($s,$sub);
+      $array[$sub->subject] = $results;
     }
     //return $array;
     return view('tests.studentResults.results',compact('tests','nav','year_id','course','array'));

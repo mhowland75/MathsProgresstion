@@ -13,6 +13,26 @@ img {
     width: 100%;
     height: auto;
 }
+th{
+  color:black;
+  font-size: 17px;
+  text-align: center;
+}
+th p{
+  color:black;
+  font-size: 12px;
+  text-align: center;
+}
+td{
+  text-align: center;
+}
+.panel-heading {
+  background-color: blue;
+}
+.panel-body{
+  background-color: red;
+
+}
 .jumbotron h1 {
   font-family: Tahoma, Verdana, Segoe, sans-serif;
 	font-size: 70px;
