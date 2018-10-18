@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateEducationTable1 extends Migration
+class UpdateTestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateEducationTable1 extends Migration
      */
     public function up()
     {
-      Schema::table('education', function (Blueprint $table) {
-        $table->integer('views');
+      Schema::table('tests', function (Blueprint $table) {
+        $table->string('subject_id');
       });
     }
 
