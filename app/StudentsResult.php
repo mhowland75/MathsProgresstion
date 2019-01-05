@@ -22,6 +22,9 @@ class StudentsResult extends Model
     public function test(){
       return $this->belongsTo('App\Test','test_id');
     }
+    public function student(){
+      return $this->belongsTo('App\Student','student_id','student_id');
+    }
 
     public static function get_lastest_test_of_student($subject = 'maths'){
       $tests = Test::get_tests($subject);

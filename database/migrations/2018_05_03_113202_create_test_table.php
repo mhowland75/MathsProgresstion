@@ -17,6 +17,7 @@ class CreateTestTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('unit_id');
+            $table->string('subject_id');
             $table->string('department');
             $table->integer('passmark');
             $table->boolean('visibility');

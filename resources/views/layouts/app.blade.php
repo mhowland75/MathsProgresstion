@@ -86,7 +86,7 @@ function displayBlock() {
       @if(!empty($student[0]->student_id))
       <div style="float:right; margin-right:10%">
         @if (Auth::id())
-          <a href="/home">Backend</a>
+          <a href="/education/manage">Backend</a>
         @endif
         <div class="dropdownBox">
           <button class="dropbtnxLogin">

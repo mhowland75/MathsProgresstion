@@ -92,6 +92,7 @@ class EducationController extends Controller
       $subjects = subject::getSubjects();
       foreach($subjects as $subject){
         $xe = Education::where('subject_id',$subject->id)->get();
+        $unassociated = Education::where('subject_id',0)->get();
         foreach($xe as $x){
           $x->image = Storage::url($x->image);
           $user = User::find($x->created_by);
@@ -105,7 +106,21 @@ class EducationController extends Controller
         }
         $array[$subject->subject] = $xe;
       }
-    //  return $array;
+
+      $unassociated = Education::where('subject_id',0)->get();
+      foreach($unassociated as $y){
+        $y->image = Storage::url($y->image);
+        $user = User::find($y->created_by);
+        $y->created_by = $user->name;
+        $user = User::find($y->updated_by);
+        if(!$user){
+          $y->updated_by = 'Never Updated';
+        }else{
+          $y->updated_by = $user->name;
+        }
+      }
+
+      $array['Unassociated'] = $unassociated;
       return view('education.manage', compact('array'));
     }
     public function edit($id){

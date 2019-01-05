@@ -16,10 +16,14 @@ class CreateEducationTable extends Migration
         Schema::create('education', function (Blueprint $table) {
           $table->increments('id');
           $table->string('name');
-          $table->string('description',5000)->change();
-          $table->string('explanation');
+          $table->string('subject_id');
+          $table->string('subject');
+          $table->string('description',2000);
+          $table->string('explanation', 8000);
           $table->string('video');
           $table->string('image');
+          $table->integer('visibility');
+          $table->integer('views');
           $table->integer('created_by');
           $table->integer('updated_by')->nullable();
           $table->timestamps();

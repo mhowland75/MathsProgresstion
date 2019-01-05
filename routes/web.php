@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+  Route::get('/admin/create', 'AdminController@adminCreate');
 Route::group(['middleware'=>'Student'], function(){
   Route::post('/studentsResults/store', 'StudentsResultsController@store');
   Route::get('/studentsResults/view/{id}', 'StudentsResultsController@view');
@@ -52,6 +53,8 @@ Auth::routes();
 
 Route::group(['middleware'=>'AdminAccessLevel1'], function(){
 
+  Route::get('/studentsResults/csv', 'StudentsResultsController@resultCsv');
+
   Route::get('/students/results/{year}/overall/{subject}', 'StudentsResultsController@overall');
 
   Route::get('/student_year/create', 'StudentYearController@manage');
@@ -71,6 +74,7 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
     Route::get('/student/{studentId}/activate', 'StudentController@activate');
 
     Route::get('/subject/view', 'SubjectController@view');
+    Route::get('/subject/{subject_id}/delete', 'SubjectController@delete');
     Route::get('/subject/create', 'SubjectController@create');
     Route::post('/subject/create', 'SubjectController@store');
     Route::get('/subject/manage', 'SubjectController@manage');

@@ -18,15 +18,15 @@
                <tr>
                  <th>Subject</th>
                  <th>Lesson Count</th>
-                 <th>Email</th>
                </tr>
              </thead>
              <tbody>
                @foreach($subjects  as $subject)
                  <tr>
-                   <td>{{$subject->subject}}</td>
+                   <td><a href="/education/manage#{{$subject->subject}}"><h4>{{$subject->subject}}</h4></a></td>
                    <td>{{$subject->lessons->count()}}</td>
                    <td><a href="/subject/edit/{{$subject->id}}"><i style="font-size:20px" class="ion-edit"></i></a></td>
+                   <td><a data-toggle="tooltip" title="Remove" href="/subject/{{$subject->id}}/delete"><i style="font-size:20px" class="ion-android-delete"></i></a></td>
                  </tr>
                @endforeach
              </tbody>

@@ -20,12 +20,10 @@
             <th></th>
             <th>Title</th>
             <th>Introduction</th>
-            <th>Explanation</th>
             <th>Question</th>
             <th>Answer</th>
             <th>Created body</th>
             <th>Updated By</th>
-
           </tr>
         </thead>
         <tbody id="myTable">
@@ -34,7 +32,6 @@
             <td><img style="max-width:200px; min-width:100px" class="img-thumbnail" src='{{$x->image}}'/></td>
             <td>{{$x->name}}</td>
             <td>{!!$x->introduction!!}</td>
-            <td>{!!$x->explanation!!}</td>
             <td>{{$x->question}}</td>
             <td>{{$x->answer}}</td>
             <td>{{$x->created_by}}</td>

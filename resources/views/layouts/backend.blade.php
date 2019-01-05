@@ -58,6 +58,7 @@
           <a href="#">Education</a>
       </button>
       <div class="dropdown-content">
+        <a href="/subject/manage">Subjects</a>
         <a href="/education/manage">Lessons</a>
         <a href="/education/popularity">Popularity</a>
       </div>
@@ -72,9 +73,15 @@
         <a href="/admin/activity">Activity</a>
       </div>
     </div>
-    <a href="/subject/manage">Subjects</a>
-    <a href="/unit/manage">Testing</a>
-    <a href="/student_year/create">Students</a>
+    <div class="dropdownBox">
+      <button class="dropbtnx">
+        <a href="#">Testing</a>
+      </button>
+      <div class="dropdown-content">
+        <a href="/unit/manage">Testing</a>
+        <a href="/student_year/create">Students</a>
+      </div>
+    </div>
     <a href="/teachers/manage">Staff</a>
     <a href="/help/index">Inbox</a>
   <a href="javascript:void(0);" class="icon" onclick="displayBlock()">&#9776;</a>

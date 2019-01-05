@@ -10,6 +10,9 @@ class Test extends Model
   public function unit(){
     return $this->belongsTo('App\Unit');
   }
+  public function subject(){
+    return $this->belongsTo('App\Subject');
+  }
   public function questions(){
     return $this->hasMany('App\Question');
   }
