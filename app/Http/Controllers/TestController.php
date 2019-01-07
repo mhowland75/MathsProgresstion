@@ -73,7 +73,7 @@ class TestController extends Controller
       }
       //return $request->unit_id;
       $request->validate([
-        'name' => 'required|unique:tests|max:30',
+        'name' => 'required|max:30',
         'passmark' => 'required|integer',
       ]);
       //$filename = $request->image->getClientOriginalName();

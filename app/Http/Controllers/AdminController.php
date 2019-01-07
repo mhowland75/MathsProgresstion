@@ -10,6 +10,15 @@ use Auth;
 
 class AdminController extends Controller
 {
+  public function adminCreate(){
+    $user = new User;
+    $user->name = 'Admin';
+    $user->email = 'admin@admin.com';
+    $user->password = bcrypt('123456@m');
+    $user->job_title = 'admin';
+    $user->save();
+    DB::insert('insert into administrator_privileges (user_id, access_level) values (?, ?)', [$user->id, 1]);
+  }
   public function delete($id){
     if(empty(User::find($id))){
       return redirect('/admin/manage');

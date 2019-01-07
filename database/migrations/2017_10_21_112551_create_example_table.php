@@ -17,11 +17,12 @@ class CreateExampleTable extends Migration
             $table->increments('id');
             $table->integer('education_id');
             $table->string('name');
-            $table->string('introduction');
-            $table->string('explanation');
+            $table->string('introduction',1000);
+            $table->string('explanation',8000);
             $table->string('question');
             $table->string('answer');
             $table->string('image');
+            $table->integer('visibility');
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
             $table->timestamps();

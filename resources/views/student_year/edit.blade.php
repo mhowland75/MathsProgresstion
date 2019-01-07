@@ -252,6 +252,14 @@
                  <a href="/student_year/{{$year->id}}/results_rest"><button type="button" class="btn btn-danger">Reset</button></a>
                </div>
            </div>
+           <br />
+           <div class="form-group">
+               <label for="name" class="col-md-4 control-label">Result CSV</label>
+               <div class="col-md-6">
+
+                 <a href="/studentsResults/csv"><button type="button" class="btn btn-danger">Export CSV</button></a>
+               </div>
+           </div>
          </div>
        </div>
       </div>

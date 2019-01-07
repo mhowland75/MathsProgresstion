@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Answer;
 use App\Question;
 use App\StudentLogin;
@@ -16,6 +17,27 @@ use App\Test;
 
 class StudentsResultsController extends Controller
 {
+  public function resultcsv()
+    {
+      $results = StudentsResult::all();
+      //return $results[0]->test->unit->studentsYears->name;
+      $filename = "tweets.csv";
+      $handle = fopen($filename, 'w+');
+      fputcsv($handle, array('student_id', 'student_name', 'student_year_name', 'unit_name', 'subject', 'test_name', 'passmark','correct_answers'));
+
+      foreach($results as $result) {
+        //return $result->test->subject->subject;
+        $name = $result->student->firstname.' '.$result->student->surname;
+          fputcsv($handle, array($result->student_id, $name, $result->test->unit->studentsYears[0]->name, $result->test->unit->name, $result->test->subject->subject, $result->test->name,$result->test->passmark,$result->correct_answers));
+      }
+
+      fclose($handle);
+
+      $headers = array(
+          'Content-Type' => 'text/csv',
+      );
+      return Response::download($filename, 'tweets.csv', $headers);
+    }
   public function store(request $request){
 
     $question_id = array_keys($request->all());

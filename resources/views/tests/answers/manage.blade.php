@@ -12,7 +12,7 @@
     </div>
     @endif
   </div>
-  <div id="main-panel-head" class="panel-body">
+  <div id="main-panel-body" class="panel-body">
     <ul class="breadcrumb" style="background-color:#FFFFFF">
       <li><a href="/unit/manage">Units</a></li>
       <li><a href="/test/{{$id->test->unit->id}}/manage">Unit - {{$id->test->unit->name}}</a></li>
@@ -68,10 +68,9 @@
      </div>
      <div class="col-sm-5">
        <div class="row">
-           <div class="col-md-8 col-md-offset-2">
+           <div class="col-md-12">
                <div class="panel panel-default">
-                   <div class="panel-heading">Create queston code</div>
-
+                   <div class="panel-heading">Create Question</div>
                    <div class="panel-body">
                        <form class="form-horizontal" method="POST" action="/answers/create">
                            {{ csrf_field() }}

@@ -4,21 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subject;
+use App\Education;
 
 class SubjectController extends Controller
 {
-    public function create(){
-      return view('subject.create');
+    public function delete($subject_id){
+      $lessons = Education::where('subject_id',$subject_id)->get();
+      foreach($lessons as $lesson){
+        $lesson->subject_id = 0;
+        $lesson->save();
+      }
+      Subject::destroy($subject_id);
     }
     public function store(request $request){
       $data = new Subject;
       $data->subject = $request->subject;
       $data->visibility = 1;
       $data->save();
-      return redirect('subject/view');
-    }
-    public function view(){
-      return Subject::all();
+      return redirect('subject/manage');
     }
     public function manage(){
       $subjects = Subject::all();
