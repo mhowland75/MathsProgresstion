@@ -12,6 +12,7 @@ class DepartmentsController extends Controller
     public function delete($id){
       Department::destroy($id);
       return redirect('/departments/index');
+
       
     }
     public function index(){
