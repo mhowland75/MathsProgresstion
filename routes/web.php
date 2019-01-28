@@ -11,6 +11,7 @@
 |
 */
   Route::get('/results/view', 'studentsResultsController@resultsView');
+
   Route::get('/admin/create', 'AdminController@adminCreate');
 Route::group(['middleware'=>'Student'], function(){
   Route::post('/studentsResults/store', 'StudentsResultsController@store');
