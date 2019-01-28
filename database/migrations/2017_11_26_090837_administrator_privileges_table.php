@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class AdministratorPrivilegesTable extends Migration
 {
@@ -19,6 +20,9 @@ class AdministratorPrivilegesTable extends Migration
         $table->integer('access_level');
         $table->timestamps();
       });
+      DB::table('Administrator_privileges')->insert(
+          ['user_id' => 1, 'access_level' => 1]
+      );
     }
 
     /**
