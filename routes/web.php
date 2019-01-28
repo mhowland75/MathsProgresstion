@@ -10,20 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+  Route::get('/results/view', 'studentsResultsController@resultsView');
   Route::get('/admin/create', 'AdminController@adminCreate');
 Route::group(['middleware'=>'Student'], function(){
   Route::post('/studentsResults/store', 'StudentsResultsController@store');
   Route::get('/studentsResults/view/{id}', 'StudentsResultsController@view');
   Route::get('/studentsResults/index/{subject}', 'StudentsResultsController@index');
-  Route::get('/results/view', 'studentsResultsController@resultsView');
-    Route::get('/help/view', 'HelpController@view');
+
+
   Route::get('/departments/view', 'DepartmentsController@view');
 
   Route::get('/education/index/{subject_id}', 'EducationController@index');
   Route::get('/education/view/{id}', 'EducationController@view');
 
   Route::post('/help/store', 'HelpController@store');
-
+  Route::get('/help/view', 'HelpController@view');
 
   Route::get('/test/index/{subject_id}', 'TestController@index');
   Route::get('/test/{test}/view', 'TestController@view');

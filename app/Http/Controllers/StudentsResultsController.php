@@ -140,6 +140,7 @@ class StudentsResultsController extends Controller
 
   }
   public function resultsView(){
+    return 'working';
     $subj = Subject::getSubjects();
     $array = array();
     foreach($subj as $sub){
