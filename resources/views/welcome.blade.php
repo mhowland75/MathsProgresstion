@@ -16,6 +16,7 @@
       Diagnostic Revision has been created to provide Bath College students with a learning resource to aid them in passing the online maths and english tests at Diagnostic Questions.
       <br />
       We hope you find this website helpful and good luck with passing your exams.
+      dsjkcndskjnckjdsnclsdmck,x;asmcksdbkjasnmlkv slkdc,;smkldnclmc ;s,dl;c,dla
     </p>
   </center>
   <br />
