@@ -20,5 +20,4 @@ class Example extends Model
       {
           $this->attributes['answer'] = ucfirst($value);
       }
-      
 }
