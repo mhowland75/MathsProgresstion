@@ -15,7 +15,7 @@ class testingController extends Controller
         $results = StudentsResult::studentResults($s,$sub);
         $array[$sub->subject] = $results;
       }
-      return $array;
-      //return view('tests.studentResults.results',compact('tests','nav','year_id','course','array'));
+    //  return $array;
+      return view('tests.studentResults.results',compact('tests','nav','year_id','course','array'));
     }
 }
