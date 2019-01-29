@@ -17,7 +17,7 @@ use App\Test;
 class testingController extends Controller
 {
 
-  public function testing(){
+  public function testin(){
     $subj = Subject::getSubjects();
     $array = array();
     foreach($subj as $sub){
