@@ -138,7 +138,7 @@ class testingController extends Controller
     return view('tests.studentResults.studentsResults',compact('tests','nav','year_id','course','array'));
 
   }
-  public function resultsView(){
+  public function testing(){
     $subj = Subject::getSubjects();
     $array = array();
     foreach($subj as $sub){
