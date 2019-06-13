@@ -79,7 +79,7 @@ class ExamplesController extends Controller
     public function update(request $request){
       $request->validate([
           'name' => 'required|max:50|min:4',
-          'introduction' => 'required|max:500',
+          'introduction' => 'required|max:2000',
           'explanation' => 'required|max:5000|min:500',
       ]);
       $data = Example::find($request->id);
