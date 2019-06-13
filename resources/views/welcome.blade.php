@@ -3,7 +3,7 @@
 <div id="indexBanner" class="jumbotron">
   <div id="indexBannerText">
     <h3>Welcome to</h3>
-    <h1>Diagnostic Revision</h1>
+    <h1>Skills Development</h1>
   </div>
 </div>
 @endsection
@@ -13,7 +13,7 @@
   <br />
   <center>
     <p id="indexText">
-      Diagnostic Revision has been created to provide Bath College students with a learning resource to aid them in passing the online maths and english tests at Diagnostic Questions.
+      Skills Development has been created to provide Bath College students with a learning resource to aid them in learning.
       <br />
       We hope you find this website helpful and good luck with passing your exams.
     </p>
