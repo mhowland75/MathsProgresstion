@@ -66,7 +66,7 @@
              </div>
              <div class="col-sm-5">
                 <img class="img-rounded" src='{{$example->image}}'/>
-                <p>{{!!$example->introduction!!}}</p><br />
+                <p>{!!$example->introduction!!}</p><br />
              </div>
             </div>
           </div>
