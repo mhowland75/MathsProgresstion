@@ -84,11 +84,6 @@
          @endforeach
        </tbody>
        </table>
-       <div style="background-color:blue" class="row">
-        <div class="col-sm-4">.col-sm-4</div>
-        <div class="col-sm-4">.col-sm-4</div>
-        <div class="col-sm-4">.col-sm-4</div>
-       </div>
      </div>
     </div>
    @endforeach
