@@ -33,7 +33,7 @@
                   <td>{{$unit->tests->count()}}</td>
                   <td>
                     @foreach($unit->studentsYears as $name)
-                     <a href="/student_year/{{$name->id}}/index">{{$name->name}}</a><br />
+                     <a href="/student_year/{{$name->id}}/edit">{{$name->name}}</a><br />
                     @endforeach
                   </td>
                   <td>

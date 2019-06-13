@@ -32,13 +32,13 @@ class EducationController extends Controller
 
     public function store(request $request){
       //return $request->all();
-      //$request->validate([
-      //    'name' => 'required|max:50|min:4|unique:education,name',
-      //    'description' => 'required|max:500',
-      //    'explanation' => 'required|max:5000|min:1000',
-      //    'image' => 'required|image',
-      //    'video' => 'required|url',
-      //]);
+      $request->validate([
+          'name' => 'required|max:50|min:4|unique:education,name',
+          'description' => 'required|max:500',
+          'explanation' => 'required|max:5000|min:1000',
+          'image' => 'required|image|dimensions:max_width=850,max_height=850',
+          'video' => 'required|url',
+      ]);
       $filename = $request->image->getClientOriginalName();
       $data = new Education;
       $data->subject = 0;
@@ -123,6 +123,7 @@ class EducationController extends Controller
       $array['Unassociated'] = $unassociated;
       return view('education.manage', compact('array'));
     }
+    
     public function edit($id){
       if(empty(Education::find($id))){
         return redirect('/education/manage');
@@ -133,6 +134,7 @@ class EducationController extends Controller
       //return $data->subject_subject;
       return view('education.edit',compact('data','subjects'));
     }
+
     public function update(request $request){
       $request->validate([
           'name' => 'required|max:50|min:4',

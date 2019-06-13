@@ -73,7 +73,7 @@
                <div class="panel panel-default">
                    <div class="panel-heading">Create Test</div>
                    <div class="panel-body">
-                       <form class="form-horizontal" method="POST" action="/test/create">
+                       <form class="form-horizontal" method="POST" action="/test/create/test">
                            {{ csrf_field() }}
                            <input type="hidden" name="unit_id" value="{{$unit_id->id}}">
                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

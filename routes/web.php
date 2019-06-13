@@ -90,8 +90,7 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::get('/unit/{unit_id}/delete', 'UnitsController@delete');
   Route::post('/unit/create', 'UnitsController@store');
   Route::get('/test/{unit_id}/manage', 'TestController@manage');
-  Route::get('/test/create', 'TestController@create');
-  Route::post('/test/create', 'TestController@store');
+  Route::post('/test/create/test', 'TestController@store');
   Route::get('/test/{id}/questions', 'TestController@manageQuestions');
   Route::get('/test/{test}/delete', 'TestController@delete');
   Route::get('/test/{test}/edit', 'TestController@edit');

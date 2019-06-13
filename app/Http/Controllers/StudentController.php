@@ -10,8 +10,9 @@ use DB;
 
 class StudentController extends Controller
 {
-  public function edit(Student $student){
-    return view('student.edit',compact('student'));
+  public function edit($student){
+    $data =  Student::find($student);
+    return view('student.edit', compact('data'));
   }
 
   public function update(request $request){
@@ -39,10 +40,9 @@ class StudentController extends Controller
         'student_id' => 'required|max:14|min:10',
         'firstname' => 'required|max:50',
         'lastname' => 'required|max:50',
-        'primary_tutor' => 'required',
-        'dept' => 'required',
+        'tutor' => 'required',
+        'department' => 'required',
         'course' => 'required',
-        'gcse_maths_grade' => 'required',
         'withdrawn' => 'required',
     ]);
     $x = new Student;

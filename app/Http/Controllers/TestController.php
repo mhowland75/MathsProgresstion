@@ -68,6 +68,7 @@ class TestController extends Controller
       return view('tests.create');
     }
     public function store(request $request){
+      dump('heelo');
       if(Unit::unitActive($request->unit_id)){
         return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
       }

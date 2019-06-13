@@ -13,8 +13,7 @@ class StudentYearController extends Controller
     public function manage(){
       $years = StudentYear::all();
       $units = Unit::all();
-      //return $units;
-      return view('student_year.manage',compact('units','years'));
+      return view('student_year.manage', compact('units','years'));
     }
     public function store(request $request){
       $data = new StudentYear;

@@ -12,60 +12,63 @@
      <div class="col-sm-7">
        <div class="panel panel-default">
       <div class="panel-body">
-        <table class="table table-striped">
-              <thead>
+        @if(isset($years[0]->id))
+          <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Groups</th>
+                    <th>No. of Students</th>
+                    <th>Associated Unit</th>
+                    <th>Active</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @forelse($years as $year)
                 <tr>
-                  <th>Groups</th>
-                  <th>No. of Students</th>
-                  <th>Associated Unit</th>
-                  <th>Active</th>
+                  <td><a href="/student_year/{{$year->id}}/edit">{{$year->name}}</a></td>
+                  <td><a href="/student/{{$year->id}}/index">{{$year->students->count()}}</a></td>
+                  <td>
+                  @if(!empty($year->unit->id))
+                    <a href="/test/{{$year->unit->id}}/manage">{{$year->unit->name}}</a>
+                  @else
+                    <p>
+                      No Associated Unit
+                    </p>
+                  @endif
+                  </td>
+                  <td><a href="/student_year/{{$year->id}}/activate">
+                    @if($year->student_login_active)
+                      <i style="font-size:20px" class="ion-toggle-filled"></i>
+                    @else
+                      <i style="font-size:20px" class="ion-toggle"></i>
+                    @endif
+                  </a></td>
+                  <td>
+                    <a data-toggle="tooltip" title="Edit" href="/student_year/{{$year->id}}/edit">
+                      <i style="font-size:20px" class="ion-edit"></i>
+                    </a>
+                  </td>
+                  <td>
+                    <a data-toggle="tooltip" title="Delete" href="/student_year/{{$year->id}}/delete">
+                      <i style="font-size:20px" class="ion-ios-trash"></i>
+                    </a>
+                  </td>
+                  <td>
+                    <a data-toggle="tooltip" title="Results" href="/results/index/{{$year->id}}">
+                      <i style="font-size:20px" class="ion-ios-book"></i>
+                    </a>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-              @forelse($years as $year)
-              <tr>
-                <td><a href="/student_year/{{$year->id}}/edit">{{$year->name}}</a></td>
-                <td><a href="/student/{{$year->id}}/index">{{$year->students->count()}}</a></td>
-                <td>
-                 @if(!empty($year->unit->id))
-                  <a href="/test/{{$year->unit->id}}/manage">{{$year->unit->name}}</a>
-                 @else
-                   <p>
-                     No Associated Unit
-                   </p>
-                 @endif
-                </td>
-                 <td><a href="/student_year/{{$year->id}}/activate">
-                   @if($year->student_login_active)
-                     <i style="font-size:20px" class="ion-toggle-filled"></i>
-                   @else
-                     <i style="font-size:20px" class="ion-toggle"></i>
-                   @endif
-                 </a></td>
-                 <td>
-                   <a data-toggle="tooltip" title="Edit" href="/student_year/{{$year->id}}/edit">
-                     <i style="font-size:20px" class="ion-edit"></i>
-                   </a>
-                 </td>
-                 <td>
-                   <a data-toggle="tooltip" title="Delete" href="/student_year/{{$year->id}}/delete">
-                     <i style="font-size:20px" class="ion-ios-trash"></i>
-                   </a>
-                 </td>
-                 <td>
-                   <a data-toggle="tooltip" title="Results" href="/results/index/{{$year->id}}">
-                     <i style="font-size:20px" class="ion-ios-book"></i>
-                   </a>
-                 </td>
-              </tr>
-              @empty
-                 <p>
-                   There are no test.
-                 </p>
-              @endforelse
+                @empty
+                @endforelse
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        @else
+          <div class="alert alert-info">
+              <strong>Info!</strong> There are currently no student set.
+          </div>
+        @endif
       </div>
       </div>
      </div>
@@ -77,7 +80,8 @@
                      Create Student Group
                    </p></div>
                    <div class="panel-body">
-                       <form class="form-horizontal" method="POST" action="/student_year/create">
+                   @if(isset($units[0]->id))
+                   <form class="form-horizontal" method="POST" action="/student_year/create">
                            {{ csrf_field() }}
 
                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -128,6 +132,11 @@
                                </div>
                            </div>
                        </form>
+                    @else
+                      <div class="alert alert-warning">
+                        <strong>Warning!</strong> There are currently no units. You will need to create a unit before creating a new student set.
+                      </div>
+                   @endif
                    </div>
                </div>
            </div>
