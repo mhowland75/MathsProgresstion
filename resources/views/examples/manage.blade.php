@@ -22,8 +22,8 @@
             <th>Introduction</th>
             <th>Question</th>
             <th>Answer</th>
-            <th>Created body</th>
-            <th>Updated By</th>
+            <th>Created</th>
+            <th>Updated</th>
           </tr>
         </thead>
         <tbody id="myTable">
