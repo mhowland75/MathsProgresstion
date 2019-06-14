@@ -80,7 +80,7 @@ class ExamplesController extends Controller
       $request->validate([
           'name' => 'required|max:50|min:4',
           'introduction' => 'required|max:2000',
-          'explanation' => 'required|max:5000|min:500',
+          'explanation' => 'required|max:5000',
       ]);
       $data = Example::find($request->id);
       if ($request->hasFile('image')) {
