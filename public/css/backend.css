@@ -35,19 +35,18 @@ td a i{
 #page{
   min-height:570px;
   padding:1%;
-  width:80%;
+  width:100%;
   height: inherit;
-  margin-left: 10%;
   background-color: rgba(254, 254, 254, 0.7);
 }
 #main-panel-head{
   border-radius: 0;
-  background-color: #82e0aa ;
+  background-color: #e5e7e9 ;
   font-weight: bold;
 }
 #main-panel-body{
   border-radius: 0;
-  background-color:#d6eaf8;
+  background-color: #f8f9f9 ;
 }
 #dashboardBox{
   text-align: center;
