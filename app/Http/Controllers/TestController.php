@@ -45,16 +45,25 @@ class TestController extends Controller
         return redirect()->back();
       }
     }
+    /**
+     * loads tests of subject_id
+     */
     public function index(Subject $subject_id){
+      // If no student is logged in then redirect
+      if(!StudentLogin::get_student_id())
+      {
+        return redirect('/student/login');
+      }
       $tests = Test::getStudentTests($subject_id);
       $results = Test::getStudentsTestsResults($tests);
-      //$results[11]->test->passmark;
       $overallResults = Test::studentTestResultsSummery($results);
       $subject = ucfirst($subject_id->subject);
-      //return $results;
-      //$tests = Test::return_test_by_department($subject)->where('visibility',1)->get();
-      return view('tests.index',compact('tests','results','subject', 'overallResults'));
+      
+      return view('tests.index', compact('tests','results','subject', 'overallResults'));
     }
+    /**
+     * 
+     */
     public function manage(Unit $unit_id){
       $subjects = Subject::getSubjects();
     //  return $subjects;
@@ -68,7 +77,6 @@ class TestController extends Controller
       return view('tests.create');
     }
     public function store(request $request){
-      dump('heelo');
       if(Unit::unitActive($request->unit_id)){
         return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
       }
