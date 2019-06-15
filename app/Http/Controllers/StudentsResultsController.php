@@ -17,6 +17,9 @@ use App\Test;
 
 class StudentsResultsController extends Controller
 {
+  /**
+   * 
+   */
   public function resultcsv()
     {
       $results = StudentsResult::all();
@@ -38,7 +41,10 @@ class StudentsResultsController extends Controller
       );
       return Response::download($filename, 'tweets.csv', $headers);
     }
-  public function store(request $request){
+    /**
+     * 
+     */
+    public function store(request $request){
 
     $question_id = array_keys($request->all());
     $question_id = $question_id[1];
@@ -70,12 +76,17 @@ class StudentsResultsController extends Controller
     }
     return redirect('/studentsResults/view/'.$result->test_id);
   }
-
+  /**
+   * 
+   */
   public function view($id){
      $studentResults = StudentsResult::get_student_results($id);
      //return $studentResults->student_answers;
     return view('tests.studentResults.view',compact('studentResults'));
   }
+  /**
+   * 
+   */
   public function index($year_id){
     $year = StudentYear::find($year_id);
     $nav = Student::listCoursesByDepartment($year_id);
@@ -90,6 +101,9 @@ class StudentsResultsController extends Controller
       //return $results;
     return view('tests.studentResults.index',compact('results','nav','year_id','subjects','year'));
   }
+  /**
+   * 
+   */
   public function departmentResults($year_id){
     $nav = Student::listCoursesByDepartment($year_id);
     $array = array();
@@ -108,6 +122,9 @@ class StudentsResultsController extends Controller
 
     return view('tests.studentResults.departmentResults',compact('array','nav','year_id','subjects'));
   }
+  /**
+   * 
+   */
   public function courseResults($year_id,$department){
     $nav = Student::listCoursesByDepartment($year_id);
     $array = array();
@@ -125,6 +142,9 @@ class StudentsResultsController extends Controller
     //return $array;
     return view('tests.studentResults.courseResults',compact('array','nav','year_id','department'));
   }
+  /**
+   * 
+   */
   public function studentsResults($year_id,$course){
     $nav = Student::listCoursesByDepartment($year_id);
     $subj = Subject::getSubjects();
@@ -139,7 +159,15 @@ class StudentsResultsController extends Controller
     return view('tests.studentResults.studentsResults',compact('tests','nav','year_id','course','array'));
 
   }
+  /**
+   * Displays students test results.
+   */
   public function resultsView(){
+    // If no student is logged in then redirect
+    if(!StudentLogin::get_student_id())
+    {
+      return redirect('/student/login');
+    }
     $subj = Subject::getSubjects();
     $array = array();
     foreach($subj as $sub){
