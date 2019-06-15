@@ -7,6 +7,9 @@ use App\Unit;
 use App\StudentLogin;
 class UnitsController extends Controller
 {
+  /**
+   * Mangae unit
+   */
     public function manage(){
       $units = Unit::get_all_units();
       foreach($units as $unit){
@@ -14,6 +17,9 @@ class UnitsController extends Controller
       }
       return view('units.manage',compact('units'));
     }
+    /**
+     * Store Unit
+     */
     public function store(request $request){
       $request->validate([
         'name' => 'required|unique:units|max:30',
@@ -28,6 +34,9 @@ class UnitsController extends Controller
       //$request->image->storeAs('public', $filename);
       return redirect()->back();
     }
+    /**
+     * Results
+     */
     public function results(Unit $unit_id){
       $unit_tests = $unit_id->tests;
       foreach($unit_tests as $test){
@@ -42,7 +51,13 @@ class UnitsController extends Controller
       }
       return $x->studentsResults;
     }
+    /**
+     * Delete Unit
+     */
     public function delete($id){
+      if(Unit::unitActive($id)){
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
+      }
       Unit::unitDelete($id);
       return redirect()->back();
     }
