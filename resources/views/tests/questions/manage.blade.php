@@ -32,7 +32,7 @@
             <tbody>
               @foreach($id->questions as $question)
               <tr>
-                <td><a href="/questions/{{$question->id}}/answers">{{$question->question}}</a></td>
+                <td><a href="/questions/{{$question->id}}/answers">{!! $question->question !!}</a></td>
                 <td>
                   @if($question->image)
                    <img style="max-width:200px; min-width:100px"  class="img-thumbnail" src='{{$question->image}}'/>
@@ -70,7 +70,7 @@
      </div>
      <div class="col-sm-5">
            <div class="row">
-               <div class="col-md-8 col-md-offset-2">
+               <div class="col-md-12">
                    <div class="panel panel-default">
                        <div class="panel-heading">Create Questions</div>
 
@@ -81,9 +81,9 @@
                                <input type="hidden" name="test_id" value="{{$id->id}}">
 
                                <div class="form-group{{ $errors->has('question') ? ' has-error' : '' }}">
-                                   <label for="question" class="col-md-4 control-label">Question</label>
-                                   <div class="col-md-6">
-                                       <input id="question" type="text" class="form-control" name="question" value="{{ old('question') }}" required autofocus>
+                                   <label for="question" class="col-md-2 control-label">Question</label>
+                                   <div class="col-md-10">
+                                      <textarea style="height:300px" id="question" type="textarea" class="form-control" name="question"></textarea>
                                        @if ($errors->has('question'))
                                            <span class="help-block">
                                                <strong>{{ $errors->first('question') }}</strong>
@@ -93,9 +93,9 @@
                                </div>
 
                                <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                   <label for="image" class="col-md-4 control-label">Image</label>
-                                   <div class="col-md-6">
-                                       <input id="image" type="file" name="image" value="{{ old('image') }}">
+                                   <label for="image" class="col-md-2 control-label">Image</label>
+                                   <div class="col-md-8">
+                                       <input class="form-control" id="image" type="file" name="image" value="{{ old('image') }}">
                                        @if ($errors->has('image'))
                                            <span class="help-block">
                                                <strong>{{ $errors->first('image') }}</strong>

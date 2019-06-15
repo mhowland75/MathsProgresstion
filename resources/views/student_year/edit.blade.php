@@ -83,7 +83,7 @@
                @endif
               <form class="form-horizontal" method="POST" action="/student/create" enctype="multipart/form-data">
                   {{ csrf_field() }}
-                                 <input type="hidden" name="year" value="{{$year->id}}">
+                <input type="hidden" name="year" value="{{$year->id}}">
                   <div class="form-group{{ $errors->has('student_id') ? ' has-error' : '' }}">
                       <label for="name" class="col-md-4 control-label">Append</label>
                       <div class="col-md-6">

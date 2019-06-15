@@ -9,36 +9,61 @@
   <div id="main-panel-body" class="panel-body">
     <div class="row">
      <div class="col-sm-6">
-       <div class="panel panel-default">
-         <div class="row">
-          <div class="col-sm-4"></div>
-          <div class="col-sm-8"><center><input style="margin:20px; width:80%;" class="form-control" id="myInput" type="text" placeholder="Search.."></center></div>
-         </div>
+     <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+            <div class="row">
+              <div class="col-md-11 col-md-offset-1">
+                <div class="row">
+                <div class="col-sm-5">
+                  <b><p>Email</p></b>
+                </div>
+                <div class="col-sm-1">
+                  <b><p>Level</p></b>
+                </div>
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-4">
+                </div>
+                </div>
+              <form class="form-horizontal" method="POST" action='/admin/update'>
+                  {{ csrf_field()}}
 
-         <div class="panel-body">
-           <table  class="table table-striped">
-           <thead>
-             <tr>
-               <th>Name</th>
-               <th>Email</th>
-               <th>Job Title</th>
-             </tr>
-           </thead>
-           <tbody id="myTable">
-             @foreach ($data as $x)
-             <tr>
-               <td style="width: 5%;">{{$x->name}}</td>
-               <td>{{$x->email}}</td>
-                 <td>{{$x->job_title}}</td>
-               <td><a data-toggle="tooltip" title="Edit" href="/admin/edit/{{$x->id}}"><i style="font-size:20px" class="ion-edit"></i></a></td>
-               <td><a data-toggle="tooltip" title="Remove" href="/admin/{{$x->id}}/delete/user"><i style="font-size:20px" class="ion-android-delete"></i></a></td>
-             </tr>
-             @endforeach
-           </tbody>
-         </table>
-         </div>
-       </div>
-     </div>
+              @forelse ($data as $admin)
+              <div class="row">
+              <div class="col-sm-5">
+                {{$admin['userinfo'][0]->email}}
+              </div>
+              <div class="col-sm-1">
+                {{$admin['admininfo']->access_level}}
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                    <select name="{{$admin['admininfo']->id}}" class="form-control">
+                      <option value="1" <?php if($admin['admininfo']->access_level == 1){echo'selected';}?>>1</option>
+                      <option value="2" <?php if($admin['admininfo']->access_level == 2){echo'selected';}?>>2</option>
+                      <option value="3" <?php if($admin['admininfo']->access_level == 3){echo'selected';}?>>3</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                  <a href="/admin/delete/{{$admin['admininfo']->id}}"><center><i style="font-size:20px" class="ion-android-delete"></i></center></a>
+              </div>
+              </div>
+                @empty
+                    <p>No users</p>
+
+                @endforelse
+                <center><button  type="submit" class="btn btn-success">Update privileges</button></center>
+            </form>
+          </div>
+        </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
      <div class="col-sm-6">
        <div class="row">
 

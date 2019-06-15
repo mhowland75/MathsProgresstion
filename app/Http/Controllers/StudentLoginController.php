@@ -28,7 +28,6 @@ class StudentLoginController extends Controller
         session()->flash('msg', 'Incorrect Student ID or Password.');
         return redirect()->back();
       }
-      //return StudentLogin::password_reset_status($this->get_student_id());
       if(StudentLogin::password_reset_status($this->get_student_id())){
         return redirect('/');
       }

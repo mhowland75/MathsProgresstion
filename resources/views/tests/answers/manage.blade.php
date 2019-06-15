@@ -4,7 +4,7 @@
 <div class="panel panel-default">
   <div id="main-panel-head"  class="panel-heading">
     <center>
-      <h1>{{$id->test->name}} - {{$id->question}}</h1>
+      <h1>{{$id->test->name}} - {!! $id->question !!}</h1>
     </center>
   </div>
   @if($errors->any())

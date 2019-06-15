@@ -7,13 +7,22 @@
     </center>
   </div>
 @endsection
+@if($errors->any())
+    <div class="alert alert-warning">
+      <strong>You have not answered the following questions</strong>
+        @foreach($errors as $error)
+          {!! $error !!}
+         @endforeach
+    </div>
+@endif
 <form class="form-horizontal" method="POST" action="/studentsResults/store">
     {{ csrf_field() }}
     <?php $x=0 ?>
   @foreach($test->questions as $question)
+  <input type="hidden" name="{{ $question->id }}" value=0>
   <?php $x++ ?>
   <div class="panel panel-default">
-    <div style="background-color:  #f2f3f4" class="panel-heading"><h2>{{$question->question}}</h2></div>
+    <div style="background-color:  #f2f3f4" class="panel-heading"><h2>{!! $question->question !!}</h2></div>
     <div style="background-color: #f4f6f6" class="panel-body">
       @if($question->visibility == 1)
       <div class="row">
@@ -49,8 +58,8 @@
   </div>
   @endforeach
   <div class="form-group">
-      <div class="col-md-6 col-md-offset-4">
-          <button type="submit" class="btn btn-primary">
+      <div>
+          <button style="float:right" type="submit" class="btn-lg btn-primary">
               Submit Test
           </button>
       </div>

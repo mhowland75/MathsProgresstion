@@ -10,6 +10,9 @@ use Auth;
 
 class AdminController extends Controller
 {
+  /**
+   * Admin create
+   */
   public function adminCreate(){
     $user = new User;
     $user->name = 'Admin';
@@ -19,6 +22,9 @@ class AdminController extends Controller
     $user->save();
     DB::insert('insert into administrator_privileges (user_id, access_level) values (?, ?)', [$user->id, 1]);
   }
+  /**
+   * Admin Delete
+   */
   public function delete($id){
     if(empty(User::find($id))){
       return redirect('/admin/manage');
@@ -27,13 +33,16 @@ class AdminController extends Controller
     DB::table('administrator_privileges')->where('user_id', '=', $id)->delete();
     return redirect('/admin/manage');
   }
-    public function create(){
-      return view('auth.register');
-    }
+  /**
+   * Admin edit
+   */
     public function edit($id){
       $data = User::find($id);
       return view('admin.edit',compact('data'));
     }
+    /**
+     * Admin Update
+     */
     public function update(request $request){
       $data = User::find($request->id);
       $data->name = $request->name;
@@ -47,6 +56,9 @@ class AdminController extends Controller
       $data->save();
       return redirect('admin/manage');
     }
+    /**
+     * Admin Store
+     */
     public function store(request $request){
       $request->validate([
           'name' => 'required|max:30|min:2',
@@ -67,11 +79,10 @@ class AdminController extends Controller
         ]);
       return redirect('admin/manage');
     }
+    /**
+     * Admin Manage
+     */
     public function manage(){
-      $data = Admin::all();
-      return view('admin/manage',compact('data'));
-    }
-    public function manageAdministration(){
       $admins = DB::table('administrator_privileges')->get();
       $data = array();
       foreach ($admins as $admin) {
@@ -81,8 +92,11 @@ class AdminController extends Controller
         $x['admininfo'] = $admin;
         $data[] = $x;
       }
-      return view('admin.manageAdmin', compact('data'));
+      return view('admin/manage',compact('data'));
     }
+    /**
+     * Update admin
+     */
     public function updateAdministrator(){
       if(isset($_POST)){
          unset($_POST['_token']);
@@ -97,10 +111,13 @@ class AdminController extends Controller
               }
             }
         }
-      return redirect('/admin/manageAccess');
+      return redirect('/admin/manage');
     }
+    /**
+     * Remove admin
+     */
     public function removeAdministrator($id){
       DB::table('administrator_privileges')->where('id', $id)->delete();
-      return redirect('/admin/manageAccess');
+      return redirect('/admin/manage');
     }
 }

@@ -42,10 +42,20 @@ class StudentsResultsController extends Controller
       return Response::download($filename, 'tweets.csv', $headers);
     }
     /**
-     * 
+     * Store student results
      */
     public function store(request $request){
-
+      $validate = [];
+      foreach($request->all() as $key => $q){
+        if(!$q){
+          $validate[] = Question::find($key)->question;
+        }
+      }
+     dump($validate);
+     die();
+    if($validate){
+      //return Redirect()->back()->withErrors($validate);
+    }
     $question_id = array_keys($request->all());
     $question_id = $question_id[1];
     $test = Question::find($question_id)->test()->get();
