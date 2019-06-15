@@ -29,13 +29,14 @@ class EducationController extends Controller
     }
       return redirect('/education/manage');
   }
-
+    /**
+     * Handels the education form request.
+     */
     public function store(request $request){
-      //return $request->all();
       $request->validate([
-          'name' => 'required|max:50|min:4|unique:education,name',
-          'description' => 'required|max:500',
-          'explanation' => 'required|max:5000|min:1000',
+          'name' => 'required|max:50|min:2|unique:education,name',
+          'description' => 'required|max:2000',
+          'explanation' => 'required|max:5000',
           'image' => 'required|image|dimensions:max_width=850,max_height=850',
           'video' => 'required|url',
       ]);
@@ -59,7 +60,9 @@ class EducationController extends Controller
       $subjects = Subject::getSubjects();
       return view('education.create', compact('subjects'));
     }
-
+    /**
+     * Education view
+     */
     public function view($id){
 
       if(empty(Education::find($id))){
@@ -78,7 +81,9 @@ class EducationController extends Controller
       }
       return view('education.view', compact('data','examples'));
     }
-
+    /**
+     * Education Index
+     */
     public function index(Subject $subject_id){
         $data = Education::where('subject_id',$subject_id->id)->where('visibility', 1)->get();
         foreach($data as $x){
@@ -87,6 +92,9 @@ class EducationController extends Controller
         $subject = ucfirst($subject_id->subject);
         return view('education.index', compact('data','subject'));
     }
+    /**
+     * Education manage 
+     */
     public function manage(){
       $array = array();
       $subjects = subject::getSubjects();
@@ -123,7 +131,9 @@ class EducationController extends Controller
       $array['Unassociated'] = $unassociated;
       return view('education.manage', compact('array'));
     }
-    
+    /**
+     * Education edit
+     */
     public function edit($id){
       if(empty(Education::find($id))){
         return redirect('/education/manage');
@@ -134,12 +144,14 @@ class EducationController extends Controller
       //return $data->subject_subject;
       return view('education.edit',compact('data','subjects'));
     }
-
+    /**
+     * Education update
+     */
     public function update(request $request){
       $request->validate([
           'name' => 'required|max:50|min:4',
-          'description' => 'required|max:500',
-          'explanation' => 'required|max:5000|min:1000',
+          'description' => 'required|max:2000',
+          'explanation' => 'required|max:5000',
           'video' => 'required|url',
       ]);
       $data = Education::find($request->id);
@@ -158,6 +170,9 @@ class EducationController extends Controller
       $data->save();
       return redirect('/education/manage');
     }
+    /**
+     * Education delete
+     */
     public function delete($id){
       if(empty(Education::find($id))){
         return redirect('/education/manage');
@@ -165,6 +180,9 @@ class EducationController extends Controller
       Education::destroy($id);
       return redirect('/education/manage');
     }
+    /**
+     * Education popularity
+     */
     public function lessonPopularity(){
       $data = Education::select('name','views')->orderBy('views', 'DESC')->get();
       $r = 1;
@@ -175,6 +193,9 @@ class EducationController extends Controller
       }
       return $data;
     }
+    /**
+     * Education populartity view
+     */
     public function popularityView(){
       $data = $this->lessonPopularity();
         return view('education.popularity',compact('data'));

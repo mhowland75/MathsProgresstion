@@ -12,16 +12,25 @@ use App\StudentsAnswer;
 
 class QuestionsController extends Controller
 {
+    /**
+     * Question manage
+     */
     public function manage(Question $id){
       return view('tests.answers.manage',compact('id'));
     }
-
+    /**
+     * Manage answers
+     */
     public function manage_answers(){
       return view('test.questions.manageAnswers');
     }
+
+    /**
+     * Edit Questions
+     */
     public function edit(Question $question){
       if(Unit::unitActive($question->test->unit->id)){
-        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
       }
         if(!empty($question->image)){
           $question->image = Storage::url($question->image);
@@ -30,8 +39,11 @@ class QuestionsController extends Controller
         }
       return view('tests.questions.edit',compact('question'));
     }
+
+    /**
+     * Update Questions
+     */
     public function update(request $request){
-      //return $request->all();
       $data = Question::find($request->question_id);
       if(empty($request->rem_image)){
         if(!empty($request->image)){
@@ -48,7 +60,15 @@ class QuestionsController extends Controller
       $data->save();
       return redirect()->back();
     }
+
+    /**
+     * Store Questions
+     */
     public function store(request $request){
+      $test = Test::find($request->test_id);
+      if(Unit::unitActive($test->unit->id)){
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
+      }
       if(!empty($request->image)){
         $filename = $request->image->getClientOriginalName();
       }else{
@@ -65,17 +85,22 @@ class QuestionsController extends Controller
       }
       return redirect()->back();
     }
+    /**
+     * Delete Questions
+     */
     public function delete(Question $question){
       if(Unit::unitActive($question->test->unit->id)){
-        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
       }
         Question::deleteQuestion($question->id);
         return redirect()->back();
     }
-
+    /**
+     * Question visibility
+     */
     public function visibility(Question $question){
       if(Unit::unitActive($question->test->unit->id)){
-        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
       }
       Question::change_visibility($question->id);
       return redirect()->back();

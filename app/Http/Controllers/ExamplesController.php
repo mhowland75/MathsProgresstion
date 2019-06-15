@@ -12,6 +12,9 @@ use DB;
 
 class ExamplesController extends Controller
 {
+    /**
+     * Example visablity
+     */
     public function visibility($id){
       $status = DB::table('examples')->where('id',$id)->get();
       if($status[0]->visibility == 1){
@@ -27,16 +30,22 @@ class ExamplesController extends Controller
       $x = $status[0]->education_id;
         return redirect('/examples/'.$x.'/manage');
     }
+    /**
+     * Create example
+     */
     public function create(request $request){
       $id = $request->id;
       $data = Education::find($id);
       return view('examples.create',compact('id','data'));
     }
+    /**
+     * Store example 
+     */
     public function store(request $request){
       $request->validate([
           'name' => 'required|max:50|min:4',
-          'introduction' => 'required|max:500',
-          'explanation' => 'required|max:5000|min:500',
+          'introduction' => 'required|max:2000',
+          'explanation' => 'required|max:5000',
           'image' => 'required|image',
       ]);
       $data = new Example;
@@ -54,6 +63,9 @@ class ExamplesController extends Controller
       $data->save();
       return redirect('/examples/'.$request->id.'/manage');
     }
+    /**
+     * Manage example
+     */
     public function manage($id){
       $education = Education::find($id);
       $data = Example::where('education_id',$id)->get();
@@ -70,12 +82,18 @@ class ExamplesController extends Controller
       }
       return view('examples.manage',compact('data','education'));
     }
+    /**
+     * Edit Example
+     */
     public function edit($id){
       $data = Example::find($id);
       $education = Education::find($data->education_id);
       $data->image = Storage::url($data->image);
       return view('examples.edit',compact('data','education'));
     }
+      /**
+     * Update Example
+     */
     public function update(request $request){
       $request->validate([
           'name' => 'required|max:50|min:4',
@@ -97,6 +115,9 @@ class ExamplesController extends Controller
       $data->save();
       return redirect('examples/'.$request->education_id.'/manage');
     }
+    /**
+     * Delete Example
+     */
     public function delete($id){
       Example::destroy($id);
       $data = Example::find($id);

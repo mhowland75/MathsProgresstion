@@ -6,12 +6,12 @@
     <center>
       <h1>{{$id->test->name}} - {{$id->question}}</h1>
     </center>
-    @if($errors->any())
-    <div class="alert alert-warning">
-      <h4>{{$errors->first()}}</h4>
-    </div>
-    @endif
   </div>
+  @if($errors->any())
+    <div class="alert alert-warning">
+      <strong>Warning!</strong> {{$errors->first()}}
+    </div>
+  @endif
   <div id="main-panel-body" class="panel-body">
     <ul class="breadcrumb" style="background-color:#FFFFFF">
       <li><a href="/unit/manage">Units</a></li>

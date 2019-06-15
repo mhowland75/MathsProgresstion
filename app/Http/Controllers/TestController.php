@@ -14,14 +14,21 @@ use App\Subject;
 use App\StudentLogin;
 class TestController extends Controller
 {
+    /**
+     * Edit test
+     */
     public function edit(Test $test){
       if(Unit::unitActive($test->unit->id)){
-        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
       }
       $subjects = Subject::getSubjects();
       //return $subjects;
       return view('tests.edit', compact('test','subjects'));
     }
+
+    /**
+     * Update test
+     */
     public function update(request $request, $id){
       $test = test::find($id);
       $test->name = $request->name;
@@ -29,8 +36,13 @@ class TestController extends Controller
       $test->department = 0;
       $test->passmark = $request->passmark;
       $test->save();
+
       return redirect('/test/'.$test->unit->id.'/manage');
     }
+
+    /**
+     * Test view
+     */
     public function view(Test $test){
       if(Test::studentTestVerification($test->id)){
         foreach($test->questions as $x){
@@ -40,11 +52,14 @@ class TestController extends Controller
             $x->image = 0;
           }
         }
+
         return view('tests.view', compact('test'));
       }else {
+
         return redirect()->back();
       }
     }
+
     /**
      * loads tests of subject_id
      */
@@ -61,8 +76,9 @@ class TestController extends Controller
       
       return view('tests.index', compact('tests','results','subject', 'overallResults'));
     }
+
     /**
-     * 
+     * Manage Tests
      */
     public function manage(Unit $unit_id){
       $subjects = Subject::getSubjects();
@@ -73,9 +89,17 @@ class TestController extends Controller
       }
       return view('tests.manage',compact('array','subjects','unit_id'));
     }
+
+    /**
+     * Create Test
+     */
     public function create(){
       return view('tests.create');
     }
+
+    /**
+     * Create Store
+     */
     public function store(request $request){
       if(Unit::unitActive($request->unit_id)){
         return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
@@ -98,6 +122,10 @@ class TestController extends Controller
       //$request->image->storeAs('public', $filename);
       return redirect()->back();
     }
+
+    /**
+     * Manage Questions
+     */
     public function manageQuestions(Test $id){
       foreach($id->questions as $x){
         if(!empty($x->image)){
@@ -106,23 +134,28 @@ class TestController extends Controller
           $x->image = 0;
         }
       }
-      //return $id;
       return view('tests.questions.manage',compact('id'));
     }
 
+    /**
+     * Test Visiblity
+     */
     public function visiblity(Test $test){
       if(Unit::unitActive($test->unit->id)){
-        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
       }
       Test::change_visibility($test->id);
       return redirect()->back();
     }
+
+    /**
+     * Delete Test
+     */
     public function delete(Test $test){
       if(Unit::unitActive($test->unit->id)){
-        return Redirect()->back()->withErrors(['You are unable to create, edit or delete any test, questions or answers whilst the unit is being actively used for students testing. Allowing this would corrupt the integrity of the students results. ', '']);
+        return Redirect()->back()->withErrors(['You are trying to modify an active unit. Modification of units is disabled while they are active.', '']);
       }
       Test::deleteTest($test->id);
       return redirect()->back();
     }
-
 }

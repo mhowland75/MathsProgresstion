@@ -6,6 +6,11 @@
       <h1>{{$unit_id->name}} - Tests</h1>
     </center>
   </div>
+  @if($errors->any())
+    <div class="alert alert-warning">
+      <strong>Warning!</strong> {{$errors->first()}}
+    </div>
+  @endif
   <div id="main-panel-body" class="panel-body">
     <ul style="background-color:#FFFFFF" class="breadcrumb">
       <li><a href="/unit/manage">Units</a></li>
