@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\StudentLogin;
+use Auth;
 
 class Student
 {
@@ -16,6 +17,9 @@ class Student
      */
     public function handle($request, Closure $next)
     {
+      if(Auth::check()){
+        return $next($request);
+      }
       if(StudentLogin::get_student_id()){
         if(StudentLogin::password_reset_status(StudentLogin::get_student_id())){
           return $next($request);
