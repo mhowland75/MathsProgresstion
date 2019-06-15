@@ -82,12 +82,12 @@ function displayBlock() {
       </div>
       <a href="/results/view">Results</a>
       <a href="/help/view">Help</a>
+      @if (Auth::id())
+          <a href="/home">Backend</a>
+      @endif
 
       @if(!empty($student[0]->student_id))
       <div style="float:right; margin-right:10%">
-        @if (Auth::id())
-          <a href="/education/manage">Backend</a>
-        @endif
         <div class="dropdownBox">
           <button class="dropbtnxLogin">
               <a href="/home">
@@ -102,9 +102,6 @@ function displayBlock() {
       </div>
       @else
       <div style="float:right; margin-right:10%">
-        @if (Auth::id())
-          <a href="/home">Backend</a>
-        @endif
         <div style="margin-top:15px" class="login-container">
           <form method="POST" action="/student/login">
             {{ csrf_field() }}
@@ -122,11 +119,6 @@ function displayBlock() {
     <a href="/education/index/maths">Maths</a>
     <a href="/education/index/english">English</a>
     <a href="/help/view">Help</a>
-
-    @if (Auth::id())
-      <a href="/home">Backend</a>
-    @endif
-
   </div>
 </div>
           @yield('banner')
