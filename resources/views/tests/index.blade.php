@@ -11,28 +11,28 @@
  <div class="col-sm-3">
    <div class="panel panel-default">
     <div class="panel-body">
-      Total Tests<span style="float:right" class="badge">{{$tests->count()}}
+      Total Tests<span style="float:right" class="badge">
     </div>
   </div>
  </div>
  <div class="col-sm-3">
    <div class="panel panel-default">
     <div class="panel-body">
-      Passed <span style="float:right" class="badge">{{$overallResults['passed']}}</span>
+      Passed <span style="float:right" class="badge"></span>
     </div>
   </div>
  </div>
  <div class="col-sm-3">
    <div class="panel panel-default">
     <div class="panel-body">
-      Attempted <span style="float:right" class="badge">{{$overallResults['attempted']}}</span>
+      Attempted <span style="float:right" class="badge"></span>
     </div>
   </div>
  </div>
  <div class="col-sm-3">
    <div class="panel panel-default">
     <div class="panel-body">
-      Not Attempted <span style="float:right" class="badge">{{$overallResults['notAttempted']}}</span>
+      Not Attempted <span style="float:right" class="badge"></span>
     </div>
   </div>
  </div>

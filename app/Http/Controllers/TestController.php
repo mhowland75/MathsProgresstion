@@ -95,7 +95,7 @@ class TestController extends Controller
         return redirect('/student/login');
       }
       $tests = Test::getStudentTests($subject_id);
-      dump(Test::getStudentsTestsResults($tests));
+      //dump(Test::getStudentsTestsResults($tests));
      // $results = Test::getStudentsTestsResults($tests);
       dump(2);
       //$overallResults = Test::studentTestResultsSummery($results);
@@ -103,7 +103,7 @@ class TestController extends Controller
       $subject = ucfirst($subject_id->subject);
       dump(4);
       
-      return view('tests.index', compact('tests','results','subject', 'overallResults'));
+      return view('tests.index', compact('tests','subject'));
     }
 
     /**
