@@ -98,7 +98,7 @@ class TestController extends Controller
       dump(Test::getStudentsTestsResults($tests));
      // $results = Test::getStudentsTestsResults($tests);
       dump(2);
-      $overallResults = Test::studentTestResultsSummery($results);
+      //$overallResults = Test::studentTestResultsSummery($results);
       dump(3);
       $subject = ucfirst($subject_id->subject);
       dump(4);
