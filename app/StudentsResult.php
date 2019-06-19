@@ -222,4 +222,11 @@ class StudentsResult extends Model
         StudentsResult::where('student_id',$student->student_id)->delete();
     }
   }
+  /**
+   * Get studnets answered questions.
+   */
+  public function studentsAnsweredQuestions($test, $student_id)
+  {
+    return $this->where('test_id', $test->id)->get();
+  }
 }

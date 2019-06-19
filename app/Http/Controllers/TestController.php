@@ -7,6 +7,7 @@ use App\Test;
 use App\Answer;
 use Illuminate\Support\Facades\Storage;
 use App\StudentsResult;
+use App\StudentsAnswers;
 use App\Unit;
 use App\StudentYear;
 use App\Student;
@@ -45,19 +46,42 @@ class TestController extends Controller
      */
     public function view(Test $test){
       if(Test::studentTestVerification($test->id)){
-        foreach($test->questions as $x){
-          if(!empty($x->image)){
-            $x->image = Storage::url($x->image);
+        // Select all questions that student has not answered yet
+        $student_result = StudentsResult::where('test_id', $test->id)->where('student_id', StudentLogin::get_student_id())->get();
+        // Find test questions
+        // Find unanswered questions.
+        if(isset($student_result[0]->id)){
+          $answered_question_ids = [];
+          foreach($student_result[0]->student_answers as $answer){
+            $answered_question_ids[] = $answer->question_id;
+          }
+          foreach($test->questions as $question){
+            if(!in_array($question->id, $answered_question_ids)){
+              $question = $test->questions->find($question);
+              break;
+            } else {
+              $question = NULL;
+            }
+          }
+        } else {
+          $question = $test->questions->first();
+        }
+        if(!isset($question)){
+          return redirect()->back();
+        }else{
+          if(!empty($question->image)){
+            $question->image = Storage::url($question->image);
           }else{
-            $x->image = 0;
+            $question->image = 0;
           }
         }
 
-        return view('tests.view', compact('test'));
+        return view('tests.view2', compact('test', 'question'));
       }else {
 
         return redirect()->back();
       }
+
     }
 
     /**

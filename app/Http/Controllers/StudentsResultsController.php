@@ -45,46 +45,49 @@ class StudentsResultsController extends Controller
      * Store student results
      */
     public function store(request $request){
-      $validate = [];
-      foreach($request->all() as $key => $q){
-        if(!$q){
-          $validate[] = Question::find($key)->question;
+      // Trys to fins an existing student result recored if it dose it updates and if not creates a new one
+      $studentResult = StudentsResult::where('student_id', StudentLogin::get_student_id())->where('test_id', $request->test_id)->first();
+      if(isset($studentResult)){
+        $question_check = $studentResult->student_answers->where('question_id', $request->question_id)->first();
+        if(isset($question_check->id)){
+          // TODO: redirect somwhere useful.
+          return redirect('/');
         }
-      }
-     dump($validate);
-     die();
-    if($validate){
-      //return Redirect()->back()->withErrors($validate);
-    }
-    $question_id = array_keys($request->all());
-    $question_id = $question_id[1];
-    $test = Question::find($question_id)->test()->get();
-    $testresults = StudentsResult::where('student_id',StudentLogin::get_student_id())->where('test_id',$test[0]->id)->get();
-    if(!empty($testresults[0]->id)){
-      $result = StudentsResult::where('student_id',StudentLogin::get_student_id())->where('test_id',$test[0]->id)->get();
-      $result = $result[0];
-      StudentsAnswer::where('results_id',$result->id)->delete();
-    }else{
-      $result = new StudentsResult;
-    }
-    $result->student_id = StudentLogin::get_student_id();
-    $result->test_id = $test[0]->id;
-    $result->correct_answers = Answer::get_test_results($request->all());;
-    $result->total_questions = Question::count_question_in_test($test[0]->id);
-    $result->attempt = 1;
-    $result->save();
-    foreach( $request->all() as $question_id => $answer_id){
-      if($question_id == '_token'){
-        continue;
+        $studentResult->total_questions = $studentResult->total_questions + 1;
+        if(Answer::find($request->answer_id)->right_answer){
+          $studentResult->correct_answers = $studentResult->correct_answers + 1;
+        }
+        $studentResult->save();
+      } else {
+        $studentResult = new StudentsResult;
+        $studentResult->student_id = StudentLogin::get_student_id();
+        $studentResult->test_id = $request->test_id;
+        if(Answer::find($request->answer_id)->right_answer){
+          $studentResult->correct_answers = $studentResult->correct_answers + 1;
+        } else {
+          $studentResult->correct_answers =  0;
+        }
+        $studentResult->total_questions = 1;
+        $studentResult->attempt = 1;
+        $studentResult->save();
       }
       $answer = new StudentsAnswer;
-      $answer->results_id = $result->id;
-      $answer->question_id = $question_id;
-      $answer->answer_id = $answer_id;
-      $answer->correct = Answer::get_is_answer_correct($question_id,$answer_id);
+      $answer->results_id = $studentResult->id;
+      $answer->question_id = $request->question_id;
+      $answer->answer_id = $request->answer_id;
+      if(Answer::find($request->answer_id)->right_answer){
+        $answer->correct = 1;
+      } else {
+        $answer->correct =  0;
+      }
       $answer->save();
-    }
-    return redirect('/studentsResults/view/'.$result->test_id);
+      $totalTestQuestions = Test::find($request->test_id)->questions->count();
+      $totalStudentAnswers = StudentsResult::where('student_id',  StudentLogin::get_student_id())->where('test_id', $request->test_id)->first()->student_answers->count();
+      if($totalTestQuestions > $totalStudentAnswers){
+        return redirect()->back();
+      } else {
+        return redirect('/studentsResults/view/'.$request->test_id);
+      }
   }
   /**
    * 

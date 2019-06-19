@@ -31,5 +31,4 @@ class StudentsAnswer extends Model
   public static function delete_by_questionid($id){
         static::where('question_id',$id)->delete();
   }
-
 }
