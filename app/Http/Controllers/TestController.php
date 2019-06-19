@@ -95,7 +95,7 @@ class TestController extends Controller
         return redirect('/student/login');
       }
       $tests = Test::getStudentTests($subject_id);
-      dump(1);
+      dump(Test::getStudentsTestsResults($tests));
       $results = Test::getStudentsTestsResults($tests);
       dump(2);
       $overallResults = Test::studentTestResultsSummery($results);
