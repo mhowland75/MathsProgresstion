@@ -4,7 +4,6 @@
   <div id="indexBannerText">
     <h3>Welcome to</h3>
     <h1>Skills Development</h1>
-    <h2>Test</h2>
   </div>
 </div>
 @endsection

@@ -88,6 +88,8 @@ class TestController extends Controller
      * loads tests of subject_id
      */
     public function index(Subject $subject_id){
+      dump($subject_id);
+      die();
       // If no student is logged in then redirect
       if(!StudentLogin::get_student_id())
       {
