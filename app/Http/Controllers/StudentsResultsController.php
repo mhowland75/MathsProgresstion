@@ -101,9 +101,13 @@ class StudentsResultsController extends Controller
    * 
    */
   public function index($year_id){
+    dump(123);
     $year = StudentYear::find($year_id);
+    dump($year);
     $nav = Student::listCoursesByDepartment($year_id);
+    dump($nav);
     $subjects = Subject::getSubjects();
+    dump($subjects);
     //return $subjects;
       $results = array();
       $students = Student::where('student_year_id',$year_id)->get();
