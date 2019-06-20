@@ -17,6 +17,9 @@ use App\Test;
 
 class StudentsResultsController extends Controller
 {
+  public function test(){
+    dump(123);
+  }
   /**
    * 
    */
