@@ -125,7 +125,7 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::post('/admin/update', 'AdminController@updateAdministrator');
   Route::get('/admin/delete/{id}', 'AdminController@removeAdministrator');
 
-  Route::get('/results/index/{year_id}', 'studentsResultsController@index');
+  Route::get('/results/index', 'studentsResultsController@index');
 
 
   Route::get('/results/department/{yearId}', 'studentsResultsController@departmentResults');

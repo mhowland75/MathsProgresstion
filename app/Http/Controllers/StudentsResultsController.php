@@ -100,8 +100,8 @@ class StudentsResultsController extends Controller
   /**
    * 
    */
-  public function index($year_id){
-    dump($year_id);
+  public function index(){
+    dump('test');
     die();
     $year = StudentYear::find($year_id);
     dump($year);
