@@ -17,9 +17,6 @@ use App\Test;
 
 class StudentsResultsController extends Controller
 {
-  public function test(){
-    dump(123);
-  }
   /**
    * 
    */
@@ -103,15 +100,28 @@ class StudentsResultsController extends Controller
   /**
    * 
    */
-  public function indexw(){
-    dump('test');
-    die();
+  public function test($year_id){
+    dump(123);
     $year = StudentYear::find($year_id);
-    dump($year);
     $nav = Student::listCoursesByDepartment($year_id);
-    dump($nav);
     $subjects = Subject::getSubjects();
-    dump($subjects);
+    //return $subjects;
+      $results = array();
+      $students = Student::where('student_year_id',$year_id)->get();
+      foreach($subjects as $subject){
+        $results[$subject->subject]['unitResults'] = StudentsResult::studentoverallTestsResults($students,$subject);
+        $results[$subject->subject]['testResults'] = StudentsResult::studentsTestResults($students,$subject);
+      }
+      //return $results;
+    return view('tests.studentResults.index',compact('results','nav','year_id','subjects','year'));
+  }
+  /**
+   * 
+   */
+  public function index($year_id){
+    $year = StudentYear::find($year_id);
+    $nav = Student::listCoursesByDepartment($year_id);
+    $subjects = Subject::getSubjects();
     //return $subjects;
       $results = array();
       $students = Student::where('student_year_id',$year_id)->get();

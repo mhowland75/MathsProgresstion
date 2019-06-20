@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/results/index', 'StudentsResultsController@indexw');
-
-Route::get('/results/test', 'StudentsResultsController@test');
-
-
   Route::get('/test/test', 'testingController@testin');
   Route::get('/help/view', 'HelpController@view');
 
@@ -130,7 +125,8 @@ Route::group(['middleware'=>'AdminAccessLevel1'], function(){
   Route::post('/admin/update', 'AdminController@updateAdministrator');
   Route::get('/admin/delete/{id}', 'AdminController@removeAdministrator');
 
-  
+  Route::get('/results/index/{year_id}', 'studentsResultsController@index');
+  Route::get('/results/test/{year_id}', 'StudentsResultsController@test');
 
 
   Route::get('/results/department/{yearId}', 'studentsResultsController@departmentResults');
