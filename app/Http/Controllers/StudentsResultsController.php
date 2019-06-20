@@ -101,7 +101,8 @@ class StudentsResultsController extends Controller
    * 
    */
   public function index($year_id){
-    dump(123);
+    dump($year_id);
+    die();
     $year = StudentYear::find($year_id);
     dump($year);
     $nav = Student::listCoursesByDepartment($year_id);
