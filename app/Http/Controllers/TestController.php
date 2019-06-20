@@ -88,22 +88,17 @@ class TestController extends Controller
      * loads tests of subject_id
      */
     public function index(Subject $subject_id){
-      dump($subject_id);
       // If no student is logged in then redirect
       if(!StudentLogin::get_student_id())
       {
         return redirect('/student/login');
       }
       $tests = Test::getStudentTests($subject_id);
-      //dump(Test::getStudentsTestsResults($tests));
-     // $results = Test::getStudentsTestsResults($tests);
-      dump(2);
-      //$overallResults = Test::studentTestResultsSummery($results);
-      dump(3);
+      $results = Test::getStudentsTestsResults($tests);
+      $overallResults = Test::studentTestResultsSummery($results);
       $subject = ucfirst($subject_id->subject);
-      dump(4);
       
-      return view('tests.index', compact('tests','subject'));
+      return view('tests.index', compact('tests','results','subject', 'overallResults'));
     }
 
     /**
