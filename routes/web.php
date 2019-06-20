@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/results/index', 'studentsResultsController@index');
+Route::get('/resultsx/index', 'studentsResultsController@index');
 
 
   Route::get('/test/test', 'testingController@testin');
